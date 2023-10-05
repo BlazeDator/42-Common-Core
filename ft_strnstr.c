@@ -63,13 +63,15 @@ int	main(void)
 {
 	char	*frase;
 	char	*str;
+	unsigned long x;
+
+	x = 3;
 
 	frase = "foo bay bar baz";
 	str = "bay";
-
-	printf("%s\n", ft_strnstr(frase, str, 12));
-	frase = "abcdefgh";
-	str = "abc";
-	printf("%s\n", ft_strnstr(frase, str, 2));
+	//printf("%s\n", ft_strnstr(frase, str, 12));
+	frase = "aaxx";
+	str = "xx";
+	printf("%s\n", ft_strnstr(frase, str, x));
 	return (0);
 }*/
