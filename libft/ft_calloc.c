@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:43:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/06 16:10:47 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/06 16:15:30 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned long long	mult;
-	void	*mem;
+	void				*mem;
 
 	mult = nmemb * size;
 	if (mult > 2147483647)
@@ -23,7 +23,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	mem = malloc(mult);
 	if (!mem)
 		return (0);
-	ft_bzero(mem, mult);	
+	ft_bzero(mem, mult);
 	return (mem);
 }
 /*
