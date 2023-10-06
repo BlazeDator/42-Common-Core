@@ -1,18 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/06 08:46:33 by pabernar          #+#    #+#             */
+/*   Updated: 2023/10/06 12:18:34 by pabernar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-unsigned int	ft_strlen(const char *str)
-{
-	unsigned int	count;
-
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}
 
 static int	ft_strnstr_comp(const char *s1, const char *s2, unsigned long n)
 {
-	unsigned long	i;
+	size_t			i;
 
 	i = 0;
 	while (s1[i] && s2[i] && i < n)
@@ -28,7 +30,7 @@ static int	ft_strnstr_comp(const char *s1, const char *s2, unsigned long n)
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	unsigned long	i;
+	size_t			i;
 
 	i = 0;
 	if (!*little || big == little || (!*big && !*little))
@@ -44,18 +46,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-
-/*
-Error in test 12: 
-ft_strnstr(0x55628f243033:
-"abcdefgh", "abc", 2): expected: (nil), yours:0x55628f243033
-Error in test 21: 
-ft_strnstr(0x55628f243046:
-"aaxx", "xx", 3): expected: (nil), yours: 0x55628f243048
-Error in test 26: 
-ft_strnstr(0x7ffce1c3c714:
-"abcdef", "abc\375xx", 3): expected: (nil), yours:0x7ffce1c3c714
-*/
 /*
 #include <stdio.h>
 
