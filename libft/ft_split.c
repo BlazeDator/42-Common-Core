@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:51:56 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/09 16:56:04 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:16:28 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,6 @@ static char	**ft_alloc_write(char const *s, char c, char **arr, size_t words)
 	return (arr);
 }
 
-static void	ft_check_mem(char **arr, size_t words)
-{
-
-}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
@@ -89,10 +84,7 @@ char	**ft_split(char const *s, char c)
 		return (0);
 	arr[words] = 0;
 	if (words > 0)
-	{
 		arr = ft_alloc_write(s, c, arr, words);
-		ft_check_mem(arr, words);
-	}
 	return (arr);
 }
 /*
