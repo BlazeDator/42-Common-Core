@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:51:56 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/09 17:16:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/09 17:31:49 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ static size_t	ft_word_len(char const *s, char c)
 	return (count);
 }
 
+static char	**ft_clean(char	**arr, size_t word)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < word)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (0);
+}
+
 static char	**ft_alloc_write(char const *s, char c, char **arr, size_t words)
 {
 	size_t	i;
@@ -60,7 +74,7 @@ static char	**ft_alloc_write(char const *s, char c, char **arr, size_t words)
 			i++;
 		arr[word] = malloc(ft_word_len(&s[i], c) + 1);
 		if (!arr[word])
-			return (0);
+			return (ft_clean(arr, word));
 		while (s[i] && s[i] != c)
 		{
 			arr[word][j] = s[i];
