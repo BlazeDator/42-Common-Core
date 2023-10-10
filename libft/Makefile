@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 12:04:58 by pabernar          #+#    #+#              #
-#    Updated: 2023/10/10 15:59:50 by pabernar         ###   ########.fr        #
+#    Updated: 2023/10/10 17:04:03 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 OBJS = $(SRC:.c=.o)
 
 SRCBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJSBONUS = $(SRCBONUS:.c=.o)
 
 all: $(NAME)
