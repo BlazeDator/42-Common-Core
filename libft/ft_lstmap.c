@@ -6,13 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:22:04 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/11 13:04:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:14:45 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_start(t_list *lst, void *(*f)(void *), void (*del)(void *))
+static t_list	*ft_start(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*newlst;
 	void	*cont;
