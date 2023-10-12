@@ -6,13 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 11:28:19 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/12 11:44:26 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:26:24 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// p unsigned long / xX unsignd int
+// %p unsigned long / %x %X unsignd int
 
 int	ft_printf(const char *str, ...)
 {
