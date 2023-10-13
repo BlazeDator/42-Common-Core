@@ -56,7 +56,7 @@ char	*ft_read_clean_buffer(char *buffer, size_t maxchars)
 			str[j++] = '\n';
 		buffer[i] = '\0';
 		if (str[i++] == '\n')
-			break;
+			break ;
 	}
 	return (ft_strdup(str));
 }
@@ -74,7 +74,7 @@ char	*get_next_line(int fd)
 	while (!ft_str_has_newline(str))
 	{
 		if (ft_buffer_is_empty(buffer))
-                	charead = read(fd, buffer, BUFFER_SIZE);
+			charead = read(fd, buffer, BUFFER_SIZE);
 		next = ft_read_clean_buffer(buffer, charead);
 		temp = str;
 		str = ft_strjoin(str, next);
@@ -110,8 +110,9 @@ int	main(void)
 	printf("\n\n| This was the second line |\n\n");
 }*/
 /* 
- *	EOF - end of file, possibly a character
- *      return of function read()
- *      if this number is smaller than the number of bytes requested;
- *      this may happen for example because fewer bytes are actually available right now
+EOF - end of file, possibly a character
+return of function read()
+if this number is smaller than the number of bytes requested;
+this may happen for example 
+because fewer bytes are actually available right now
 */
