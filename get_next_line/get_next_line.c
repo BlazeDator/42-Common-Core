@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:14 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/16 10:31:14 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:03:36 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,13 @@ char	*ft_read_clean_buffer(char *buffer, size_t maxchars)
 	size_t	i;
 	size_t	j;
 	size_t	max;
-	char	str[BUFFER_SIZE + 1];
+	char	*str;
 
 	i = 0;
 	j = 0;
+	str = malloc(BUFFER_SIZE + 1);
+	if (!str)
+		return (0);
 	ft_bzero((void *)str, (BUFFER_SIZE + 1));
 	max = BUFFER_SIZE;
 	if (maxchars)
@@ -58,7 +61,7 @@ char	*ft_read_clean_buffer(char *buffer, size_t maxchars)
 		if (str[i++] == '\n')
 			break ;
 	}
-	return (ft_strdup(str));
+	return (str);
 }
 
 char	*ft_line(int fd)
