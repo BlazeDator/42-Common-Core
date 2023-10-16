@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:14 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/12 17:06:39 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/16 10:31:14 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_read_clean_buffer(char *buffer, size_t maxchars)
 	return (ft_strdup(str));
 }
 
-char	*get_next_line(int fd)
+char	*ft_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE];
 	char		*str;
@@ -75,6 +75,10 @@ char	*get_next_line(int fd)
 	{
 		if (ft_buffer_is_empty(buffer))
 			charead = read(fd, buffer, BUFFER_SIZE);
+		if (!charead && !ft_strlen(str))
+			return (0);
+		else if (!charead && ft_strlen(str))
+			break ;
 		next = ft_read_clean_buffer(buffer, charead);
 		temp = str;
 		str = ft_strjoin(str, next);
@@ -83,6 +87,13 @@ char	*get_next_line(int fd)
 		free(next);
 	}
 	return (str);
+}
+
+char	*get_next_line(int fd)
+{
+	if (BUFFER_SIZE < 1 || fd < 0)
+		return (0);
+	return (ft_line(fd));
 }
 /*
 #include <stdio.h>
@@ -109,10 +120,3 @@ int	main(void)
 	}
 	printf("\n\n| This was the second line |\n\n");
 }*/
-/* 
-EOF - end of file, possibly a character
-return of function read()
-if this number is smaller than the number of bytes requested;
-this may happen for example 
-because fewer bytes are actually available right now
-*/
