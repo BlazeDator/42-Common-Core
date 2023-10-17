@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/17 11:03:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:22:12 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 size_t	ft_strlen(const char *s);
 
 char	*get_next_line(int fd);
-char	*ft_check_str(char *str);
+char	*ft_check_str(char *str, int charead);
 char	*ft_buffer_to_str(char	*src);
 
 int		ft_str_has_newline(char *str);

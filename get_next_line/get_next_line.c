@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:14 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/17 11:43:12 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:35:57 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*ft_readbuffer(int fd, char *str)
 		free(next);
 		ft_cleanbuffer(buffer);
 	}
-	return (ft_check_str(str));
+	return (ft_check_str(str, charead));
 }
 
 char	*get_next_line(int fd)
