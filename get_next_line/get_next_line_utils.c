@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:41 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/12 15:22:39 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:07:04 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,66 +25,58 @@ size_t	ft_strlen(const char *s)
 	return (count);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_str_has_newline(char *str)
 {
-	char	*str;
-	size_t	size1;
-	size_t	size2;
-	size_t	i;
-
-	i = 0;
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	str = malloc(size1 + size2 + 1);
-	if (!str)
-		return (0);
-	while (*s1)
+	while (*str)
 	{
-		str[i] = *s1;
-		s1++;
-		i++;
+		if (*str == '\n')
+			return (1);
+		str++;
 	}
-	while (*s2)
-	{
-		str[i] = *s2;
-		s2++;
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	return (0);
 }
 
-char	*ft_strdup(const char *src)
+int	ft_buffer_is_empty(char *buffer)
+{
+	int	i;
+
+	i = 0;
+	while (buffer[i] == 0 && i < BUFFER_SIZE)
+		i++;
+	if (i == BUFFER_SIZE)
+		return (1);
+	return (0);
+}
+
+char	*ft_check_str(char *str)
+{
+	if (ft_strlen(str))
+		return (str);
+	free(str);
+	return (0);
+}
+
+char	*ft_buffer_to_str(char *src)
 {
 	int		count;
 	char	*nstr;
 
 	count = 0;
-	while (src[count])
+	while (src[count] != '\n' && count < BUFFER_SIZE)
+		count++;
+	if (src[count] == '\n')
 		count++;
 	nstr = malloc(count + 1);
 	if (!nstr)
 		return (0);
 	count = 0;
-	while (src[count])
+	while (src[count] != '\n' && count < BUFFER_SIZE)
 	{
 		nstr[count] = src[count];
 		count++;
 	}
+	if (src[count] == '\n')
+		nstr[count++] = '\n';
 	nstr[count] = '\0';
 	return (nstr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*ptr;
-	size_t			i;
-
-	ptr = s;
-	i = 0;
-	while (i < n)
-	{
-		ptr[i] = 0;
-		i++;
-	}
 }

@@ -6,97 +6,102 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:14 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/16 12:03:36 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:43:12 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_buffer_is_empty(char	*buffer)
+char	*ft_strjoin(char *str, char *next)
 {
-	int	i;
+	char	*nstr;
+	size_t	i;
 
 	i = 0;
-	while (buffer[i] == 0 && i < BUFFER_SIZE)
-		i++;
-	if (i == BUFFER_SIZE)
-		return (1);
-	return (0);
-}
-
-int	ft_str_has_newline(char	*str)
-{
-	while (*str)
+	nstr = malloc(ft_strlen(str) + ft_strlen(next) + 1);
+	if (!nstr)
 	{
-		if (*str == '\n')
-			return (1);
-		str++;
+		free(str);
+		free(next);
+		return (0);
 	}
-	return (0);
+	while (str[i])
+	{
+		nstr[i] = str[i];
+		i++;
+	}
+	while (*next)
+	{
+		nstr[i] = *next;
+		next++;
+		i++;
+	}
+	free(str);
+	nstr[i] = '\0';
+	return (nstr);
 }
 
-char	*ft_read_clean_buffer(char *buffer, size_t maxchars)
+void	ft_cleanbuffer(char *buffer)
 {
 	size_t	i;
 	size_t	j;
-	size_t	max;
-	char	*str;
 
 	i = 0;
 	j = 0;
-	str = malloc(BUFFER_SIZE + 1);
-	if (!str)
-		return (0);
-	ft_bzero((void *)str, (BUFFER_SIZE + 1));
-	max = BUFFER_SIZE;
-	if (maxchars)
-		max = maxchars;
-	while (i < max)
+	while (buffer[i] != '\n' && i < BUFFER_SIZE)
+		i++;
+	if (buffer[i] == '\n')
+		i++;
+	while (i < BUFFER_SIZE)
 	{
-		if (buffer[i] != '\n' && buffer[i] != '\0')
-			str[j++] = buffer[i];
-		else if (buffer[i] == '\n')
-			str[j++] = '\n';
+		buffer[j] = buffer[i];
 		buffer[i] = '\0';
-		if (str[i++] == '\n')
-			break ;
+		i++;
+		j++;
 	}
-	return (str);
+	while (j < BUFFER_SIZE)
+	{
+		buffer[j] = '\0';
+		j++;
+	}
 }
 
-char	*ft_line(int fd)
+char	*ft_readbuffer(int fd, char *str)
 {
 	static char	buffer[BUFFER_SIZE];
-	char		*str;
 	char		*next;
-	char		*temp;
-	size_t		charead;
+	int			charead;
 
-	charead = 0;
-	str = "";
+	charead = 1;
 	while (!ft_str_has_newline(str))
 	{
 		if (ft_buffer_is_empty(buffer))
 			charead = read(fd, buffer, BUFFER_SIZE);
-		if (!charead && !ft_strlen(str))
-			return (0);
-		else if (!charead && ft_strlen(str))
+		if (charead <= 0)
 			break ;
-		next = ft_read_clean_buffer(buffer, charead);
-		temp = str;
+		next = ft_buffer_to_str(buffer);
+		if (!next)
+			break ;
 		str = ft_strjoin(str, next);
-		if (ft_strlen(temp) > 0)
-			free(temp);
+		if (!str)
+			return (0);
 		free(next);
+		ft_cleanbuffer(buffer);
 	}
-	return (str);
+	return (ft_check_str(str));
 }
 
 char	*get_next_line(int fd)
 {
-	if (BUFFER_SIZE < 1 || fd < 0)
+	char	*str;
+
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (0);
-	return (ft_line(fd));
+	str = malloc(1);
+	if (!str)
+		return (0);
+	str[0] = '\0';
+	return (ft_readbuffer(fd, str));
 }
 /*
 #include <stdio.h>
@@ -107,7 +112,7 @@ int	main(void)
 	int	fd;
 	char	*str;
 
-	fd = open("text.txt", O_RDONLY);
+	fd = open("read_error.txt", O_RDONLY);
 	str = get_next_line(fd);
 	if (str)
 	{
@@ -122,4 +127,25 @@ int	main(void)
 		free(str);
 	}
 	printf("\n\n| This was the second line |\n\n");
+	str = get_next_line(fd);
+	if (str)
+	{
+		printf("%s", str);
+		free(str);
+	}
+	printf("\n\n| This was the third line |\n\n");
+	str = get_next_line(fd);
+	if (str)
+	{
+		printf("%s", str);
+		free(str);
+	}
+	printf("\n\n| This was the fourth line |\n\n");
+	str = get_next_line(fd);
+	if (str)
+	{
+		printf("%s", str);
+		free(str);
+	}
+	printf("\n\n| This was the fifth line |\n\n");
 }*/

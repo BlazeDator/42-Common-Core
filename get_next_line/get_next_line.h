@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/12 15:25:40 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:03:45 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 #  define BUFFER_SIZE 42
 # endif
 
-char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *src);
-
 size_t	ft_strlen(const char *s);
 
-void	ft_bzero(void *s, size_t n);
+char	*get_next_line(int fd);
+char	*ft_check_str(char *str);
+char	*ft_buffer_to_str(char	*src);
+
+int		ft_str_has_newline(char *str);
+int		ft_buffer_is_empty(char *buffer);
 
 #endif
