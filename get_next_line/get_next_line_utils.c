@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:41 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/17 12:31:49 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:11:25 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ char	*ft_check_str(char *str, int charead)
 	return (0);
 }
 
-char	*ft_buffer_to_str(char *src)
+char	*ft_buffer_to_str(char *src, int charead)
 {
 	int		count;
 	char	*nstr;
 
 	count = 0;
-	while (src[count] != '\n' && count < BUFFER_SIZE)
+	while (src[count] != '\n' && count < charead)
 		count++;
 	if (src[count] == '\n')
 		count++;
@@ -70,7 +70,7 @@ char	*ft_buffer_to_str(char *src)
 	if (!nstr)
 		return (0);
 	count = 0;
-	while (src[count] != '\n' && count < BUFFER_SIZE)
+	while (src[count] != '\n' && count < charead)
 	{
 		nstr[count] = src[count];
 		count++;

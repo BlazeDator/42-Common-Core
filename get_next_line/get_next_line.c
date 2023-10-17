@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:14 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/17 12:35:57 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:14:50 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,16 @@ char	*ft_readbuffer(int fd, char *str)
 	char		*next;
 	int			charead;
 
-	charead = 1;
+	charead = 0;
+	while (buffer[charead] != '\0' && charead < BUFFER_SIZE)
+		charead++;
 	while (!ft_str_has_newline(str))
 	{
 		if (ft_buffer_is_empty(buffer))
 			charead = read(fd, buffer, BUFFER_SIZE);
 		if (charead <= 0)
 			break ;
-		next = ft_buffer_to_str(buffer);
+		next = ft_buffer_to_str(buffer, charead);
 		if (!next)
 			break ;
 		str = ft_strjoin(str, next);
