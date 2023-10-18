@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/02 12:04:58 by pabernar          #+#    #+#              #
-#    Updated: 2023/10/12 11:25:40 by pabernar         ###   ########.fr        #
+#    Updated: 2023/10/18 11:41:02 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,20 +14,14 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
-SRC = 
+SRC = ft_printf.c ft_putchar.c ft_putstr.c ft_typefinder.c ft_putnbr.c \
+ft_puthex.c ft_putpointer.c
 OBJS = $(SRC:.c=.o)
-
-#SRCBONUS =
-
-#OBJSBONUS = $(SRCBONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
-
-#bonus: $(OBJS) $(OBJSBONUS)
-#	ar rc $(NAME) $(OBJS) $(OBJSBONUS)	
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $*.c -o $*.o
@@ -40,3 +34,4 @@ fclean: clean
 
 re: fclean
 	$(MAKE) all
+
