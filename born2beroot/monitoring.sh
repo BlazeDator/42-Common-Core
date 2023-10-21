@@ -4,19 +4,33 @@ architecture=$(uname -a)
 
 cpu_cores=$(grep "cpu cores" /proc/cpuinfo -m 1 | awk '{print $4}')
 cpu_threads=$(grep "siblings" /proc/cpuinfo -m 1 | awk '{print $3}')
-
-perc=100
+cpu_load=$(top -n 1 | tail +8 | awk '{cpu += $10} END {print cpu}')
 
 used_ram=$(free --mega | grep "Mem" | awk '{print $3}')
 max_ram=$(free --mega | grep "Mem" | awk '{print $2}')
-perc_ram=$(awk -v used_ram="$used_ram" -v perc=$perc -v max_ram=$max_ram \
-'BEGIN{ printf "%.2f", used_ram * perc / max_ram;}')
+perc_ram=$(awk -v used_ram=$used_ram -v max_ram=$max_ram \
+'BEGIN { printf "%.2f", used_ram * 100 / max_ram; }')
 
-used_disk=0
-max_disk=0
-perc_disk=0
+used_disk=$(df -BM | grep "/dev/" | grep -v "/boot" | awk '{disk += $3} END {print disk}')
+max_disk=$(df -BG | grep "/dev/" | grep -v "/boot" | awk '{disk += $2} END {print disk}')
+perc_disk=$(df -BM | grep "/dev/" | grep -v "/boot" | \
+awk '{disk_u += $3} {disk_m += $2} END {printf "%d", disk_u * 100 / disk_m}')
 
-echo "	#Architecture: $architecture
+last_boot=$(who -b | grep -o -E "[0-9].*$")
+
+lvm=$(lsblk | tail +2 | awk {'print $6'} | grep "lvm" | wc -l)
+
+if [ "$lvm" -gt 0 ]; then
+	lvm="yes"
+else
+	lvm="no"
+fi
+
+wall "	#Architecture: $architecture
 	#CPU physical : $cpu_cores
 	#vCPU : $cpu_threads
-	#Memory Usage: $used_ram/${max_ram}MB (${perc_ram}%)"
+	#Memory Usage: $used_ram/${max_ram}MB (${perc_ram}%)
+	#Disk Usage: $used_disk/${max_disk}Gb (${perc_disk}%)
+	#CPU load: $cpu_load%
+	#Last boot: $last_boot
+	#LVM use: $lvm"
