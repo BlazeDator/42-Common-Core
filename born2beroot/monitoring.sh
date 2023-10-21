@@ -30,6 +30,11 @@ tcp=$(ss -ta | grep "ESTAB" | wc -l)
 
 users=$(users | wc -w)
 
+ip=$(hostname -I)
+MAC=$(ip link | grep "link/ether" | awk '{print $2}')
+
+sudo=$(journalctl -q _COMM=sudo | grep COMMAND | wc -l)
+
 wall "	#Architecture: $architecture
 	#CPU physical : $cpu_cores
 	#vCPU : $cpu_threads
@@ -39,4 +44,6 @@ wall "	#Architecture: $architecture
 	#Last boot: $last_boot
 	#LVM use: $lvm
 	#Connections TCP : $tcp ESTABLISHED
-	User log: $users"
+	#User log: $users
+	#Network: IP $ip($MAC)
+	#Sudo : $sudo cmd"
