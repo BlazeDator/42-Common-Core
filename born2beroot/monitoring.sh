@@ -26,6 +26,10 @@ else
 	lvm="no"
 fi
 
+tcp=$(ss -ta | grep "ESTAB" | wc -l)
+
+users=$(users | wc -w)
+
 wall "	#Architecture: $architecture
 	#CPU physical : $cpu_cores
 	#vCPU : $cpu_threads
@@ -33,4 +37,6 @@ wall "	#Architecture: $architecture
 	#Disk Usage: $used_disk/${max_disk}Gb (${perc_disk}%)
 	#CPU load: $cpu_load%
 	#Last boot: $last_boot
-	#LVM use: $lvm"
+	#LVM use: $lvm
+	#Connections TCP : $tcp ESTABLISHED
+	User log: $users"
