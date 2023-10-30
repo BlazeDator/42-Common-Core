@@ -4,7 +4,9 @@ architecture=$(uname -a)
 
 cpu_cores=$(grep "cpu cores" /proc/cpuinfo -m 1 | awk '{print $4}')
 cpu_threads=$(grep "siblings" /proc/cpuinfo -m 1 | awk '{print $3}')
-cpu_load=$(top -n 1 | tail +8 | awk '{cpu += $10} END {print cpu}')
+top -b -n 1 > /tmp/top_output.txt
+cpu_load=$(cat /tmp/top_output.txt | tail +8 | awk '{cpu += $9} END {print cpu}')
+#cpu_load=$(ps -o %cpu --no-headers | awk '{cpul += $1} END {print cpul}')
 #cpu_load=$(ps -o %cpu --no-headers | awk '{cpul += $1} END {print cpul}')
 
 used_ram=$(free --mega | grep "Mem" | awk '{print $3}')
