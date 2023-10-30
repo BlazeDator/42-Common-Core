@@ -4,7 +4,9 @@ architecture=$(uname -a)
 
 cpu_cores=$(grep "cpu cores" /proc/cpuinfo -m 1 | awk '{print $4}')
 cpu_threads=$(grep "siblings" /proc/cpuinfo -m 1 | awk '{print $3}')
-cpu_load=$(top -n 1 | tail +8 | awk '{cpu += $10} END {print cpu}')
+cpu_load=$(top -n 1 | grep Cpu | cut -d ',' -f 4 | tr -d ' ' | cut -d 'i' -f 1)
+cpu_load=$(awk -v cpu_load=$cpu_load 'BEGIN { printf "%.2f", 100 - cpu_load; }')
+#cpu_load=$(ps -o %cpu --no-headers | awk '{cpul += $1} END {print cpul}')
 
 used_ram=$(free --mega | grep "Mem" | awk '{print $3}')
 max_ram=$(free --mega | grep "Mem" | awk '{print $2}')
@@ -35,7 +37,7 @@ MAC=$(ip link | grep "link/ether" | awk '{print $2}')
 
 sudo=$(journalctl -q _COMM=sudo | grep COMMAND | wc -l)
 
-wall "	#Architecture: $architecture
+echo "	#Architecture: $architecture
 	#CPU physical : $cpu_cores
 	#vCPU : $cpu_threads
 	#Memory Usage: $used_ram/${max_ram}MB (${perc_ram}%)
