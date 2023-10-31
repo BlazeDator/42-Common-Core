@@ -1,14 +1,13 @@
 #!/bin/sh
 
-time=$(($(uptime -s | cut -d ':' -f 2 ) % 10 * 60 + $(uptime -s | cut -d ':' -f 3)))
-sleep $time
-
 architecture=$(uname -a)
 
 cpu_cores=$(grep "cpu cores" /proc/cpuinfo -m 1 | awk '{print $4}')
 cpu_threads=$(grep "siblings" /proc/cpuinfo -m 1 | awk '{print $3}')
 top -b -n 1 > /tmp/top_output.txt
 cpu_load=$(cat /tmp/top_output.txt | tail +8 | awk '{cpu += $9} END {print cpu}')
+#cpu_load=$(ps -o %cpu --no-headers | awk '{cpul += $1} END {print cpul}')
+#cpu_load=$(ps -o %cpu --no-headers | awk '{cpul += $1} END {print cpul}')
 
 used_ram=$(free --mega | grep "Mem" | awk '{print $3}')
 max_ram=$(free --mega | grep "Mem" | awk '{print $2}')
@@ -39,15 +38,15 @@ MAC=$(ip link | grep "link/ether" | awk '{print $2}')
 
 sudo=$(journalctl -q _COMM=sudo | grep COMMAND | wc -l)
 
-wall "    #Architecture: $architecture
-    #CPU physical : $cpu_cores
-    #vCPU : $cpu_threads
-    #Memory Usage: $used_ram/${max_ram}MB (${perc_ram}%)
-    #Disk Usage: $used_disk/${max_disk}Gb (${perc_disk}%)
-    #CPU load: $cpu_load%
-    #Last boot: $last_boot
-    #LVM use: $lvm
-    #Connections TCP : $tcp ESTABLISHED
-    #User log: $users
-    #Network: IP $ip($MAC)
-    #Sudo : $sudo cmd"
+echo "	#Architecture: $architecture
+	#CPU physical : $cpu_cores
+	#vCPU : $cpu_threads
+	#Memory Usage: $used_ram/${max_ram}MB (${perc_ram}%)
+	#Disk Usage: $used_disk/${max_disk}Gb (${perc_disk}%)
+	#CPU load: $cpu_load%
+	#Last boot: $last_boot
+	#LVM use: $lvm
+	#Connections TCP : $tcp ESTABLISHED
+	#User log: $users
+	#Network: IP $ip($MAC)
+	#Sudo : $sudo cmd"
