@@ -15,6 +15,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -73,5 +78,22 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 int		ft_atoi(const char *nptr);
+
+int		ft_printf(const char *str, ...);
+int		ft_typefinder(char c, va_list args);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbr(int n);
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_puthex(unsigned int n, int upper);
+int		ft_putpointer(unsigned long n);
+int		ft_putstr(char *str);
+
+char	*get_next_line(int fd);
+char	*ft_check_str(char *str, int charead);
+char	*ft_buffer_to_str(char *src, int charead);
+
+int		ft_str_has_newline(char *str);
+int		ft_buffer_is_empty(char *buffer);
 
 #endif

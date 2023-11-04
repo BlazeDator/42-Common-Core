@@ -14,9 +14,7 @@ NAME = minitalk
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
-PRINTF_DIR = libs/ft_printf/
-PRINTF_LIB = libftprintf.a
-LIBFT_DIR = libs/libft/
+LIBFT_DIR = libft/
 LIBFT_LIB = libft.a
 SRC = server.c
 OBJS = $(SRC:.c=.o)
@@ -24,9 +22,8 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-	$(MAKE) -C $(PRINTF_DIR)
-	$(MAKE) -C $(LIBFT_DIR) bonus
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(PRINTF_DIR)$(PRINTF_LIB) $(LIBFT_DIR)$(LIBFT_LIB)
+	$(MAKE) -C $(LIBFT_DIR) 
+	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_DIR)$(LIBFT_LIB)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
