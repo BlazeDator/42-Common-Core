@@ -12,15 +12,11 @@
 
 #include "minitalk.h"
 
-/*
-	Only use SIGUSR1 and SIGUSR2
-*/
-
 void	signal_handler(int signal)
 {
 	static int	count;
 	static char	bits[8];
-	
+
 	if (signal == SIGUSR1)
 		bits[count++] = 0;
 	else if (signal == SIGUSR2)

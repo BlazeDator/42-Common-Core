@@ -18,9 +18,8 @@
 # include <signal.h>
 # include "libft/libft.h"
 
-void	ft_byte_to_bits(unsigned char byte, unsigned char *bits);
+void			ft_byte_to_bits(unsigned char byte, unsigned char *bits);
 
-unsigned char ft_bits_to_byte(char *bits);
-
+unsigned char	ft_bits_to_byte(char *bits);
 
 #endif
