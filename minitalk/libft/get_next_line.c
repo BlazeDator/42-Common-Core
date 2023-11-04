@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-static char	*ft_strjoin(char *str, char *next)
+static char	*ft_strjoin_gnl(char *str, char *next)
 {
 	char	*nstr;
 	size_t	i;
@@ -84,7 +84,7 @@ static char	*ft_readbuffer(int fd, char *str)
 		next = ft_buffer_to_str(buffer, charead);
 		if (!next)
 			break ;
-		str = ft_strjoin(str, next);
+		str = ft_strjoin_gnl(str, next);
 		if (!str)
 			return (0);
 		free(next);
