@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 12:42:01 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/03 16:04:18 by pabernar         ###   ########.fr       */
+/*   Created: 2023/11/03 12:41:27 by pabernar          #+#    #+#             */
+/*   Updated: 2023/11/03 12:41:28 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <signal.h>
-# include "libft/libft.h"
-
-void	ft_byte_to_bits(unsigned char byte, unsigned char *bits);
-
-#endif
+void	ft_byte_to_bits(unsigned char byte, unsigned char *bits)
+{
+	if (byte != 0)
+		ft_byte_to_bits(byte / 2, bits - 1);
+	*bits = byte % 2;
+}
