@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,39 +12,43 @@
 
 #include "minitalk.h"
 
-/*
-	Only use SIGUSR1 and SIGUSR2
-*/
-
-void	signal_handler(int signal)
+static int	ft_power(int n, int power)
 {
-	static int	count;
-	static char	bits[8];
-	
-	if (signal == SIGUSR1)
-		bits[count++] = 0;
-	else if (signal == SIGUSR2)
-		bits[count++] = 1;
-	if (count == 8)
+	int	i;
+	int	sum;
+
+	i = 1;
+	sum = 1;
+	while (i <= power)
 	{
-		count = 0;
-		ft_printf("%c", ft_bits_to_byte(bits));
-		ft_bzero(bits, 8);
+		sum *= n;
+		i++;
 	}
+	return (sum);
 }
 
-int	main(void)
+unsigned char	ft_bits_to_byte(char *bits)
 {
-	struct sigaction	action;
-	pid_t				pid;
+	int	binary_power[8];
+	int	i;
+	int	power;
+	int	sum;
 
-	pid = getpid();
-	ft_bzero(&action, sizeof(action));
-	action.sa_handler = &signal_handler;
-	sigaction(SIGUSR1, &action, 0);
-	sigaction(SIGUSR2, &action, 0);
-	ft_printf("PID: %i\n", pid);
-	while (1)
-		continue ;
-	return (0);
+	i = 0;
+	sum = 0;
+	power = 7;
+	while (i < 7)
+	{
+		binary_power[i] = ft_power(2, power);
+		i++;
+		power--;
+	}
+	binary_power[i] = 1;
+	i = 0;
+	while (i < 8)
+	{
+		sum = sum + (bits[i] * binary_power[i]);
+		i++;
+	}
+	return (sum);
 }

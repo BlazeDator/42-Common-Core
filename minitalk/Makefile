@@ -17,7 +17,7 @@ RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SERVER = server
-SERVER_SRCS = server.c
+SERVER_SRCS = server.c server_utils.c
 SERVER_OBJS = $(SERVER_SRCS:.c=.o)
 CLIENT = client
 CLIENT_SRCS = client.c client_utils.c

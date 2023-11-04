@@ -15,8 +15,8 @@
 void	ft_send_string(char *str, pid_t pid)
 {
 	unsigned char	bits[8];
-	int		i;
-	int		j;
+	int				i;
+	int				j;
 
 	i = 0;
 	ft_bzero(bits, 8);
@@ -36,12 +36,12 @@ void	ft_send_string(char *str, pid_t pid)
 		ft_bzero(bits, 8);
 		i++;
 	}
-	
 }
+
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
-	
+
 	if (argc != 3)
 		return (ft_printf("Usage: client PID string"));
 	pid = ft_atoi(argv[1]);
