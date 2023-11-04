@@ -15,26 +15,43 @@
 /*
 	Only use SIGUSR1 and SIGUSR2
 */
+int count;
 
-void	sigusr1_handler(int signal)
+
+void	signal_handler(int signal)
 {
 	if (signal == SIGUSR1)
-		ft_printf("\nOla to you too!\n");
+	{
+		ft_printf("0", count);
+		count++;
+	}
+	else if (signal == SIGUSR2)
+	{
+		ft_printf("1", count);
+		count++;
+	}
+	if (count == 8)
+	{
+		ft_printf("\n");
+		count = 0;
+	}
 }
 
-void	set_signal_action(void)
+static void	set_signal_action(void)
 {
 	struct sigaction	action;
 
 	ft_bzero(&action, sizeof(action));
-	action.sa_handler = &sigusr1_handler;
+	action.sa_handler = &signal_handler;
 	sigaction(SIGUSR1, &action, 0);
+	sigaction(SIGUSR2, &action, 0);
 }
 
 int	main(void)
 {
 	pid_t	pid;
 
+	count = 0;
 	pid = getpid();
 	set_signal_action();
 	ft_printf("PID: %i\n", pid);
