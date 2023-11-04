@@ -12,11 +12,33 @@
 
 #include "minitalk.h"
 
-int	main(int argc, char **argv)
+/*
+	Only use SIGUSR1 and SIGUSR2
+*/
+
+void	sigusr1_handler(int signal)
 {
-	if (argc == 0 && argv == 0)
-		ft_printf("argv, argc not used");
-	ft_printf("%i\n", ft_strlen("1234567890"));
-	ft_printf("teste");
+	if (signal == SIGUSR1)
+		ft_printf("\nOla to you too!\n");
+}
+
+void	set_signal_action(void)
+{
+	struct sigaction	action;
+
+	ft_bzero(&action, sizeof(action));
+	action.sa_handler = &sigusr1_handler;
+	sigaction(SIGUSR1, &action, 0);
+}
+
+int	main(void)
+{
+	pid_t	pid;
+
+	pid = getpid();
+	set_signal_action();
+	ft_printf("PID: %i\n", pid);
+	while (1)
+		continue ;
 	return (0);
 }

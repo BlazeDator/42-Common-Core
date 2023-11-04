@@ -10,29 +10,36 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk 
+NAME = server client
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
+LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-LIBFT_LIB = libft.a
-SRC = server.c
-OBJS = $(SRC:.c=.o)
+SERVER = server
+SERVER_SRCS = server.c
+SERVER_OBJS = $(SERVER_SRCS:.c=.o)
+CLIENT = client
+CLIENT_SRCS = client.c
+CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) 
+$(NAME): $(LIBFT) $(SERVER_OBJS) $(CLIENT_OBJS)
+	cc $(CFLAGS) -o $(SERVER) $(SERVER_OBJS) $(LIBFT)
+	cc $(CFLAGS) -o $(CLIENT) $(CLIENT_OBJS) $(LIBFT)	
+
+$(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) 
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT_DIR)$(LIBFT_LIB)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(CLIENT) $(SERVER)
 
 re: fclean	
-	$(MAKE) all
+	$(MAKE)

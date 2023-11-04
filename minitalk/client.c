@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minitalk.h"
 
+int	main(int argc, char **argv)
+{
+	pid_t	pid;
+
+	if (argc != 3)
+		return (ft_printf("Usage: client PID string"));
+	pid = ft_atoi(argv[1]);
+	if (pid < 1)
+		return (ft_printf("Error: Invalid PID"));
+	kill(pid, SIGUSR1);
+	return (0);
+}
