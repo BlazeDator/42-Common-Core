@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:41:18 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/03 16:03:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:26:37 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,11 @@ void	signal_handler(int signal)
 
 int	main(void)
 {
-	struct sigaction	action;
 	pid_t				pid;
 
 	pid = getpid();
-	ft_bzero(&action, sizeof(action));
-	action.sa_handler = &signal_handler;
-	sigaction(SIGUSR1, &action, 0);
-	sigaction(SIGUSR2, &action, 0);
+	signal(SIGUSR1, signal_handler);
+	signal(SIGUSR2, signal_handler);
 	ft_printf("PID: %i\n", pid);
 	while (1)
 		continue ;
