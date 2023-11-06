@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 15:08:14 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/17 13:14:50 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:57:21 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,40 +114,11 @@ int	main(void)
 	int	fd;
 	char	*str;
 
-	fd = open("read_error.txt", O_RDONLY);
+	fd = open("get_next_line.h", O_RDONLY);
 	str = get_next_line(fd);
-	if (str)
+	while (str)
 	{
 		printf("%s", str);
-		free(str);
+		str = get_next_line(fd);
 	}
-	printf("\n\n| This was the first line |\n\n");
-	str = get_next_line(fd);
-	if (str)
-	{
-		printf("%s", str);
-		free(str);
-	}
-	printf("\n\n| This was the second line |\n\n");
-	str = get_next_line(fd);
-	if (str)
-	{
-		printf("%s", str);
-		free(str);
-	}
-	printf("\n\n| This was the third line |\n\n");
-	str = get_next_line(fd);
-	if (str)
-	{
-		printf("%s", str);
-		free(str);
-	}
-	printf("\n\n| This was the fourth line |\n\n");
-	str = get_next_line(fd);
-	if (str)
-	{
-		printf("%s", str);
-		free(str);
-	}
-	printf("\n\n| This was the fifth line |\n\n");
 }*/
