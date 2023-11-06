@@ -15,6 +15,8 @@
 void	ft_byte_to_bits(unsigned char byte, unsigned char *bits)
 {
 	if (byte != 0)
+	{
 		ft_byte_to_bits(byte / 2, bits - 1);
-	*bits = byte % 2;
+		*bits = byte % 2;
+	}
 }
