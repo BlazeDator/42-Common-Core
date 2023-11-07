@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:48:48 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/07 13:01:33 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:14:42 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,23 @@ void	ft_stack_rotate(t_stack **stack, char name)
 	}
 	if (name)
 		ft_printf("r%c\n", name);
+}
+
+void	ft_stack_reverse_rotate(t_stack **stack, char name)
+{
+	t_stack	*temp;
+	t_stack	*runner;
+
+	if (ft_stack_size(stack[0]) > 1)
+	{
+		runner = stack[0];
+		while (runner->next->next)
+			runner = runner->next;
+		temp = runner->next;
+		runner->next = 0;
+		temp->next = stack[0];
+		stack[0] = temp;
+	}
+	if (name)
+		ft_printf("rr%c\n", name);
 }

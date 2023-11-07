@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:05:18 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/07 12:58:13 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:15:29 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,7 @@ int	main(int argc, char **argv)
 	ft_stack_rotate(&a, 'a');
 	ft_stack_display(a, 'a');
 
+	ft_stack_reverse_rotate(&a, 'a');
+	ft_stack_display(a, 'a');
 	return (0);
 }
