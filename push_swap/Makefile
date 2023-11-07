@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/07 09:06:01 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/07 11:47:37 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-SRCS = main.c
+SRCS = main.c \
+ft_stack_new.c ft_stack_add_front.c ft_stack_add_back.c ft_stack_size.c \
+ft_stack_swap.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
