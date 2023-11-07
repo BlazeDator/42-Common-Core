@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:05:18 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/07 15:15:29 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:30:43 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	// Test new stack functions
+	ft_printf("Stacks Initial State:\n");
 	ft_stack_display(a, 'a');
 	ft_stack_display(b, 'b');
 
