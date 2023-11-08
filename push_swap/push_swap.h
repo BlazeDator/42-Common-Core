@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 13:17:13 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:16:28 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_stack
 
 typedef struct s_queue_node
 {
-	int	base_improvement;
-	int	max_improvement;
+	int				base_improvement;
+	int				max_improvement;
 	char	*commands;
 	t_stack	*a;
 	t_stack	*b;
@@ -35,7 +35,6 @@ typedef struct s_queue_node
 
 t_stack	*ft_stack_new(int num);
 t_stack *ft_stack_copy(t_stack *stack);
-t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b);
 
 void	ft_stack_add_front(t_stack **stack, t_stack *new);
 void	ft_stack_add_back(t_stack **stack, t_stack *new);
@@ -49,4 +48,10 @@ void	ft_stack_clear(t_stack *stack);
 char	*ft_stack_sorter(t_stack **a, t_stack **b);
 
 int		ft_stack_size(t_stack *stack);
+int		ft_stack_calc_improvement(t_stack *a, t_stack *b);
+
+t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b);
+
+void	ft_queue_node_delone(t_queue_node *node);
+void	ft_queue_node_clear(t_queue_node *node);
 #endif

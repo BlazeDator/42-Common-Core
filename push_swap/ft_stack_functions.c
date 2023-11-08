@@ -1,16 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_rotate.c                                  :+:      :+:    :+:   */
+/*   ft_stack_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 12:48:48 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/07 15:14:42 by pabernar         ###   ########.fr       */
+/*   Created: 2023/11/08 14:25:30 by pabernar          #+#    #+#             */
+/*   Updated: 2023/11/08 14:27:33 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_stack_swap(t_stack **stack, char name)
+{
+	t_stack	*temp;
+
+	if (ft_stack_size(stack[0]) > 1)
+	{
+		temp = stack[0];
+		stack[0] = stack[0]->next;
+		temp->next = stack[0]->next;
+		stack[0]->next = temp;
+	}
+	if (name)
+		ft_printf("s%c\n", name);
+}
+
+void	ft_stack_push(t_stack **dest, t_stack **src, char name)
+{
+	t_stack	*temp_src;
+
+	if (ft_stack_size(src[0]))
+	{
+		temp_src = src[0];
+		src[0] = src[0]->next;
+		temp_src->next = dest[0];
+		dest[0] = temp_src;
+	}
+	if (name)
+		ft_printf("p%c\n", name);
+}
 
 void	ft_stack_rotate(t_stack **stack, char name)
 {
@@ -49,3 +79,4 @@ void	ft_stack_reverse_rotate(t_stack **stack, char name)
 	if (name)
 		ft_printf("rr%c\n", name);
 }
+
