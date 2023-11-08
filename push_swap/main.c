@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:05:18 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/07 15:30:43 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:48:59 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,23 @@ void	ft_stack_display(t_stack *stack, char name)
 	ft_printf("\n");
 }
 
+int	ft_stack_duplicate(t_stack *stack, int num)
+{
+	while (stack)
+	{
+		if (stack->num == num)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack *b;
 	int		i;
+	int		num;
 
 	i = 1;
 	a = 0;
@@ -42,6 +54,9 @@ int	main(int argc, char **argv)
 	i++;
 	while (argv[i])
 	{
+		num = ft_atoi(argv[i]);
+		if (ft_stack_duplicate(a, num) || (num == 0 && argv[i][0] != '0'))
+			return (ft_printf("Error\n"));
 		ft_stack_add_back(&a, ft_stack_new(ft_atoi(argv[i])));
 		i++;
 	}
@@ -49,7 +64,12 @@ int	main(int argc, char **argv)
 	ft_printf("Stacks Initial State:\n");
 	ft_stack_display(a, 'a');
 	ft_stack_display(b, 'b');
-
+	ft_printf(ft_stack_sorter(&a, &b));
+	ft_stack_clear(a);
+	ft_stack_clear(b);
+	return (0);
+}
+/*
 	ft_stack_push(&b, &a, 'b');
 	ft_stack_display(a, 'a');
 	ft_stack_display(b, 'b');
@@ -68,4 +88,4 @@ int	main(int argc, char **argv)
 	ft_stack_reverse_rotate(&a, 'a');
 	ft_stack_display(a, 'a');
 	return (0);
-}
+*/
