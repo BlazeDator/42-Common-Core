@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 13:04:01 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:17:13 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_queue_node
 	int	base_improvement;
 	int	max_improvement;
 	char	*commands;
-	struct t_stack	*a;
-	struct t_stack	*b;
+	t_stack	*a;
+	t_stack	*b;
 	struct s_queue_node	*next;
 }		t_queue_node;
 
