@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 15:25:18 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:54:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_stack_calc_improvement(t_stack *a, t_stack *b);
 
 t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b);
 
+void	ft_queue_node_add_back(t_queue_node **node, t_queue_node *new);
 void	ft_queue_node_delone(t_queue_node *node);
 void	ft_queue_node_clear(t_queue_node *node);
 #endif

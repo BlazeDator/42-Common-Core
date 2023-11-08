@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:34:49 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 15:22:46 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/08 15:53:27 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,22 @@ t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b)
 	queue->b = ft_stack_copy(b);
 	queue->next = 0;
 	return (queue);
+}
+
+void	ft_queue_node_add_back(t_queue_node **node, t_queue_node *new)
+{
+	t_queue_node *temp;
+
+	if (node[0])
+	{
+		temp = node[0];
+		while (node[0]->next)
+			node[0] = node[0]->next;
+		node[0]->next = new;
+		node[0] = temp;
+	}
+	else
+		node[0] = new;
 }
 
 void	ft_queue_node_delone(t_queue_node *node)
