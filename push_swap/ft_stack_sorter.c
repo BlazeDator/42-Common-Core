@@ -119,7 +119,7 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 
 	commands = 0;
 	new_queue = 0;
-	queue = ft_queue_node_new(a[0], b[0], "");
+	queue = ft_queue_node_new(a[0], b[0], 0);
 	while (!commands)
 	{
 		start = queue;
