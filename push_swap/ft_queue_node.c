@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:34:49 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 11:00:56 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:15:00 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b, char *commands)
 	int	max_improvement;
 	t_queue_node *queue;
 
+	ft_printf("Creating a new Node\n");
+	ft_stack_display(a, 'a');
+	ft_stack_display(b, 'b');
+	ft_printf("Commands: %s\n", commands);
 	base_improvement = ft_stack_calc_improvement(a, b);
 	max_improvement = ((ft_stack_size(a) - 1) * 2);
 	queue = malloc(sizeof(t_queue_node));

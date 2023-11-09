@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:05:18 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 09:22:02 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:08:05 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int	main(int argc, char **argv)
 	ft_stack_display(b, 'b');
 	commands = ft_stack_sorter(&a, &b);
 	ft_printf("%s", commands);
-	free(commands);
-	ft_stack_clear(a);
-	ft_stack_clear(b);
+	//free(commands);
+	//ft_stack_clear(a);
+	//ft_stack_clear(b);
 	return (0);
 }
 /*

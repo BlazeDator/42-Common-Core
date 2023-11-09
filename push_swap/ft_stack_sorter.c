@@ -6,13 +6,15 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:37:21 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:18:44 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_queue_node	*ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
+// ft_printf("\n");
+
+void	ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
 {
 	int	i;
 
@@ -23,7 +25,8 @@ t_queue_node	*ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
 			ft_queue_node_new(queue->a, queue->b, queue->commands));
 		i++;
 	}
-	return (new_queue[0]);
+	ft_printf("Generating Nodes: \n");
+	ft_display_queue(new_queue[0]);
 }
 
 char	**ft_generate_commands()
@@ -31,17 +34,17 @@ char	**ft_generate_commands()
 	char	**commands;
 
 	commands = malloc(10 * sizeof(char *));
-	commands[0] = ft_strdup("sa");
-	commands[1] = ft_strdup("sb");
-	commands[2] = ft_strdup("ss");
-	commands[3] = ft_strdup("ra");
-	commands[4] = ft_strdup("rb");
-	commands[5] = ft_strdup("rr");
-	commands[6] = ft_strdup("rra");
-	commands[7] = ft_strdup("rrb");
-	commands[8] = ft_strdup("rrr");
-	commands[9] = ft_strdup("pa");
-	commands[10] = ft_strdup("pb");
+	commands[0] = ft_strdup("sa\n");
+	commands[1] = ft_strdup("sb\n");
+	commands[2] = ft_strdup("ss\n");
+	commands[3] = ft_strdup("ra\n");
+	commands[4] = ft_strdup("rb\n");
+	commands[5] = ft_strdup("rr\n");
+	commands[6] = ft_strdup("rra\n");
+	commands[7] = ft_strdup("rrb\n");
+	commands[8] = ft_strdup("rrr\n");
+	commands[9] = ft_strdup("pa\n");
+	commands[10] = ft_strdup("pb\n");
 	return (commands);
 }
 
@@ -62,12 +65,16 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 {
 	t_queue_node	*start;
 	char	*(*functions[9]) (t_stack **stack, char *name);
-	char	**commands;//Dont forget to free
+	char	**commands;// TODO:Dont forget to free
 	int	i;
 
+
 	i = 0;
-	new_queue[0] = ft_generate_nodes(queue, new_queue);
+	ft_printf("Generating Possibilities\n");
+	ft_generate_nodes(queue, new_queue);
+	ft_printf("Generating Commands\n");
 	commands = ft_generate_commands();
+	ft_printf("Generating Functions\n");
 	ft_generate_functions(functions);
 	start = new_queue[0];
 	while (i < 11)
@@ -108,7 +115,8 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 	t_queue_node *start;
 	char	*commands;
 
-	commands = 0;	
+	commands = 0;
+	new_queue = 0;
 	queue = ft_queue_node_new(a[0], b[0], "");
 	while (!commands)
 	{
@@ -126,6 +134,7 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 		ft_clean_improvement(&new_queue);
 		queue = new_queue;
 	}
+	ft_printf("Sorted\n");
 	ft_queue_node_clear(start);
 	return (commands);
 }
