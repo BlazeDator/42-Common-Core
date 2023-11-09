@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 13:10:05 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:21 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,23 @@ t_queue_node	*ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
 	return (new_queue[0]);
 }
 
-void	ft_generate_commands(char *(*commands[11]))
+char	**ft_generate_commands()
 {
-	commands[0][0] = "sa";
-	commands[0][1] = "sb";
-	commands[0][2] = "ss";
-	commands[0][3] = "ra";
-	commands[0][4] = "rb";
-	commands[0][5] = "rr";
-	commands[0][6] = "rra";
-	commands[0][7] = "rrb";
-	commands[0][8] = "rrr";
-	commands[0][9] = "pa";
-	commands[0][10] = "pb";
+	char	**commands;
+
+	commands = malloc(10 * sizeof(char *));
+	commands[0] = ft_strdup("sa");
+	commands[1] = ft_strdup("sb");
+	commands[2] = ft_strdup("ss");
+	commands[3] = ft_strdup("ra");
+	commands[4] = ft_strdup("rb");
+	commands[5] = ft_strdup("rr");
+	commands[6] = ft_strdup("rra");
+	commands[7] = ft_strdup("rrb");
+	commands[8] = ft_strdup("rrr");
+	commands[9] = ft_strdup("pa");
+	commands[10] = ft_strdup("pb");
+	return (commands);
 }
 
 void	ft_generate_functions(char *(*functions[9]) (t_stack **stack, char *name))
@@ -58,12 +62,12 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 {
 	t_queue_node	*start;
 	char	*(*functions[9]) (t_stack **stack, char *name);
-	char	*(*commands[11]);
+	char	**commands;//Dont forget to free
 	int	i;
 
 	i = 0;
 	new_queue[0] = ft_generate_nodes(queue, new_queue);
-	ft_generate_commands(commands);
+	commands = ft_generate_commands();
 	ft_generate_functions(functions);
 	start = new_queue[0];
 	while (i < 11)
@@ -71,25 +75,25 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 		if (i == 0 || i == 3 || i == 6)
 			new_queue[0]->commands = 
 			ft_strjoin(queue->commands, 
-			functions[i](&new_queue[0]->a, commands[0][i]));
+			functions[i](&new_queue[0]->a, commands[i]));
 		else if (i == 1 || i == 4 || i == 7)
 			new_queue[0]->commands =
 			ft_strjoin(queue->commands, 
-			functions[i](&new_queue[0]->b, commands[0][i]));
+			functions[i](&new_queue[0]->b, commands[i]));
 		else if (i == 9)
 			new_queue[0]->commands =
 			ft_strjoin(queue->commands, 
-			ft_stack_push(&new_queue[0]->a, &new_queue[0]->b, commands[0][i]));
+			ft_stack_push(&new_queue[0]->a, &new_queue[0]->b, commands[i]));
 		else if (i == 10)
 			new_queue[0]->commands =
 			ft_strjoin(queue->commands,
-			ft_stack_push(&new_queue[0]->b, &new_queue[0]->a, commands[0][i]));
+			ft_stack_push(&new_queue[0]->b, &new_queue[0]->a, commands[i]));
 		else
 		{
 			new_queue[0]->commands =
 			ft_strjoin(queue->commands, 
-			functions[i](&new_queue[0]->a, commands[0][i]));
-			functions[i](&new_queue[0]->b, commands[0][i]);
+			functions[i](&new_queue[0]->a, commands[i]));
+			functions[i](&new_queue[0]->b, commands[i]);
 		}
 		new_queue[0] = new_queue[0]->next;
 		i++;
