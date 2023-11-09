@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:34:49 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 10:07:03 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:00:56 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	ft_queue_node_add_back(t_queue_node **node, t_queue_node *new)
 	}
 	else
 		node[0] = new;
+}
+
+void	ft_queue_node_add_front(t_queue_node **node, t_queue_node *new)
+{
+	new->next = node[0];
+	node[0] = new;
 }
 
 void	ft_queue_node_delone(t_queue_node *node)

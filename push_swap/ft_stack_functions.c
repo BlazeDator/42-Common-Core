@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:25:30 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 10:36:34 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:39:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_stack_swap(t_stack **stack, char *name)
 		stack[0]->next = temp;
 	}
 	if (name)
-		return (ft_strdup(name));
+		return (name);
 	return (0);
 }
 
@@ -40,7 +40,7 @@ char	*ft_stack_push(t_stack **dest, t_stack **src, char *name)
 		dest[0] = temp_src;
 	}
 	if (name)
-		return (ft_strdup(name));
+		return (name);
 	return (0);
 }
 
@@ -60,7 +60,7 @@ char	*ft_stack_rotate(t_stack **stack, char *name)
 		temp->next = 0;
 	}
 	if (name)
-		return (ft_strdup(name));
+		return (name);
 	return (0);
 }
 
@@ -80,6 +80,6 @@ char	*ft_stack_reverse_rotate(t_stack **stack, char *name)
 		stack[0] = temp;
 	}
 	if (name)
-		return (ft_strdup(name));
+		return (name);
 	return (0);
 }
