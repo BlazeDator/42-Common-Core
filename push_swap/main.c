@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:05:18 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 16:27:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:22:02 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	t_stack *b;
 	int		i;
 	int		num;
+	char	*commands;
 
 	i = 1;
 	a = 0;
@@ -64,7 +65,9 @@ int	main(int argc, char **argv)
 	ft_printf("Stacks Initial State:\n");
 	ft_stack_display(a, 'a');
 	ft_stack_display(b, 'b');
-	ft_printf("%s", ft_stack_sorter(&a, &b));
+	commands = ft_stack_sorter(&a, &b);
+	ft_printf("%s", commands);
+	free(commands);
 	ft_stack_clear(a);
 	ft_stack_clear(b);
 	return (0);

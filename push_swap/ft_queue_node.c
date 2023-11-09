@@ -6,15 +6,14 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 14:34:49 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 15:53:27 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:07:03 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b)
+t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b, char *commands)
 {
-	char	*commands;
 	int	base_improvement;
 	int	max_improvement;
 	t_queue_node *queue;
@@ -22,10 +21,15 @@ t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b)
 	base_improvement = ft_stack_calc_improvement(a, b);
 	max_improvement = ((ft_stack_size(a) - 1) * 2);
 	queue = malloc(sizeof(t_queue_node));
-	commands = malloc(1);
+	if (commands)
+		commands = ft_strdup(commands);
+	else
+	{
+		commands = malloc(1);
+		commands[0] = '\0';
+	}
 	if (!commands || !queue)
 		return (0);
-	commands[0] = '\0';
 	queue->base_improvement = base_improvement;
 	queue->max_improvement = max_improvement;
 	queue->commands = commands;

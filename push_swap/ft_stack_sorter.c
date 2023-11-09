@@ -6,53 +6,43 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/08 16:37:55 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:49:40 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_stack_calc_improvement(t_stack *a, t_stack *b)
+void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 {
-	int	improvement;
+	t_queue_node	*start;
+	int	i;
 
-	improvement = 0;
-	while (a && a->next)
-	{
-		if (a->num < a->next->num)
-			improvement += 2;
-		a = a->next;
-	}
-	while (b && b->next)
-	{
-		if (b->num < b->next->num)
-			improvement += 1;
-		b = b->next;
-	}
-	return (improvement);
+	// TODO: generate all the copies first then use functions on each
+	ft_queue_node_add_back(new_queue, ft_queue_node_new(queue->a, queue->b, queue->commands));
+	start = new_queue[0];
+	queue->commands = ft_strjoin_free(queue->commands, ft_swap(queue->a, "sa\n"));
+	
+
+
+
+
+
+
+
+
+
+	new_queue = start;
 }
-
-char	*ft_check_sorted(t_queue_node *node)
-{
-	while (node)
-	{
-		if (node->base_improvement == node->max_improvement)
-			return (ft_strdup(node->commands));
-		node = node->next;
-	}
-	return (0);
-}
-
-// ft_queue_node_add_back(&queue, ft_queue_node_new(a[0], b[0]));
 
 char	*ft_stack_sorter(t_stack **a, t_stack **b)
 {
 	t_queue_node *queue;
+	t_queue_node *new_queue;
 	t_queue_node *start;
 	char	*commands;
 
 	commands = 0;	
-	queue = ft_queue_node_new(a[0], b[0]);
+	queue = ft_queue_node_new(a[0], b[0], "");
 	while (!commands)
 	{
 		start = queue;
@@ -62,7 +52,9 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 		while (queue)
 		{
 			// create new queue?
-			// generate possibilities	
+			// Consider doing the loop inside the following function for less lines
+			// Would need to send the current queue pointer address
+			ft_generate_possibilities(queue, &new_queue) 
 			queue = queue->next;
 		}
 		// delete old ones
