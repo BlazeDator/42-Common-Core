@@ -35,7 +35,7 @@ char	**ft_generate_commands()
 {
 	char	**commands;
 
-	commands = malloc(10 * sizeof(char *));
+	commands = malloc(11 * sizeof(char *));
 	commands[0] = ft_strdup("sa\n");
 	commands[1] = ft_strdup("sb\n");
 	commands[2] = ft_strdup("ss\n");
