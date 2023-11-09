@@ -6,12 +6,14 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 15:18:44 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:22:21 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+
+// MAX IMPROVEMENT VARIA COM A STACK A E B MUDA O CODIGO DO IMPROVEMENT
 // ft_printf("\n");
 
 void	ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
