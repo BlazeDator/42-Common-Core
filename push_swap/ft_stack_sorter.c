@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:00:26 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:27:37 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,13 +143,12 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 		ft_update_improvement(new_queue);
 		queue = start;
 		ft_queue_node_clear(&queue);
-		ft_display_queue(new_queue);
-		ft_printf("\n\n ------- cleaning ------ \n\n");
+		//ft_display_queue(new_queue);
+		//ft_printf("\n\n ------- cleaning ------ \n\n");
 		ft_clean_improvement(&new_queue);
-		ft_display_queue(new_queue);
+		//ft_display_queue(new_queue);
 		queue = new_queue;
 		start = queue;
-		break ;
 		// delete old ones
 		// delete undesirables from new queue
 		// point to new queue

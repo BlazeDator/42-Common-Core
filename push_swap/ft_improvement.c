@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:18:41 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:09:23 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:31:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_update_improvement(t_queue_node *queue)
 	while (queue)
 	{
 		improvement = ft_stack_calc_improvement(queue->a, queue->b);
-		ft_printf("IMPROVEMENT: %i\n", improvement);
+		//ft_printf("IMPROVEMENT: %i\n", improvement);
 		queue->base_improvement = improvement;
 		queue = queue->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:24:26 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 11:29:10 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:21:49 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ char	*ft_strjoin_free(char *str, char *next)
 		j++;
 		i++;
 	}
-	if (str && str[0])
-		free(str);
+	//if (str && str[0])
+	//	free(str);
 	//free(next);
 	if (!nstr)
 		return (0);
