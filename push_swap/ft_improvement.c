@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:18:41 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:46:22 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:17:47 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_update_improvement(t_queue_node *queue)
 		queue = queue->next;
 	}
 }
-
+// TODO: check for pointers to cleaned up nodes
 void	ft_clean_improvement(t_queue_node **queue)
 {
 	t_queue_node *start;
@@ -94,7 +94,7 @@ void	ft_clean_improvement(t_queue_node **queue)
 		queue[0] = queue[0]->next;
 	}
 	queue[0] = start;
-	while (queue[0]->base_improvement < improvement)
+	while (queue[0] && queue[0]->base_improvement < improvement)
 	{
 		temp = queue[0];
 		queue[0] = queue[0]->next;
@@ -112,5 +112,6 @@ void	ft_clean_improvement(t_queue_node **queue)
 		else
 			queue[0] = queue[0]->next;
 	}
+	queue[0]->next = 0;
 	queue[0] = start;
 }

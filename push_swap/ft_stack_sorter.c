@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:45:33 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:20:01 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 	ft_generate_functions(functions);
 	start = new_queue[0];
 	// TODO: Clean new queue commands ?
-	ft_update_commands(new_queue[0]);
+	//ft_update_commands(new_queue[0]);
 	while (i < 11)
 	{
+		free(new_queue[0]->commands);
 		if (i == 0 || i == 3 || i == 6)
 			new_queue[0]->commands = 
 			ft_strjoin_free(queue->commands, 
@@ -129,7 +130,7 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 
 	commands = 0;
 	new_queue = 0;
-	queue = ft_queue_node_new(a[0], b[0], 0);
+	queue = ft_queue_node_new(a[0], b[0], "");
 	start = queue;
 	while (!commands)
 	{
