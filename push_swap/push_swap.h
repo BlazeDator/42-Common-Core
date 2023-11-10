@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 14:47:59 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:26:07 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_queue_node
 	struct s_queue_node	*next;
 }		t_queue_node;
 
+char	*ft_strjoin_free(char *str, char *next);
+
 t_stack	*ft_stack_new(int num);
 t_stack *ft_stack_copy(t_stack *stack);
 
@@ -58,7 +60,9 @@ t_queue_node *ft_queue_node_new(t_stack *a, t_stack *b, char *commands);
 void	ft_queue_node_add_back(t_queue_node **node, t_queue_node *new);
 void	ft_queue_node_add_front(t_queue_node **node, t_queue_node *new);
 void	ft_queue_node_delone(t_queue_node *node);
-void	ft_queue_node_clear(t_queue_node *node);
+void	ft_queue_node_clear(t_queue_node **node);
 void	ft_clean_improvement(t_queue_node **queue);
+
 void	ft_display_queue(t_queue_node *queue);
+void	ft_queue_size(t_queue_node *queue);
 #endif

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 14:43:01 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 15:18:03 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 09:02:55 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,17 @@ void	ft_display_queue(t_queue_node *queue)
 		queue = queue->next;
 		count++;
 	}
+}
+
+void	ft_queue_size(t_queue_node *queue)
+{
+	int	count;
+
+	count = 0;
+	while (queue)
+	{
+		count++;
+		queue = queue->next;
+	}
+	ft_printf("Queue Size: %i\n", count);
 }

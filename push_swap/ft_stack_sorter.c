@@ -6,15 +6,12 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/09 15:22:21 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:30:30 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-// MAX IMPROVEMENT VARIA COM A STACK A E B MUDA O CODIGO DO IMPROVEMENT
-// ft_printf("\n");
 
 void	ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
 {
@@ -23,12 +20,10 @@ void	ft_generate_nodes(t_queue_node *queue, t_queue_node **new_queue)
 	i = 0;
 	while (i < 11)
 	{
-		ft_queue_node_add_front(new_queue, 
+			ft_queue_node_add_front(new_queue, 
 			ft_queue_node_new(queue->a, queue->b, queue->commands));
 		i++;
 	}
-	ft_printf("Generating Nodes: \n");
-	ft_display_queue(new_queue[0]);
 }
 
 char	**ft_generate_commands()
@@ -48,6 +43,19 @@ char	**ft_generate_commands()
 	commands[9] = ft_strdup("pa\n");
 	commands[10] = ft_strdup("pb\n");
 	return (commands);
+}
+
+void	ft_free_commands(char **commands)
+{
+	int	i;
+
+	i = 0;
+	while (i < 11)
+	{
+		free(commands[i]);
+		i++;
+	}
+	free(commands);
 }
 
 void	ft_generate_functions(char *(*functions[9]) (t_stack **stack, char *name))
@@ -72,13 +80,11 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 
 
 	i = 0;
-	ft_printf("Generating Possibilities\n");
 	ft_generate_nodes(queue, new_queue);
-	ft_printf("Generating Commands\n");
 	commands = ft_generate_commands();
-	ft_printf("Generating Functions\n");
 	ft_generate_functions(functions);
 	start = new_queue[0];
+	/*
 	while (i < 11)
 	{
 		if (i == 0 || i == 3 || i == 6)
@@ -107,8 +113,11 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 		new_queue[0] = new_queue[0]->next;
 		i++;
 	}
+	*/
+	ft_free_commands(commands);
 	new_queue[0] = start;
 }
+
 
 char	*ft_stack_sorter(t_stack **a, t_stack **b)
 {
@@ -120,23 +129,27 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 	commands = 0;
 	new_queue = 0;
 	queue = ft_queue_node_new(a[0], b[0], 0);
+	start = queue;
 	while (!commands)
 	{
-		start = queue;
 		commands = ft_check_sorted(queue);
 		if (commands)
 			break ;
 		while (queue)
 		{
-			ft_generate_possibilities(queue, &new_queue); 
+			// generate possibilities
+			ft_generate_possibilities(queue, &new_queue);
 			queue = queue->next;
 		}
 		queue = start;
-		ft_queue_node_clear(queue);
-		ft_clean_improvement(&new_queue);
-		queue = new_queue;
+		break ;
+		// delete old ones
+		// delete undesirables from new queue
+		// point to new queue
 	}
-	ft_printf("Sorted\n");
-	ft_queue_node_clear(start);
+	//ft_display_queue(queue);
+	//ft_display_queue(new_queue);
+	ft_queue_node_clear(&new_queue);
+	ft_queue_node_clear(&start);
 	return (commands);
 }

@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/09 14:47:16 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/10 10:26:23 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SRCS = main.c \
 ft_stack.c ft_stack_functions.c ft_stack_copy.c ft_stack_sorter.c \
-ft_queue_node.c ft_improvement.c \
+ft_queue_node.c ft_improvement.c ft_strjoin_free.c\
 ft_debug.c
 OBJS = $(SRCS:.c=.o)
 
