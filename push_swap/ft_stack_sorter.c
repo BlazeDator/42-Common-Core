@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 11:37:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:00:26 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 {
 	t_queue_node	*start;
 	char	*(*functions[9]) (t_stack **stack, char *name);
-	char	**commands;// TODO:Dont forget to free
+	char	**commands;
 	int	i;
 
 
@@ -112,6 +112,7 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 		new_queue[0] = new_queue[0]->next;
 		i++;
 	}
+	// UPDATE THE IMPROVEMENT
 	ft_free_commands(commands);
 	new_queue[0] = start;
 }
@@ -139,7 +140,15 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 			ft_generate_possibilities(queue, &new_queue);
 			queue = queue->next;
 		}
+		ft_update_improvement(new_queue);
 		queue = start;
+		ft_queue_node_clear(&queue);
+		ft_display_queue(new_queue);
+		ft_printf("\n\n ------- cleaning ------ \n\n");
+		ft_clean_improvement(&new_queue);
+		ft_display_queue(new_queue);
+		queue = new_queue;
+		start = queue;
 		break ;
 		// delete old ones
 		// delete undesirables from new queue
@@ -147,7 +156,7 @@ char	*ft_stack_sorter(t_stack **a, t_stack **b)
 	}
 	//ft_display_queue(queue);
 	//ft_display_queue(new_queue);
-	ft_queue_node_clear(&new_queue);
+	//ft_queue_node_clear(&new_queue);
 	ft_queue_node_clear(&start);
 	return (commands);
 }
