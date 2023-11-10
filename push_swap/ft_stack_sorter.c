@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 10:30:30 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:27:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,36 +84,34 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 	commands = ft_generate_commands();
 	ft_generate_functions(functions);
 	start = new_queue[0];
-	/*
 	while (i < 11)
 	{
 		if (i == 0 || i == 3 || i == 6)
 			new_queue[0]->commands = 
-			ft_strjoin(queue->commands, 
+			ft_strjoin_free(queue->commands, 
 			functions[i](&new_queue[0]->a, commands[i]));
 		else if (i == 1 || i == 4 || i == 7)
 			new_queue[0]->commands =
-			ft_strjoin(queue->commands, 
+			ft_strjoin_free(queue->commands, 
 			functions[i](&new_queue[0]->b, commands[i]));
 		else if (i == 9)
 			new_queue[0]->commands =
-			ft_strjoin(queue->commands, 
+			ft_strjoin_free(queue->commands, 
 			ft_stack_push(&new_queue[0]->a, &new_queue[0]->b, commands[i]));
 		else if (i == 10)
 			new_queue[0]->commands =
-			ft_strjoin(queue->commands,
+			ft_strjoin_free(queue->commands,
 			ft_stack_push(&new_queue[0]->b, &new_queue[0]->a, commands[i]));
 		else
 		{
 			new_queue[0]->commands =
-			ft_strjoin(queue->commands, 
+			ft_strjoin_free(queue->commands, 
 			functions[i](&new_queue[0]->a, commands[i]));
 			functions[i](&new_queue[0]->b, commands[i]);
 		}
 		new_queue[0] = new_queue[0]->next;
 		i++;
 	}
-	*/
 	ft_free_commands(commands);
 	new_queue[0] = start;
 }
