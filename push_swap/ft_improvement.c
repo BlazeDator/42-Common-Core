@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:18:41 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:02:15 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:09:23 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	ft_clean_improvement(t_queue_node **queue)
 			queue[0]->next = queue[0]->next->next;
 			ft_queue_node_delone(temp);
 		}
-		queue[0]= queue[0]->next;
+		else
+			queue[0] = queue[0]->next;
 	}
 	queue[0] = start;
 }
