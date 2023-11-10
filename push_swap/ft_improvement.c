@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:18:41 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:31:34 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:46:22 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,23 @@ char	*ft_check_sorted(t_queue_node *node)
 		node = node->next;
 	}
 	return (0);
+}
+
+void	ft_update_commands(t_queue_node *queue)
+{
+	int	i;
+
+	i = 0;
+	while (i < 11)
+	{
+		if (queue->commands && queue->commands[0])
+		{
+			free(queue->commands);
+			queue->commands = 0;
+		}
+		i++;
+		queue = queue->next;
+	}
 }
 
 void	ft_update_improvement(t_queue_node *queue)

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:33:10 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/10 12:27:37 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:45:33 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	ft_generate_possibilities(t_queue_node *queue, t_queue_node **new_queue)
 	commands = ft_generate_commands();
 	ft_generate_functions(functions);
 	start = new_queue[0];
+	// TODO: Clean new queue commands ?
+	ft_update_commands(new_queue[0]);
 	while (i < 11)
 	{
 		if (i == 0 || i == 3 || i == 6)
