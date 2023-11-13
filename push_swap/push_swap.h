@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 11:33:03 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:18:21 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ t_stack	*ft_stack_add_front(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_from_argv(char **argv);
 void	ft_stack_free(t_stack *stack);
+/*
+		ft_stack_functions.c:
+*/
+t_stack	*ft_stack_swap(t_stack *stack);
+t_stack	*ft_stack_rotate(t_stack *stack);
+t_stack	*ft_stack_reverse_rotate(t_stack *stack);
 /*
 	Node:
 */
