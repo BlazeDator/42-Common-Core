@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 12:33:09 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:34:33 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check_atoi(int num, char *str)
 	numstr = ft_itoa(num);
 	if (ft_strncmp(numstr, str, ft_strlen(str)))
 	{
-		free(numstr);		
+		free(numstr);
 		return (0);
 	}
 	free(numstr);
