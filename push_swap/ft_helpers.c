@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 11:37:44 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:26:47 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,11 @@
 
 int	ft_check_atoi(int num, char *str)
 {
-	int	str_len;
-	int	temp;
+	char	*numstr;
 
-	temp = 0;
-	str_len = ft_strlen(str);
-	if ((str[0] != '0' && num == 0)
-		|| (str[0] == '-' && num > 0) || (str[0] == '-' && str_len > 11)
-		|| (str[0] != '-' && num < 0) || (str[0] != '-' && str_len > 10))
+	numstr = ft_itoa(num);
+	if (ft_strncmp(numstr, str, ft_strlen(str)))
 		return (0);
-	str_len--;
-	if (str[0] == '-')
-		temp = -1;
-	else
-		temp = 1;
-	while (str_len > 0)
-	{
-		if (str_len == 0 && str[str_len] == '-')
-			break ;
-		if ((str[str_len] - '0') != (num % 10 * temp))
-			return (0);
-		num /= 10;
-		str_len--;
-	}
 	return (1);
 }
 

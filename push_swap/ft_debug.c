@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:26:50 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 12:15:42 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:17:06 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	ft_stack_display(t_stack *stack)
 		count++;
 		stack = stack->next;
 	}
-	ft_printf("(END) Total:%i", count);
+	ft_printf("( END ) Total: %i", count);
 	ft_printf("\n");
 }
