@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 15:11:46 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:17:19 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_sort_bot(t_stack **a, t_stack **b);
 */
 int		ft_check_atoi(int num, char *str);
 int		ft_stack_duplicates(t_stack *stack, int num);
+int		ft_stack_sorted(t_stack *stack);
 /*
 		ft_debug.c:
 */

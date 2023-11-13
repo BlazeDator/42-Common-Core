@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 15:13:59 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:24:42 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 void	ft_sort_bot(t_stack **a, t_stack **b)
 {
 	if (a && b)
-		ft_printf("I'm Sort BOT, beep boop!");
+		ft_printf("I'm Sort BOT, beep boop!\n");
+	ft_stack_free(*a);
 }
