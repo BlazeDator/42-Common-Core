@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sort_bot.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 09:21:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 15:10:11 by pabernar         ###   ########.fr       */
+/*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
+/*   Updated: 2023/11/13 15:13:59 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ft_sort_bot(t_stack **a, t_stack **b)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = 0;
-	b = 0;
-	if (argc < 2)
-		return (0);
-	a = ft_stack_from_argv(argv);
-	if (!a)
-	{
-		ft_printf("Error\n");
-		return (0);
-	}
-	ft_sort_bot(&a, &b);
-	return (0);
+	if (a && b)
+		ft_printf("I'm Sort BOT, beep boop!");
 }
