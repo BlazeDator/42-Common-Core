@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:26:50 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 11:53:09 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:15:42 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_stack_display(t_stack *stack)
 	ft_printf("Stack: ");
 	while (stack)
 	{
-		ft_printf("( %i )->", count, stack->number);
+		ft_printf("( %i )->", stack->number);
 		count++;
 		stack = stack->next;
 	}
