@@ -24,6 +24,6 @@ void	ft_stack_display(t_stack *stack)
 		count++;
 		stack = stack->next;
 	}
-	ft_printf("( END ) Total: %i", count);
+	ft_printf("%p Total: %i", stack ,count);
 	ft_printf("\n");
 }
