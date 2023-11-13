@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 13:18:21 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:33:41 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_stack_free(t_stack *stack);
 t_stack	*ft_stack_swap(t_stack *stack);
 t_stack	*ft_stack_rotate(t_stack *stack);
 t_stack	*ft_stack_reverse_rotate(t_stack *stack);
+void	ft_stack_push(t_stack **dest, t_stack **src);
 /*
 	Node:
 */
