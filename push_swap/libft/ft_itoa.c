@@ -6,13 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:41:25 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/12 12:07:55 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:12:11 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_itoalen(int n)
+int	ft_itoalen(int n)
 {
 	int	count;
 

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:16:25 by pabernar          #+#    #+#             */
-/*   Updated: 2023/10/10 17:04:55 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:13:37 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
+
+int		ft_itoalen(int n);
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
