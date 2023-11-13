@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:26:15 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 11:09:51 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:36:50 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_stack	*ft_stack_from_argv(char **argv)
 	while (argv[i])
 	{
 		num = ft_atoi(argv[i]);
-		if (!ft_check_atoi(num, argv[i]))
+		if (!ft_check_atoi(num, argv[i]) || ft_stack_duplicates(new, num))
 		{
 			if (new)
 				ft_stack_free(new);

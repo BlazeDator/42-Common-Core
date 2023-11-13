@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 11:12:48 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:37:44 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ int	ft_check_atoi(int num, char *str)
 		str_len--;
 	}
 	return (1);
+}
+
+int	ft_stack_duplicates(t_stack *stack, int num)
+{
+	while (stack)
+	{
+		if (stack->number == num)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
 }

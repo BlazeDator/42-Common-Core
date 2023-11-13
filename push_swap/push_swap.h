@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 10:35:42 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:33:03 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include "libft/libft.h"
 /*
 	Stack:
+		struct:
 */
-
 typedef struct s_stack
 {
 	int				number;
@@ -42,5 +42,9 @@ void	ft_stack_free(t_stack *stack);
 		ft_helpers.c:
 */
 int		ft_check_atoi(int num, char *str);
-
+int		ft_stack_duplicates(t_stack *stack, int num);
+/*
+		ft_debug.c:
+*/
+void	ft_stack_display(t_stack *stack);
 #endif
