@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:19:42 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 12:34:53 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 15:07:43 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ t_node	*ft_node_add_back(t_node *node, t_node *new)
 			node = node->next;
 		node->next = new;
 		return (start);
+	}
+	else if (new)
+		return (new);
+	return (0);
+}
+
+t_node	*ft_node_add_front(t_node *node, t_node *new)
+{
+	if (node && new)
+	{
+		new->next = node;
+		return (new);
 	}
 	else if (new)
 		return (new);

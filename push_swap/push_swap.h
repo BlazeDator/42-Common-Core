@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 12:46:03 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 14:49:55 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ typedef struct s_node
 */
 t_node	*ft_node_new(void);
 t_node	*ft_node_add_back(t_node *node, t_node *new);
+t_node	*ft_node_add_front(t_node *node, t_node *new);
 t_node	*ft_node_free(t_node *node);
 /*
 	Sorting:
 		ft_sort_bot.c:
 */
 void	ft_sort_bot(t_stack **a);
+void	ft_generate_nodes(t_node *node, t_node **new);
 /*
 	Helpers:
 		ft_helpers.c:
