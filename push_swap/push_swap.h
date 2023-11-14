@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 10:54:56 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:08:18 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_stack	*ft_stack_new(int num);
 t_stack	*ft_stack_add_front(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_from_argv(char **argv);
-t_stack *ft_stack_free(t_stack *stack);
+t_stack	*ft_stack_free(t_stack *stack);
 /*
 		ft_stack_extras.c
 */
