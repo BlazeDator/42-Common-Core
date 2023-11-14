@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 15:22:01 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:46:44 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,17 @@ int	ft_stack_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+int	ft_stack_size(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (stack)
+	{
+		count++;
+		stack = stack->next;
+	}
+	return (count);
 }

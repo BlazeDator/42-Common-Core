@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 15:17:19 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:54:56 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ t_stack	*ft_stack_new(int num);
 t_stack	*ft_stack_add_front(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_from_argv(char **argv);
-void	ft_stack_free(t_stack *stack);
+t_stack *ft_stack_free(t_stack *stack);
+/*
+		ft_stack_extras.c
+*/
+t_stack	*ft_stack_copy(t_stack *stack);
 /*
 		ft_stack_functions.c:
 */
@@ -42,7 +46,23 @@ t_stack	*ft_stack_reverse_rotate(t_stack *stack);
 void	ft_stack_push(t_stack **dest, t_stack **src);
 /*
 	Node:
+		struct:
 */
+typedef struct s_node
+{
+	int				value;
+	int				max_value;
+	char			*commands;
+	t_stack			*a;
+	t_stack			*b;
+	struct s_node	*next;
+}		t_node;
+/*
+		ft_node.c
+*/
+t_node	*ft_node_new(void);
+t_node	*ft_node_add_back(t_node *node, t_node *new);
+t_node	*ft_node_free(t_node *node);
 /*
 	Sorting:
 		ft_sort_bot.c:
@@ -55,6 +75,7 @@ void	ft_sort_bot(t_stack **a, t_stack **b);
 int		ft_check_atoi(int num, char *str);
 int		ft_stack_duplicates(t_stack *stack, int num);
 int		ft_stack_sorted(t_stack *stack);
+int		ft_stack_size(t_stack *stack);
 /*
 		ft_debug.c:
 */
