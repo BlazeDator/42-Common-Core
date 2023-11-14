@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:19:42 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 11:10:09 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 12:34:53 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_node	*ft_node_new(void)
 	if (!new)
 		return (0);
 	new->value = 0;
-	new->max_value = 0;
 	new->commands = malloc(1);
 	if (!new->commands)
 	{
