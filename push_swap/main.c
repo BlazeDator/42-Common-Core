@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:21:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 09:26:21 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:43:39 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack	*b;
 
 	a = 0;
-	b = 0;
 	if (argc <= 2)
 		return (0);
 	a = ft_stack_from_argv(argv);
@@ -32,6 +30,6 @@ int	main(int argc, char **argv)
 		ft_stack_free(a);
 		return (0);
 	}
-	ft_sort_bot(&a, &b);
+	ft_sort_bot(&a);
 	return (0);
 }

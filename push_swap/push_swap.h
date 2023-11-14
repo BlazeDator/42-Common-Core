@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 11:08:18 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:43:49 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_node	*ft_node_free(t_node *node);
 	Sorting:
 		ft_sort_bot.c:
 */
-void	ft_sort_bot(t_stack **a, t_stack **b);
+void	ft_sort_bot(t_stack **a);
 /*
 	Helpers:
 		ft_helpers.c:
