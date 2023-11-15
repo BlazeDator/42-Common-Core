@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 16:03:33 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 16:23:17 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	ft_sort_bot(t_stack **a)
 	node = ft_node_free(node);
 }
 /*
+	TODO: 
+		Optimise generator, dont generate contradictory commands, if the last was
+		a swap a, theres no point in generating a new one of swap a again. Need to
+		think if this makes sense.
+
+
 	valgrind ./push_swap -1 -2 -3 0 5 -9
 	Current : 13 629
 	History:
