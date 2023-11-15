@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:40:59 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:59:21 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_node	*ft_node_free(t_node *node);
 void	ft_sort_bot(t_stack **a);
 void	ft_generate_nodes(t_node *node, t_node **new);
 void	ft_calculate_value(t_node *node);
-char	*ft_strjoin_and_free(char *commands, char *nstr);
+char	*ft_strjoin_f(char *commands, char *nstr);
 /*
 	Generation:
 		ft_generators.c

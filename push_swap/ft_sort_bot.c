@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:36:25 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:01:31 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,18 @@ void	ft_sort_bot(t_stack **a)
 	{
 		ft_generate_nodes(node, &new);
 		ft_calculate_value(new);
-		//ft_node_display(new);
 		node = ft_node_free(node);
 		node = new;
 		new = 0;
 	}
 	node = ft_node_free(node);
-	//ft_node_display(new);
-	//new = ft_node_free(new);
 }
 /*
 	TODO:
 		create new Nodes from functions save to new
 		add the commands to their commands string
 		update their values
+		FREE THE UNNEEDED ONES
 		Free node
 		node = 0
 		Copy good nodes to node
@@ -61,7 +59,7 @@ void	ft_generate_nodes(t_node *node, t_node **new)
 			*new = ft_node_add_front(*new, ft_node_new());
 			(*new)->a = ft_stack_copy(node->a);
 			(*new)->b = ft_stack_copy(node->b);
-			(*new)->commands = ft_strjoin_and_free((*new)->commands, node->commands);
+			(*new)->commands = ft_strjoin_f((*new)->commands, node->commands);
 			if (i >= 0 && i <= 2)
 				*new = ft_generate_a(*new, i);
 			else if (i >= 3 && i <= 5)
@@ -86,7 +84,7 @@ void	ft_calculate_value(t_node *node)
 	}
 }
 
-char	*ft_strjoin_and_free(char *commands, char *nstr)
+char	*ft_strjoin_f(char *commands, char *nstr)
 {
 	char	*temp;
 
