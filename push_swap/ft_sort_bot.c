@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 12:41:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:46:32 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	ft_sort_bot(t_stack **a)
 }
 /*
 	valgrind ./push_swap -1 -2 -3 0 5 -9
-	Current: 5 092 822 allocs
+	Current : 29 000
+	History: 5 092 822 allocs
 	TODO:
 		create new Nodes from functions save to new
 		add the commands to their commands string
