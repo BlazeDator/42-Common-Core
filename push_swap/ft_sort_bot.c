@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 09:51:51 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:18:31 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,10 @@ void	ft_sort_bot(t_stack **a)
 	while (!ft_node_final(node, max_value))
 	{
 		ft_generate_nodes(node, &new);
+		ft_calculate_value(new);
 		break ;
 	}
-	//teste
-	t_node *traveler = new;
-	while (traveler)
-	{
-		ft_stack_display(traveler->a);
-		ft_stack_display(traveler->b);
-		ft_printf("Commands:\n%s", traveler->commands);
-		ft_printf("\n");	
-		traveler = traveler->next;
-	}
-	//end teste
+	ft_node_display(new);
 	node = ft_node_free(node);
 	new = ft_node_free(new);
 }
@@ -52,6 +43,7 @@ void	ft_sort_bot(t_stack **a)
 		Copy good nodes to node
 		Free new
 		new = 0
+
 */
 
 void	ft_generate_nodes(t_node *node, t_node **new)
@@ -77,6 +69,15 @@ void	ft_generate_nodes(t_node *node, t_node **new)
 			i++;
 		}
 		i = 0;
+		node = node->next;
+	}
+}
+
+void	ft_calculate_value(t_node *node)
+{
+	while (node)
+	{
+		node->value = ft_stack_value(node->a, node->b);
 		node = node->next;
 	}
 }

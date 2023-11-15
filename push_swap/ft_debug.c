@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:26:50 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 09:28:47 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:19:04 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,17 @@ void	ft_stack_display(t_stack *stack)
 	}
 	ft_printf("%p Total: %i", stack, count);
 	ft_printf("\n");
+}
+
+void	ft_node_display(t_node *traveler)
+{
+	while (traveler)
+	{
+		ft_stack_display(traveler->a);
+		ft_stack_display(traveler->b);
+		ft_printf("Value:%i\n", traveler->value);
+		ft_printf("Commands:\n%s", traveler->commands);
+		ft_printf("\n");
+		traveler = traveler->next;
+	}
 }
