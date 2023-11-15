@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 11:56:16 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:41:20 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_sort_bot(t_stack **a)
 	node = ft_node_free(node);
 }
 /*
+	valgrind ./push_swap -1 -2 -3 0 5 -9
+	Current: 5 092 822 allocs
 	TODO:
 		create new Nodes from functions save to new
 		add the commands to their commands string
@@ -44,7 +46,8 @@ void	ft_sort_bot(t_stack **a)
 		Copy good nodes to node
 		Free new
 		new = 0
-
+	TODO:
+		Dont copy duplicates in ft_value
 */
 
 void	ft_generate_nodes(t_node *node, t_node **new)
@@ -78,14 +81,14 @@ void	ft_generate_nodes(t_node *node, t_node **new)
 t_node	*ft_value(t_node *node)
 {
 	t_node	*new;
-	int	value;
+	int		value;
 
 	value = 0;
 	new = 0;
 	value = ft_max_value(node);
 	while (node)
 	{
-		if (node->value >= (value - 2))
+		if (node->value >= (value - 2) && ft_check_duplicates(node, new))
 		{
 			new = ft_node_add_front(new, ft_node_new());
 			new->a = ft_stack_copy(node->a);

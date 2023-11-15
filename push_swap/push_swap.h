@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 11:24:06 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:39:38 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_from_argv(char **argv);
 t_stack	*ft_stack_free(t_stack *stack);
 /*
-		ft_stack_extras.c
-*/
-t_stack	*ft_stack_copy(t_stack *stack);
-int		ft_stack_value(t_stack *a, t_stack *b);
-/*
 		ft_stack_functions.c:
 */
 t_stack	*ft_stack_swap(t_stack *stack);
@@ -57,10 +52,6 @@ typedef struct s_node
 	t_stack			*b;
 	struct s_node	*next;
 }		t_node;
-/*
-		ft_stack_extras.c:
-*/
-int		ft_max_value(t_node *traveler);
 /*
 		ft_node.c
 */
@@ -87,13 +78,21 @@ t_node	*ft_generate_a_and_b(t_node *node, int i);
 t_node	*ft_generate_push(t_node *node, int i);
 /*
 	Helpers:
-		ft_helpers.c:
+		ft_helpers_1.c:
 */
 int		ft_check_atoi(int num, char *str);
 int		ft_stack_duplicates(t_stack *stack, int num);
 int		ft_stack_sorted(t_stack *stack);
 int		ft_stack_size(t_stack *stack);
 int		ft_node_final(t_node *node, int max_value);
+/*
+		ft_helpers_2.c
+*/
+t_stack	*ft_stack_copy(t_stack *stack);
+int		ft_stack_value(t_stack *a, t_stack *b);
+int		ft_max_value(t_node *traveler);
+int		ft_check_duplicates(t_node *node, t_node *new);
+int		ft_stack_identical(t_stack *stack, t_stack *copies);
 /*
 		ft_debug.c:
 */
