@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:37:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:14:12 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:21:56 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ int	ft_stack_value(t_stack *a, t_stack *b)
 		if (b->number < b->next->number)
 			value += 1;
 		b = b->next;
+	}
+	return (value);
+}
+
+int	ft_max_value(t_node *traveler)
+{
+	int	value;
+	
+	value = 0;
+	while (traveler)
+	{
+		if (traveler->value > value)
+			value = traveler->value;
+		traveler = traveler->next;
 	}
 	return (value);
 }

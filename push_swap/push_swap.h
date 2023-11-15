@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:59:21 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:24:06 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ typedef struct s_node
 	struct s_node	*next;
 }		t_node;
 /*
+		ft_stack_extras.c:
+*/
+int		ft_max_value(t_node *traveler);
+/*
 		ft_node.c
 */
 t_node	*ft_node_new(void);
@@ -70,6 +74,7 @@ t_node	*ft_node_free(t_node *node);
 */
 void	ft_sort_bot(t_stack **a);
 void	ft_generate_nodes(t_node *node, t_node **new);
+t_node	*ft_value(t_node *node);
 void	ft_calculate_value(t_node *node);
 char	*ft_strjoin_f(char *commands, char *nstr);
 /*

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 11:01:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:38:41 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_sort_bot(t_stack **a)
 		ft_generate_nodes(node, &new);
 		ft_calculate_value(new);
 		node = ft_node_free(node);
-		node = new;
-		new = 0;
+		node = ft_value(new);
+		new = ft_node_free(new);
 	}
 	node = ft_node_free(node);
 }
@@ -73,6 +73,29 @@ void	ft_generate_nodes(t_node *node, t_node **new)
 		i = 0;
 		node = node->next;
 	}
+}
+
+t_node	*ft_value(t_node *node)
+{
+	t_node	*new;
+	int	value;
+
+	value = 0;
+	new = 0;
+	value = ft_max_value(node);
+	while (node)
+	{
+		if (node->value >= (value - 2))
+		{
+			new = ft_node_add_front(new, ft_node_new());
+			new->a = ft_stack_copy(node->a);
+			new->b = ft_stack_copy(node->b);
+			new->commands = ft_strjoin_f(new->commands, node->commands);
+			new->value = node->value;
+		}
+		node = node->next;
+	}
+	return (new);
 }
 
 void	ft_calculate_value(t_node *node)
