@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:40:38 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 11:41:25 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_node_final(t_node *node, int max_value)
 {
 	while (node)
 	{
-		if (node->value == max_value)
+		if (node->value == max_value && ft_stack_size(node->b) == 0)
 		{
 			ft_node_display_one(node);
 			ft_printf("%s", node->commands);
