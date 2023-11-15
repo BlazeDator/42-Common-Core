@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:37:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 12:47:33 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:07:57 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_stack_value(t_stack *a, t_stack *b)
 		a = a->next;
 	}
 	if (b && ft_stack_size(b))
-		value += 1;
+		value += 2;
 	while (b && b->next)
 	{
 		if (b->number < b->next->number)

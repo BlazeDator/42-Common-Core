@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 12:46:32 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 13:18:00 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,20 +35,20 @@ void	ft_sort_bot(t_stack **a)
 }
 /*
 	valgrind ./push_swap -1 -2 -3 0 5 -9
-	Current : 29 000
-	History: 5 092 822 allocs
-	TODO:
-		create new Nodes from functions save to new
-		add the commands to their commands string
-		update their values
-		FREE THE UNNEEDED ONES
-		Free node
-		node = 0
-		Copy good nodes to node
-		Free new
-		new = 0
-	TODO:
-		Dont copy duplicates in ft_value
+	Current : 13 629
+	History:
+	29 000
+	5 092 822 allocs
+
+	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500
+	Current: 45 027
+
+	./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10
+	Current: 14 996 572
+	it orders it but with valgrind takes too long
+
+	./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10 15 52 23
+
 */
 
 void	ft_generate_nodes(t_node *node, t_node **new)
