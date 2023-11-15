@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 10:17:06 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:40:59 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_node	*ft_node_free(t_node *node);
 void	ft_sort_bot(t_stack **a);
 void	ft_generate_nodes(t_node *node, t_node **new);
 void	ft_calculate_value(t_node *node);
+char	*ft_strjoin_and_free(char *commands, char *nstr);
 /*
 	Generation:
 		ft_generators.c
@@ -93,4 +94,5 @@ int		ft_node_final(t_node *node, int max_value);
 */
 void	ft_stack_display(t_stack *stack);
 void	ft_node_display(t_node *traveler);
+void	ft_node_display_one(t_node *traveler);
 #endif
