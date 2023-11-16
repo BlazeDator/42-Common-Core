@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 12:39:38 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:19:00 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_stack_push(t_stack **dest, t_stack **src);
 typedef struct s_node
 {
 	int				value;
+	int				last_c;
 	char			*commands;
 	t_stack			*a;
 	t_stack			*b;
@@ -93,6 +94,10 @@ int		ft_stack_value(t_stack *a, t_stack *b);
 int		ft_max_value(t_node *traveler);
 int		ft_check_duplicates(t_node *node, t_node *new);
 int		ft_stack_identical(t_stack *stack, t_stack *copies);
+/*
+		ft_helpers_3.c
+*/
+int		ft_check_useless(t_node *node, int i);
 /*
 		ft_debug.c:
 */

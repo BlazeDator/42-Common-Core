@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/15 12:26:13 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/16 09:01:31 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,9 @@ LIBFT_DIR = libft/
 SRCS = main.c \
 ft_stack.c ft_stack_functions.c \
 ft_node.c \
-ft_sort_bot.c ft_generators.c\
-ft_helpers_1.c ft_helpers_2.c ft_debug.c
+ft_sort_bot.c ft_generators.c \
+ft_helpers_1.c ft_helpers_2.c ft_helpers_3.c \
+ft_debug.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

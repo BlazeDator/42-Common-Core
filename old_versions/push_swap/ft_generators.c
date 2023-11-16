@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 09:16:32 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 09:57:23 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/16 09:19:43 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_node	*ft_generate_a(t_node *node, int i)
 		node->a = ft_stack_reverse_rotate(node->a);
 		temp = ft_strjoin(node->commands, "rra\n");
 	}
+	node->last_c = i;
 	free(node->commands);
 	node->commands = temp;
 	return (node);
@@ -57,6 +58,7 @@ t_node	*ft_generate_b(t_node *node, int i)
 		node->b = ft_stack_reverse_rotate(node->b);
 		temp = ft_strjoin(node->commands, "rrb\n");
 	}
+	node->last_c = i;
 	free(node->commands);
 	node->commands = temp;
 	return (node);
@@ -85,6 +87,7 @@ t_node	*ft_generate_a_and_b(t_node *node, int i)
 		node->b = ft_stack_reverse_rotate(node->b);
 		temp = ft_strjoin(node->commands, "rrr\n");
 	}
+	node->last_c = i;
 	free(node->commands);
 	node->commands = temp;
 	return (node);
@@ -105,6 +108,7 @@ t_node	*ft_generate_push(t_node *node, int i)
 		ft_stack_push(&node->b, &node->a);
 		temp = ft_strjoin(node->commands, "pb\n");
 	}
+	node->last_c = i;
 	free(node->commands);
 	node->commands = temp;
 	return (node);

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/15 16:23:17 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/16 10:11:31 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_sort_bot(t_stack **a)
 	t_node	*new;
 	int		max_value;
 
-	max_value = (ft_stack_size(*a) - 1);
+	max_value = ((ft_stack_size(*a) - 1) * 2);
 	node = ft_node_new();
 	node->a = ft_stack_copy(*a);
 	*a = ft_stack_free(*a);
@@ -49,13 +49,13 @@ void	ft_sort_bot(t_stack **a)
 	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500
 	Current: 45 027
 
-	./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10
+	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10
 	Current: 1 521 096 
 	History:
 	14 996 572
 	it orders it but with valgrind takes too long
 
-	./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10 15 52 23
+	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10 15 52 23
 
 */
 
@@ -63,11 +63,13 @@ void	ft_generate_nodes(t_node *node, t_node **new)
 {
 	int	i;
 
-	i = 0;
 	while (node)
-	{
+	{	
+		i = 0;
 		while (i < 11)
 		{
+			while (ft_check_useless(node, i))
+				i++;
 			*new = ft_node_add_front(*new, ft_node_new());
 			(*new)->a = ft_stack_copy(node->a);
 			(*new)->b = ft_stack_copy(node->b);
@@ -82,7 +84,6 @@ void	ft_generate_nodes(t_node *node, t_node **new)
 				*new = ft_generate_push(*new, i);
 			i++;
 		}
-		i = 0;
 		node = node->next;
 	}
 }
@@ -100,7 +101,7 @@ t_node	*ft_value(t_node *node)
 	value = ft_max_value(node);
 	while (node)
 	{
-		if (node->value >= (value - 1) && ft_check_duplicates(node, new) 
+		if (node->value >= (value - 2) && ft_check_duplicates(node, new)
 			&& ft_stack_size(node->a) > ft_stack_size(node->b))
 		{
 			new = ft_node_add_front(new, ft_node_new());
