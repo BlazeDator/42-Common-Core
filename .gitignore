@@ -3,3 +3,8 @@ push_swap/libft/libft.a
 push_swap/*.o
 push_swap/push_swap
 push_swap/checker_linux
+old_versions/push_swap/libft/*.o
+old_versions/push_swap/libft/libft.a
+old_versions/push_swap/*.o
+old_versions/push_swap/push_swap
+old_versions/push_swap/checker_linux
