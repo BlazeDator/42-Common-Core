@@ -6,29 +6,36 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:21:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 09:04:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:35:45 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static char	**ft_word_array_free(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	char	**strs;
-	int		i;
 
 	a = 0;
-	i = 0;
 	if (argc <= 1)
 		return (0);
 	if (argc == 2)
 	{
 		strs = ft_split(argv[1], ' ');
 		a = ft_stack_from_argv(strs, 0);
-		while (strs[i])
-			free(strs[i++]);
-		free(strs);
+		strs = ft_word_array_free(strs);
 	}
 	else
 		a = ft_stack_from_argv(argv, 1);
@@ -39,6 +46,6 @@ int	main(int argc, char **argv)
 		a = ft_stack_free(a);
 		return (0);
 	}
-	ft_sort_bot(&a);	
+	ft_manager(ft_stack_to_node(a));
 	return (0);
 }

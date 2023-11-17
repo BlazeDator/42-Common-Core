@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_helpers_1.c                                     :+:      :+:    :+:   */
+/*   ft_stack_helpers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 10:44:52 by pabernar         ###   ########.fr       */
+/*   Created: 2023/11/17 10:44:24 by pabernar          #+#    #+#             */
+/*   Updated: 2023/11/17 10:44:37 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_atoi(int num, char *str)
+int	ft_stack_duplicates(t_stack *stack, int num)
 {
-	char	*numstr;
-
-	numstr = ft_itoa(num);
-	if (ft_strncmp(numstr, str, ft_strlen(str)))
+	while (stack)
 	{
-		free(numstr);
-		return (0);
+		if (stack->number == num)
+			return (1);
+		stack = stack->next;
 	}
-	free(numstr);
+	return (0);
+}
+
+int	ft_stack_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->number > stack->next->number)
+			return (0);
+		stack = stack->next;
+	}
 	return (1);
 }
 
-/*
-	ft_node_display_one(node);
-*/
-
-int	ft_node_final(t_node *node, int max_value)
+int	ft_stack_size(t_stack *stack)
 {
-	while (node)
+	int	count;
+
+	count = 0;
+	while (stack)
 	{
-		if (node->value == max_value && ft_stack_size(node->b) == 0)
-		{
-			ft_printf("%s", node->commands);
-			return (1);
-		}
-		node = node->next;
+		count++;
+		stack = stack->next;
 	}
-	return (0);
+	return (count);
 }

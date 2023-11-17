@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 09:03:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:57:25 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ t_stack	*ft_stack_rotate(t_stack *stack);
 t_stack	*ft_stack_reverse_rotate(t_stack *stack);
 void	ft_stack_push(t_stack **dest, t_stack **src);
 /*
+		ft_stack_helpers.c
+*/
+int		ft_stack_duplicates(t_stack *stack, int num);
+int		ft_stack_sorted(t_stack *stack);
+int		ft_stack_size(t_stack *stack);
+/*
 	Node:
 		struct:
 */
@@ -60,17 +66,22 @@ t_node	*ft_node_new(void);
 t_node	*ft_node_add_back(t_node *node, t_node *new);
 t_node	*ft_node_add_front(t_node *node, t_node *new);
 t_node	*ft_node_free(t_node *node);
+t_node	*ft_stack_to_node(t_stack *a);
 /*
 	Sorting:
 		ft_sort_bot.c:
 */
-void	ft_sort_bot(t_stack **a);
+void	ft_sort_bot(t_node *node);
 void	ft_generate_nodes(t_node *node, t_node **new);
 t_node	*ft_value(t_node *node);
 void	ft_calculate_value(t_node *node);
 char	*ft_strjoin_f(char *commands, char *nstr);
 /*
 	Generation:
+		ft_manager.c
+*/
+void	ft_manager(t_node *node);
+/*
 		ft_generators.c
 */
 t_node	*ft_generate_a(t_node *node, int i);
@@ -82,9 +93,6 @@ t_node	*ft_generate_push(t_node *node, int i);
 		ft_helpers_1.c:
 */
 int		ft_check_atoi(int num, char *str);
-int		ft_stack_duplicates(t_stack *stack, int num);
-int		ft_stack_sorted(t_stack *stack);
-int		ft_stack_size(t_stack *stack);
 int		ft_node_final(t_node *node, int max_value);
 /*
 		ft_helpers_2.c

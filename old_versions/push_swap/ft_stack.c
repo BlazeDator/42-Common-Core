@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:26:15 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 09:01:15 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:38:43 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_stack	*ft_stack_from_argv(char **argv, int mode)
 	return (new);
 }
 
-int	ft_stack_free(t_stack *stack)
+t_stack	*ft_stack_free(t_stack *stack)
 {
 	t_stack	*temp;
 

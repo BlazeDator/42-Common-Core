@@ -6,22 +6,18 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 09:03:09 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 10:58:31 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort_bot(t_stack **a)
+void	ft_sort_bot(t_node *node)
 {
-	t_node	*node;
 	t_node	*new;
 	int		max_value;
 
-	max_value = ((ft_stack_size(*a) - 1) * 2);
-	node = ft_node_new();
-	node->a = ft_stack_copy(*a);
-	*a = ft_stack_free(*a);
+	max_value = ((ft_stack_size(node->a)) * 2);
 	new = 0;
 	while (!ft_node_final(node, max_value))
 	{
@@ -33,42 +29,17 @@ void	ft_sort_bot(t_stack **a)
 	}
 	node = ft_node_free(node);
 }
-/*
-	TODO: 
-	Optimise generator, dont generate contradictory commands, if the last was
-	a swap a, theres no point in generating a new one of swap a again. Need to
-	think if this makes sense.
-
-
-	valgrind ./push_swap -1 -2 -3 0 5 -9
-	Current : 13 629
-	History:
-	29 000
-	5 092 822 allocs
-
-	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500
-	Current: 45 027
-
-	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10
-	Current: 1 521 096 
-	History:
-	14 996 572
-	it orders it but with valgrind takes too long
-
-	valgrind ./push_swap -1 -2 -3 0 5 -9 100 -500 1000 5000 2000 -950 900 8 10 15 52 23
-
-*/
 
 void	ft_generate_nodes(t_node *node, t_node **new)
 {
 	int	i;
 
 	while (node)
-	{	
+	{
 		i = 0;
 		while (i < 11)
 		{
-			while (ft_check_useless(node, i))
+			while (ft_check_useless(node, i) && i < 11)
 				i++;
 			*new = ft_node_add_front(*new, ft_node_new());
 			(*new)->a = ft_stack_copy(node->a);
@@ -92,12 +63,9 @@ t_node	*ft_value(t_node *node)
 {
 	t_node	*new;
 	int		value;
-	int		generations[3];
 
 	value = 0;
 	new = 0;
-	ft_bzero(generations, sizeof(int) * 3);
-	/*generations[node->value % 3] < 33*/
 	value = ft_max_value(node);
 	while (node)
 	{
@@ -108,7 +76,6 @@ t_node	*ft_value(t_node *node)
 			new->b = ft_stack_copy(node->b);
 			new->commands = ft_strjoin_f(new->commands, node->commands);
 			new->value = node->value;
-			generations[node->value % 3]++;
 		}
 		node = node->next;
 	}
