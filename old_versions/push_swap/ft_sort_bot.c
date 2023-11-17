@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 10:58:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 11:54:06 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ void	ft_sort_bot(t_node *node)
 	}
 	node = ft_node_free(node);
 }
+/*
+	TODO:
+	Function is creating a node everytime I ignore number 11 
+	because I dont have an if condition for the useless
+	Divide it in 2, maybe: 
+	the creation of the new node + the generation of the differences
+*/
 
 void	ft_generate_nodes(t_node *node, t_node **new)
 {
