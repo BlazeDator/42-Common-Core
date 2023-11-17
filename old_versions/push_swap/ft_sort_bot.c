@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/16 10:11:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:03:09 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	ft_sort_bot(t_stack **a)
 }
 /*
 	TODO: 
-		Optimise generator, dont generate contradictory commands, if the last was
-		a swap a, theres no point in generating a new one of swap a again. Need to
-		think if this makes sense.
+	Optimise generator, dont generate contradictory commands, if the last was
+	a swap a, theres no point in generating a new one of swap a again. Need to
+	think if this makes sense.
 
 
 	valgrind ./push_swap -1 -2 -3 0 5 -9
@@ -101,8 +101,7 @@ t_node	*ft_value(t_node *node)
 	value = ft_max_value(node);
 	while (node)
 	{
-		if (node->value >= (value - 2) && ft_check_duplicates(node, new)
-			&& ft_stack_size(node->a) > ft_stack_size(node->b))
+		if (node->value >= (value - 2) && ft_check_duplicates(node, new))
 		{
 			new = ft_node_add_front(new, ft_node_new());
 			new->a = ft_stack_copy(node->a);

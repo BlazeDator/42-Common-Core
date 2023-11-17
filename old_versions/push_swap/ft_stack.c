@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:26:15 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 10:55:29 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:01:15 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new)
 	return (0);
 }
 
-t_stack	*ft_stack_from_argv(char **argv)
+t_stack	*ft_stack_from_argv(char **argv, int mode)
 {
 	t_stack	*new;
 	int		i;
 	int		num;
 
-	i = 1;
+	i = mode;
 	num = 0;
 	new = 0;
 	while (argv[i])
@@ -78,7 +78,7 @@ t_stack	*ft_stack_from_argv(char **argv)
 	return (new);
 }
 
-t_stack	*ft_stack_free(t_stack *stack)
+int	ft_stack_free(t_stack *stack)
 {
 	t_stack	*temp;
 

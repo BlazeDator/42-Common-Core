@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:21:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/14 11:43:39 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:04:20 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,30 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
+	char	**strs;
+	int		i;
 
 	a = 0;
-	if (argc <= 2)
+	i = 0;
+	if (argc <= 1)
 		return (0);
-	a = ft_stack_from_argv(argv);
-	if (!a)
+	if (argc == 2)
 	{
-		ft_printf("Error\n");
-		return (0);
+		strs = ft_split(argv[1], ' ');
+		a = ft_stack_from_argv(strs, 0);
+		while (strs[i])
+			free(strs[i++]);
+		free(strs);
 	}
+	else
+		a = ft_stack_from_argv(argv, 1);
+	if (!a)
+		return (ft_printf("Error\n"));
 	if (ft_stack_sorted(a))
 	{
-		ft_stack_free(a);
+		a = ft_stack_free(a);
 		return (0);
 	}
-	ft_sort_bot(&a);
+	ft_sort_bot(&a);	
 	return (0);
 }

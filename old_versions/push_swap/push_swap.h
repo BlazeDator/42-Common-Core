@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/16 09:19:00 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/17 09:03:20 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack
 t_stack	*ft_stack_new(int num);
 t_stack	*ft_stack_add_front(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new);
-t_stack	*ft_stack_from_argv(char **argv);
+t_stack	*ft_stack_from_argv(char **argv, int mode);
 t_stack	*ft_stack_free(t_stack *stack);
 /*
 		ft_stack_functions.c:
