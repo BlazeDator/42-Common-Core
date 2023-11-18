@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 10:19:42 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 10:09:17 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:21:41 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_node	*ft_stack_to_node(t_stack *a, t_stack *b)
 	node->a = ft_stack_copy(a);
 	if (b)
 		node->b = ft_stack_copy(b);
-	a = ft_stack_free(a);
+	else
+		a = ft_stack_free(a);
 	return (node);
 }

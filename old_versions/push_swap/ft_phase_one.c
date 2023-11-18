@@ -6,26 +6,22 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 09:40:01 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 11:14:03 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:28:31 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-	TODO:
-		Cant just push without writing the commands
-		make sure to save last command for improvement 
-*/
+
 t_node	*ft_phase_one(t_node *node)
 {
 	if (ft_stack_size(node->a) > 3)
 	{
 		node = ft_generate_push(node, 10);
 		node = ft_generate_push(node, 10);
-	}/*
+	}
 	if (ft_stack_size(node->a) > 3)
 		node = ft_bot_one(node);
-	*/return (node);	
+	return (node);	
 }
 
 t_node	*ft_bot_one(t_node *node)
@@ -48,11 +44,16 @@ t_node	*ft_bot_one(t_node *node)
 
 t_node	*ft_phase_one_final(t_node *node)
 {
+	t_node	*new;
+
+	new = 0;
 	while (node)
 	{
 		if (ft_stack_size(node->a) <= 3)
 		{
-			return (ft_stack_to_node(node->a, node->b));
+			new = ft_stack_to_node(node->a, node->b);
+			new->commands = ft_strjoin_f(new->commands, node->commands);	
+			return (new);
 		}	
 		node = node->next;
 	}
