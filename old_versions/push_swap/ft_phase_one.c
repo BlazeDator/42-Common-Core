@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 09:40:01 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 14:09:49 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:17:29 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_node	*ft_bot_one(t_node *node)
 	while (!new)
 	{
 		new = ft_generate_nodes(node, new);
-		//ft_phase_one_calc_targets(new);
 		ft_phase_one_calc_value(new);
 		node = ft_node_free(node);
 		node = ft_phase_one_valuables(new);

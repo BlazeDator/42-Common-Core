@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:26:15 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 10:38:43 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 15:07:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_stack	*ft_stack_new(int num)
 	if (!new)
 		return (0);
 	new->number = num;
+	new->target = 0;
 	new->next = 0;
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 14:06:11 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 14:39:12 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ t_node	*ft_phase_one_valuables(t_node *node);
 /*
 		ft_phase_one_calc.c
 */
-void	ft_phase_one_calc_targets(t_node *node);
 void	ft_phase_one_calc_value(t_node *node);
 int		ft_phase_one_stacks_value(t_stack *a, t_stack *b);
+void	ft_phase_one_calc_targets(t_stack *a, t_stack *b);
 
 /*
 		ft_sort_bot.c:
