@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 09:40:01 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 12:16:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:38:05 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_node	*ft_phase_one(t_node *node)
 	}
 	if (ft_stack_size(node->a) > 3)
 		node = ft_bot_one(node);
-	return (node);	
+	return (node);
 }
 
 t_node	*ft_bot_one(t_node *node)
@@ -52,9 +52,9 @@ t_node	*ft_phase_one_final(t_node *node)
 		if (ft_stack_size(node->a) <= 3)
 		{
 			new = ft_stack_to_node(node->a, node->b);
-			new->commands = ft_strjoin_f(new->commands, node->commands);	
+			new->commands = ft_strjoin_f(new->commands, node->commands);
 			return (new);
-		}	
+		}
 		node = node->next;
 	}
 	return (0);
@@ -68,6 +68,11 @@ void	ft_phase_one_calc_value(t_node *node)
 		node = node->next;
 	}
 }
+/*
+	TODO: 
+	If I improve the value calculator to use the target mode, dont forget to try
+	to remove the -1 from the valuables calculation.
+*/
 
 t_node	*ft_phase_one_valuables(t_node *node)
 {
