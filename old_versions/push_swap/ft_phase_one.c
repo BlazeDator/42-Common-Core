@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 09:40:01 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 11:28:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:16:31 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_node	*ft_phase_one_valuables(t_node *node)
 	value = ft_max_value(node);
 	while (node)
 	{
-		if (node->value >= value && ft_check_duplicates(node, new))
+		if (node->value >= (value - 1) && ft_check_duplicates(node, new))
 		{
 			new = ft_node_add_front(new, ft_node_new());
 			new->a = ft_stack_copy(node->a);
