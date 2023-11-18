@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/18 09:14:25 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/18 10:39:21 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = main.c \
 ft_stack.c ft_stack_functions.c ft_stack_helpers.c \
 ft_node.c \
 ft_manager.c \
+ft_phase_one.c ft_phases_stacks_value.c\
 ft_sort_bot.c \
 ft_generators.c ft_generate_nodes.c \
 ft_helpers_1.c ft_helpers_2.c ft_helpers_3.c \

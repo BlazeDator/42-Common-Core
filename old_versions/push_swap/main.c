@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:21:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 10:35:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:09:30 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int	main(int argc, char **argv)
 		a = ft_stack_free(a);
 		return (0);
 	}
-	ft_manager(ft_stack_to_node(a));
+	ft_manager(ft_stack_to_node(a, 0));
 	return (0);
 }

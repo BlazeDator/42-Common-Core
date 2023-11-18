@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 10:34:35 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 10:44:52 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 09:44:13 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ int	ft_check_atoi(int num, char *str)
 	return (1);
 }
 
-/*
-	ft_node_display_one(node);
-*/
+char	*ft_strjoin_f(char *commands, char *nstr)
+{
+	char	*temp;
+
+	temp = ft_strjoin(commands, nstr);
+	free(commands);
+	return (temp);
+}
 
 int	ft_node_final(t_node *node, int max_value)
 {
