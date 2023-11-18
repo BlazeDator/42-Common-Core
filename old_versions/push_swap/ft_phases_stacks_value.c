@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 10:38:00 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/18 10:41:11 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 12:01:43 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	ft_phase_one_stacks_value(t_stack *a, t_stack *b)
 			value += 2;
 		b = b->next;
 	}
+	value += ft_stack_size(b);
 	return (value);
 }
