@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 10:57:25 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 09:13:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_stack
 {
 	int				number;
+	int				target;
 	struct s_stack	*next;
 }		t_stack;
 /*
@@ -69,25 +70,29 @@ t_node	*ft_node_free(t_node *node);
 t_node	*ft_stack_to_node(t_stack *a);
 /*
 	Sorting:
+		ft_manager.c:
+*/
+void	ft_manager(t_node *node);
+/*
 		ft_sort_bot.c:
 */
 void	ft_sort_bot(t_node *node);
-void	ft_generate_nodes(t_node *node, t_node **new);
 t_node	*ft_value(t_node *node);
 void	ft_calculate_value(t_node *node);
 char	*ft_strjoin_f(char *commands, char *nstr);
 /*
 	Generation:
-		ft_manager.c
-*/
-void	ft_manager(t_node *node);
-/*
 		ft_generators.c
 */
 t_node	*ft_generate_a(t_node *node, int i);
 t_node	*ft_generate_b(t_node *node, int i);
 t_node	*ft_generate_a_and_b(t_node *node, int i);
 t_node	*ft_generate_push(t_node *node, int i);
+/*
+		ft_generate_nodes.c
+*/
+t_node	*ft_generate_nodes(t_node *node, t_node *new);
+t_node	*ft_generate_selector(t_node *new, int i);
 /*
 	Helpers:
 		ft_helpers_1.c:

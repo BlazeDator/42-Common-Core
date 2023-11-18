@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:12:46 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/17 11:54:06 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/18 09:12:41 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_sort_bot(t_node *node)
 	new = 0;
 	while (!ft_node_final(node, max_value))
 	{
-		ft_generate_nodes(node, &new);
+		new = ft_generate_nodes(node, new);
 		ft_calculate_value(new);
 		node = ft_node_free(node);
 		node = ft_value(new);
@@ -36,35 +36,6 @@ void	ft_sort_bot(t_node *node)
 	Divide it in 2, maybe: 
 	the creation of the new node + the generation of the differences
 */
-
-void	ft_generate_nodes(t_node *node, t_node **new)
-{
-	int	i;
-
-	while (node)
-	{
-		i = 0;
-		while (i < 11)
-		{
-			while (ft_check_useless(node, i) && i < 11)
-				i++;
-			*new = ft_node_add_front(*new, ft_node_new());
-			(*new)->a = ft_stack_copy(node->a);
-			(*new)->b = ft_stack_copy(node->b);
-			(*new)->commands = ft_strjoin_f((*new)->commands, node->commands);
-			if (i >= 0 && i <= 2)
-				*new = ft_generate_a(*new, i);
-			else if (i >= 3 && i <= 5)
-				*new = ft_generate_b(*new, i);
-			else if (i >= 6 && i <= 8)
-				*new = ft_generate_a_and_b(*new, i);
-			else if (i >= 9 && i <= 10)
-				*new = ft_generate_push(*new, i);
-			i++;
-		}
-		node = node->next;
-	}
-}
 
 t_node	*ft_value(t_node *node)
 {
