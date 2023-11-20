@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:06:02 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 10:46:51 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:18:28 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_algorithm(t_stack *a)
 	ft_phase_one(&a, &b, &commands);
 	ft_stack_display(a);
 	ft_stack_display(b);
-	ft_targets_display(a);	
+	ft_targets_display(a);
 	a = ft_stack_free(a);
 	b = ft_stack_free(b);
 	ft_printf(commands);

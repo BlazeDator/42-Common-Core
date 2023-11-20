@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:05:36 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 11:57:57 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:17:10 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ void	ft_calc_push_cost_one(t_stack *a, t_stack *b)
 			a->push_cost = a->push_cost
 				- ft_min(ft_stack_pos(a_start, a->number),
 					ft_stack_pos(b_start, a->target));
+		if (!ft_behind_median(a_start, a->number)
+			&& !ft_behind_median(b_start, a->target))
+			a->push_cost = a->push_cost
+				- ft_min(ft_stack_size(a_start) 
+					- ft_stack_pos(a_start, a->number),
+					ft_stack_size(b_start) 
+					- ft_stack_pos(b_start, a->target)); 
 		a = a->next;
 	}
 }

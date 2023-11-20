@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 11:45:34 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:18:12 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		ft_behind_median(t_stack *stack, int number);
 /*
 		ft_math.c
 */
-int	ft_min(int n1, int n2);
+int		ft_min(int n1, int n2);
 /*
 		ft_debug.c:
 */
