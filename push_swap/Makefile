@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/16 11:00:39 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/20 11:45:27 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SRCS = main.c \
 ft_stack.c ft_stack_functions.c ft_stack_helpers.c \
-ft_helpers.c \
+ft_algorithm.c ft_targets.c ft_push_cost_one.c \
+ft_helpers.c ft_math.c\
 ft_debug.c
 OBJS = $(SRCS:.c=.o)
 

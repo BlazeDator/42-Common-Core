@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:26:50 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/16 11:00:19 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 10:41:54 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,18 @@ void	ft_stack_display(t_stack *stack)
 		stack = stack->next;
 	}
 	ft_printf("%p Total: %i", stack, count);
+	ft_printf("\n");
+}
+
+void	ft_targets_display(t_stack *stack)
+{
+	ft_printf("Targets: \n");
+	while (stack)
+	{
+		ft_printf("( %i )\t-tar->\t( %i )\n", stack->number, stack->target);
+		ft_printf("Push_cost: %i", stack->push_cost);
+		ft_printf("\n");
+		stack = stack->next;
+	}
 	ft_printf("\n");
 }

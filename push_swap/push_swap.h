@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/16 11:20:48 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 11:45:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 typedef struct s_stack
 {
 	int				number;
+	int				target;
+	int				push_cost;
 	struct s_stack	*next;
 }		t_stack;
 /*
@@ -32,7 +34,7 @@ t_stack	*ft_stack_new(int num);
 t_stack	*ft_stack_add_front(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_add_back(t_stack *stack, t_stack *new);
 t_stack	*ft_stack_from_argv(char **argv, int mode);
-int		ft_stack_free(t_stack *stack);
+t_stack	*ft_stack_free(t_stack *stack);
 /*
 		ft_stack_functions.c:
 */
@@ -47,11 +49,32 @@ int		ft_stack_duplicates(t_stack *stack, int num);
 int		ft_stack_sorted(t_stack *stack);
 int		ft_stack_size(t_stack *stack);
 /*
+		ft_algorithm.c
+*/
+void	ft_algorithm(t_stack *a);
+void	ft_phase_one(t_stack **a, t_stack **b, char **commands);
+/*
+		ft_targets.c
+*/
+void	ft_calc_targets_one(t_stack *a, t_stack *b);
+/*
+		ft_push_cost_one.c
+*/
+void	ft_calc_push_cost_one(t_stack *a, t_stack *b);
+/*
 		ft_helpers.c:
 */
 int		ft_check_atoi(int num, char *str);
+char	*ft_strjoin_f(char *commands, char *nstr);
+int		ft_stack_pos(t_stack *stack, int num);
+int		ft_behind_median(t_stack *stack, int number);
+/*
+		ft_math.c
+*/
+int	ft_min(int n1, int n2);
 /*
 		ft_debug.c:
 */
 void	ft_stack_display(t_stack *stack);
+void	ft_targets_display(t_stack *stack);
 #endif
