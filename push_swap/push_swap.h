@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 14:18:12 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:26:55 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ft_calc_targets_one(t_stack *a, t_stack *b);
 		ft_push_cost_one.c
 */
 void	ft_calc_push_cost_one(t_stack *a, t_stack *b);
+int		ft_lowest_cost(t_stack *stack);
 /*
 		ft_helpers.c:
 */

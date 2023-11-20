@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:06:02 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 14:18:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:51:27 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	ft_algorithm(t_stack *a)
 	free(commands);
 }
 
+void	ft_move_cheapest(t_stack *a, t_stack *b, int cheap, char **commands);
+
 void	ft_phase_one(t_stack **a, t_stack **b, char **commands)
 {
 	while (ft_stack_size(*a) > 3)
@@ -49,6 +51,12 @@ void	ft_phase_one(t_stack **a, t_stack **b, char **commands)
 			continue ;
 		}
 		ft_calc_push_cost_one(*a, *b);
+		ft_move_cheapest(*a, *b, ft_lowest_cost(*a));
 		break ;
 	}
+}
+
+void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, char **commands)
+{
+
 }

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:05:36 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 14:17:10 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:26:47 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,27 @@ static void	ft_push_cost_b(t_stack *b_start, t_stack *a)
 		a->push_cost = a->push_cost
 			+ (ft_stack_size(b_start)
 				- ft_stack_pos(b_start, a->target));
+}
+
+int	ft_lowest_cost(t_stack *stack)
+{
+	t_stack	*start;
+	int		lowest;
+
+	lowest = -1;
+	start = stack;
+	while (stack)
+	{
+		if (stack->push_cost < lowest && lowest != -1)
+			lowest = stack->push_cost;
+		stack = stack->next;
+	}
+	stack = start;
+	while (stack)
+	{
+		if (stack->push_cost == lowest)
+			return (stack->number);
+		stack = stack->next;
+	}
+	return (start->number);
 }
