@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 15:26:55 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:18:21 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_stack_size(t_stack *stack);
 */
 void	ft_algorithm(t_stack *a);
 void	ft_phase_one(t_stack **a, t_stack **b, char **commands);
+void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, char **commands);
 /*
 		ft_targets.c
 */
@@ -68,6 +69,7 @@ int		ft_lowest_cost(t_stack *stack);
 int		ft_check_atoi(int num, char *str);
 char	*ft_strjoin_f(char *commands, char *nstr);
 int		ft_stack_pos(t_stack *stack, int num);
+int		ft_stack_target(t_stack *stack, int num);
 int		ft_behind_median(t_stack *stack, int number);
 /*
 		ft_math.c

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:06:02 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 15:51:27 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:28:50 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	ft_algorithm(t_stack *a)
 	free(commands);
 }
 
-void	ft_move_cheapest(t_stack *a, t_stack *b, int cheap, char **commands);
-
 void	ft_phase_one(t_stack **a, t_stack **b, char **commands)
 {
 	while (ft_stack_size(*a) > 3)
@@ -51,12 +49,34 @@ void	ft_phase_one(t_stack **a, t_stack **b, char **commands)
 			continue ;
 		}
 		ft_calc_push_cost_one(*a, *b);
-		ft_move_cheapest(*a, *b, ft_lowest_cost(*a));
+		ft_move_cheapest(a, b, ft_lowest_cost(*a), commands);
 		break ;
 	}
 }
 
 void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, char **commands)
 {
-
+	while (ft_stack_pos(*a, cheap) != 0 && (*a)->target != (*b)->number)
+	{
+		if (ft_behind_median(*a, cheap)
+			&& ft_behind_median(*b, ft_stack_target(*a, cheap))
+			&& ft_stack_pos(*a, cheap) > 0
+			&& ft_stack_pos(*b, ft_stack_target(*b, cheap)) > 0)
+		{
+			*a = ft_stack_rotate(*a);
+			*b = ft_stack_rotate(*b);
+			*commands = ft_strjoin_f(*commands, "rr\n");
+		}
+		else if (ft_behind_median(*a, cheap) && ft_stack_pos(*a, cheap) > 0)
+		{
+			*a = ft_stack_rotate(*a);
+			*commands = ft_strjoin_f(*commands, "ra\n");
+		}
+		else if (ft_behind_median(*b, ft_stack_target(*a, cheap)
+				&& ft_stack_pos(*b, ft_stack_target(*b, cheap) > 0)))
+		{
+			*a = ft_stack_rotate(*a);
+			*commands = ft_strjoin_f(*commands, "rb\n");
+		}
+	}
 }

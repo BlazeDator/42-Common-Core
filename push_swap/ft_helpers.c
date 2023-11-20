@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:57:57 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 11:32:41 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:04:17 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ int	ft_stack_pos(t_stack *stack, int num)
 		stack = stack->next;
 	}
 	return (pos);
+}
+
+int	ft_stack_target(t_stack *stack, int num)
+{
+	while (stack)
+	{
+		if (num == stack->number)
+			return (stack->target);
+		stack = stack->next;
+	}
+	return (0);
 }
 
 int	ft_behind_median(t_stack *stack, int number)
