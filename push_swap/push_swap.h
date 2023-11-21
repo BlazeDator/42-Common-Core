@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 11:00:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:53:51 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, char **commands);
 		ft_targets.c
 */
 void	ft_calc_targets_one(t_stack *a, t_stack *b);
+void	ft_calc_targets_three(t_stack *a, t_stack *b);
 /*
 		ft_push_cost_one.c
 */
@@ -74,6 +75,13 @@ void	ft_rev_phase_one(t_stack **a, t_stack **b, int cheap, char **commands);
 		ft_moves_phase_two.c
 */
 void	ft_phase_two(t_stack **a, char **commands);
+/*
+		ft_moves_phase_three.c
+*/
+void	ft_phase_three(t_stack **a, t_stack **b, char **commands);
+void	ft_move_cheap_b(t_stack **a, t_stack **b, int cheap, char **commands);
+void	ft_rot_phase_b(t_stack **a, t_stack **b, int cheap, char **commands);
+void	ft_rev_phase_b(t_stack **a, t_stack **b, int cheap, char **commands);
 /*
 		ft_helpers.c:
 */

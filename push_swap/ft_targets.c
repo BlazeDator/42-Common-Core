@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:23:15 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 10:02:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:35:52 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,33 @@ void	ft_calc_targets_one(t_stack *a, t_stack *b)
 		}
 		if (a->target == a->number)
 			a->target = max;
+		b = temp;
+		a = a->next;
+	}
+}
+
+void	ft_calc_targets_three(t_stack *a, t_stack *b)
+{
+	t_stack	*temp;
+	int		min;
+
+	temp = b;
+	min = b->number;
+	while (a)
+	{
+		a->target = a->number;
+		while (b)
+		{
+			if (b->number < min)
+				min = b->number;
+			if ((b->number > a->target && a->target == a->number)
+				|| (b->number < a->target && b->number > a->number
+					&& a->target != a->number))
+				a->target = b->number;
+			b = b->next;
+		}
+		if (a->target == a->number)
+			a->target = min;
 		b = temp;
 		a = a->next;
 	}
