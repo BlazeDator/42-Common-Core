@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:06:02 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 10:26:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:00:27 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_algorithm(t_stack *a)
 		commands = ft_strjoin_f(commands, "pb\n");
 	}
 	ft_phase_one(&a, &b, &commands);
+	ft_phase_two(&a, &commands);
 	ft_stack_display(a);
 	ft_stack_display(b);
 	ft_targets_display(a);
