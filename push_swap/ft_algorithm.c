@@ -6,11 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:06:02 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 11:27:12 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:19:03 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	ft_order(t_stack **a, char **commands);
 
 void	ft_algorithm(t_stack *a)
 {
@@ -30,11 +32,36 @@ void	ft_algorithm(t_stack *a)
 	ft_phase_one(&a, &b, &commands);
 	ft_phase_two(&a, &commands);
 	ft_phase_three(&a, &b, &commands);
-	ft_stack_display(a);
-	ft_stack_display(b);
-	ft_targets_display(b);
+	ft_order(&a, &commands);
+	//ft_stack_display(a);
+	//ft_stack_display(b);
 	a = ft_stack_free(a);
 	b = ft_stack_free(b);
 	ft_printf(commands);
 	free(commands);
+}
+
+static void	ft_order(t_stack **a, char **commands)
+{
+	t_stack	*traveler;
+	int		min;
+
+	min = (*a)->number;
+	traveler = *a;
+	while (traveler)
+	{
+		if (traveler->number < min)
+			min = traveler->number;
+		traveler = traveler->next;
+	}
+	while (ft_behind_median(*a, min) && ft_stack_pos(*a, min) > 0)
+	{
+		*a = ft_stack_rotate(*a);
+		*commands = ft_strjoin_f(*commands, "ra\n");
+	}
+	while (!ft_behind_median(*a, min) && ft_stack_pos(*a, min) > 0)
+	{
+		*a = ft_stack_reverse_rotate(*a);
+		*commands = ft_strjoin_f(*commands, "rra\n");
+	}
 }
