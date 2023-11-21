@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:26:19 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 14:08:06 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:42:08 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,30 @@ void	ft_phase_three(t_stack **a, t_stack **b)
 			continue ;
 		}
 		ft_calc_push_cost_one(*b, *a);
-		ft_move_cheap_b(b, a, ft_lowest_cost(*b));
+		ft_move_cheap_b(b, a, 
+			ft_lowest_cost(*b),
+			ft_stack_target(*b, ft_lowest_cost(*b)));
 		ft_stack_push(a, b);
 		ft_printf("pa\n");
 	}
 }
 
-void	ft_move_cheap_b(t_stack **a, t_stack **b, int cheap)
+void	ft_move_cheap_b(t_stack **a, t_stack **b, int cheap, int target)
 {
 	while (ft_stack_pos(*a, cheap) != 0 
-		|| ft_stack_pos(*b, ft_stack_target(*a, cheap)) != 0)
+		|| ft_stack_pos(*b, target) != 0)
 	{
-		ft_rot_phase_b(a, b, cheap);
-		ft_rev_phase_b(a, b, cheap);
+		ft_rot_phase_b(a, b, cheap, target);
+		ft_rev_phase_b(a, b, cheap, target);
 	}
 }
 
-void	ft_rot_phase_b(t_stack **a, t_stack **b, int cheap)
+void	ft_rot_phase_b(t_stack **a, t_stack **b, int cheap, int target)
 {
 	if (ft_behind_median(*a, cheap)
-		&& ft_behind_median(*b, ft_stack_target(*a, cheap))
+		&& ft_behind_median(*b, target)
 		&& ft_stack_pos(*a, cheap) > 0
-		&& ft_stack_pos(*b, ft_stack_target(*a, cheap)) > 0)
+		&& ft_stack_pos(*b, target) > 0)
 	{
 		*a = ft_stack_rotate(*a);
 		*b = ft_stack_rotate(*b);
@@ -56,20 +58,19 @@ void	ft_rot_phase_b(t_stack **a, t_stack **b, int cheap)
 		*a = ft_stack_rotate(*a);
 		ft_printf("rb\n");
 	}
-	else if (ft_behind_median(*b, ft_stack_target(*a, cheap))
-		&& ft_stack_pos(*b, ft_stack_target(*a, cheap)) > 0)
+	else if (ft_behind_median(*b, target) && ft_stack_pos(*b, target) > 0)
 	{
 		*b = ft_stack_rotate(*b);
 		ft_printf("ra\n");
 	}
 }
 
-void	ft_rev_phase_b(t_stack **a, t_stack **b, int cheap)
+void	ft_rev_phase_b(t_stack **a, t_stack **b, int cheap, int target)
 {
 	if (!ft_behind_median(*a, cheap)
-		&& !ft_behind_median(*b, ft_stack_target(*a, cheap))
+		&& !ft_behind_median(*b, target)
 		&& ft_stack_pos(*a, cheap) > 0
-		&& ft_stack_pos(*b, ft_stack_target(*a, cheap)) > 0)
+		&& ft_stack_pos(*b, target) > 0)
 	{
 		*a = ft_stack_reverse_rotate(*a);
 		*b = ft_stack_reverse_rotate(*b);
@@ -80,8 +81,7 @@ void	ft_rev_phase_b(t_stack **a, t_stack **b, int cheap)
 		*a = ft_stack_reverse_rotate(*a);
 		ft_printf("rrb\n");
 	}
-	else if (!ft_behind_median(*b, ft_stack_target(*a, cheap))
-		&& ft_stack_pos(*b, ft_stack_target(*a, cheap)) > 0)
+	else if (!ft_behind_median(*b, target) && ft_stack_pos(*b, target) > 0)
 	{
 		*b = ft_stack_reverse_rotate(*b);
 		ft_printf("rra\n");

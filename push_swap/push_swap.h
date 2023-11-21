@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 14:11:02 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:39:10 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int		ft_lowest_cost(t_stack *stack);
 		ft_moves_phase_one.c
 */
 void	ft_phase_one(t_stack **a, t_stack **b);
-void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap);
-void	ft_rot_phase_one(t_stack **a, t_stack **b, int cheap);
-void	ft_rev_phase_one(t_stack **a, t_stack **b, int cheap);
+void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, int target);
+void	ft_rot_phase_one(t_stack **a, t_stack **b, int cheap, int target);
+void	ft_rev_phase_one(t_stack **a, t_stack **b, int cheap, int target);
 /*
 		ft_moves_phase_two.c
 */
@@ -77,9 +77,9 @@ void	ft_phase_two(t_stack **a);
 		ft_moves_phase_three.c
 */
 void	ft_phase_three(t_stack **a, t_stack **b);
-void	ft_move_cheap_b(t_stack **a, t_stack **b, int cheap);
-void	ft_rot_phase_b(t_stack **a, t_stack **b, int cheap);
-void	ft_rev_phase_b(t_stack **a, t_stack **b, int cheap);
+void	ft_move_cheap_b(t_stack **a, t_stack **b, int cheap, int target);
+void	ft_rot_phase_b(t_stack **a, t_stack **b, int cheap, int target);
+void	ft_rev_phase_b(t_stack **a, t_stack **b, int cheap, int target);
 /*
 		ft_helpers.c:
 */
