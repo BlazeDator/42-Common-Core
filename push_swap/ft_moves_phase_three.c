@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 11:26:19 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 11:56:47 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 12:35:50 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_phase_three(t_stack **a, t_stack **b, char **commands)
 {
-	while (ft_stack_size(*b) && commands)
+	while (ft_stack_size(*b))
 	{
 		ft_calc_targets_three(*b, *a);
 		if ((*b)->target == (*a)->number)
