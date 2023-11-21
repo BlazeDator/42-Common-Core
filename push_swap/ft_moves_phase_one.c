@@ -6,13 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 09:19:33 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 10:27:43 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:11:46 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_phase_one(t_stack **a, t_stack **b, char **commands)
+void	ft_phase_one(t_stack **a, t_stack **b)
 {
 	while (ft_stack_size(*a) > 3)
 	{
@@ -20,27 +20,27 @@ void	ft_phase_one(t_stack **a, t_stack **b, char **commands)
 		if ((*a)->target == (*b)->number)
 		{
 			ft_stack_push(b, a);
-			*commands = ft_strjoin_f(*commands, "pb\n");
+			ft_printf("pb\n");
 			continue ;
 		}
 		ft_calc_push_cost_one(*a, *b);
-		ft_move_cheapest(a, b, ft_lowest_cost(*a), commands);
+		ft_move_cheapest(a, b, ft_lowest_cost(*a));
 		ft_stack_push(b, a);
-		*commands = ft_strjoin_f(*commands, "pb\n");
+		ft_printf("pb\n");
 	}
 }
 
-void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, char **commands)
+void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap)
 {
 	while (ft_stack_pos(*a, cheap) != 0 
 		|| ft_stack_pos(*b, ft_stack_target(*a, cheap)) != 0)
 	{
-		ft_rot_phase_one(a, b, cheap, commands);
-		ft_rev_phase_one(a, b, cheap, commands);
+		ft_rot_phase_one(a, b, cheap);
+		ft_rev_phase_one(a, b, cheap);
 	}
 }
 
-void	ft_rot_phase_one(t_stack **a, t_stack **b, int cheap, char **commands)
+void	ft_rot_phase_one(t_stack **a, t_stack **b, int cheap)
 {
 	if (ft_behind_median(*a, cheap)
 		&& ft_behind_median(*b, ft_stack_target(*a, cheap))
@@ -49,22 +49,22 @@ void	ft_rot_phase_one(t_stack **a, t_stack **b, int cheap, char **commands)
 	{
 		*a = ft_stack_rotate(*a);
 		*b = ft_stack_rotate(*b);
-		*commands = ft_strjoin_f(*commands, "rr\n");
+		ft_printf("rr\n");
 	}
 	else if (ft_behind_median(*a, cheap) && ft_stack_pos(*a, cheap) > 0)
 	{
 		*a = ft_stack_rotate(*a);
-		*commands = ft_strjoin_f(*commands, "ra\n");
+		ft_printf("ra\n");
 	}
 	else if (ft_behind_median(*b, ft_stack_target(*a, cheap))
 		&& ft_stack_pos(*b, ft_stack_target(*a, cheap)) > 0)
 	{
 		*b = ft_stack_rotate(*b);
-		*commands = ft_strjoin_f(*commands, "rb\n");
+		ft_printf("rb\n");
 	}
 }
 
-void	ft_rev_phase_one(t_stack **a, t_stack **b, int cheap, char **commands)
+void	ft_rev_phase_one(t_stack **a, t_stack **b, int cheap)
 {
 	if (!ft_behind_median(*a, cheap)
 		&& !ft_behind_median(*b, ft_stack_target(*a, cheap))
@@ -73,17 +73,17 @@ void	ft_rev_phase_one(t_stack **a, t_stack **b, int cheap, char **commands)
 	{
 		*a = ft_stack_reverse_rotate(*a);
 		*b = ft_stack_reverse_rotate(*b);
-		*commands = ft_strjoin_f(*commands, "rrr\n");
+		ft_printf("rrr\n");
 	}
 	else if (!ft_behind_median(*a, cheap) && ft_stack_pos(*a, cheap) > 0)
 	{
 		*a = ft_stack_reverse_rotate(*a);
-		*commands = ft_strjoin_f(*commands, "rra\n");
+		ft_printf("rra\n");
 	}
 	else if (!ft_behind_median(*b, ft_stack_target(*a, cheap))
 		&& ft_stack_pos(*b, ft_stack_target(*a, cheap)) > 0)
 	{
 		*b = ft_stack_reverse_rotate(*b);
-		*commands = ft_strjoin_f(*commands, "rrb\n");
+		ft_printf("rrb\n");
 	}
 }

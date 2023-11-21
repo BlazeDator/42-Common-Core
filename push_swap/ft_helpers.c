@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 10:57:57 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 16:04:17 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 14:03:48 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ int	ft_check_atoi(int num, char *str)
 	}
 	free(numstr);
 	return (1);
-}
-
-char	*ft_strjoin_f(char *commands, char *nstr)
-{
-	char	*temp;
-
-	temp = ft_strjoin(commands, nstr);
-	free(commands);
-	return (temp);
 }
 
 int	ft_stack_pos(t_stack *stack, int num)
