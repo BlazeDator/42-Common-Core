@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 09:19:33 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/21 14:38:05 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:34:07 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,16 @@ void	ft_phase_one(t_stack **a, t_stack **b)
 	while (ft_stack_size(*a) > 3)
 	{
 		ft_calc_targets_one(*a, *b);
+		ft_calc_push_cost_one(*a, *b);
+		//ft_stack_display(*a);
+		//ft_stack_display(*b);
+		//ft_targets_display(*a);
 		if ((*a)->target == (*b)->number)
 		{
 			ft_stack_push(b, a);
 			ft_printf("pb\n");
 			continue ;
 		}
-		ft_calc_push_cost_one(*a, *b);
 		ft_move_cheapest(a, b, 
 			ft_lowest_cost(*a),
 			ft_stack_target(*a, ft_lowest_cost(*a)));

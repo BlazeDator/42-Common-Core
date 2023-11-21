@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 10:05:36 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 15:26:47 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/21 15:33:15 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ int	ft_lowest_cost(t_stack *stack)
 	t_stack	*start;
 	int		lowest;
 
-	lowest = -1;
+	lowest = stack->push_cost;
 	start = stack;
 	while (stack)
 	{
-		if (stack->push_cost < lowest && lowest != -1)
+		if (stack->push_cost < lowest)
 			lowest = stack->push_cost;
 		stack = stack->next;
 	}
