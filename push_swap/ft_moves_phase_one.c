@@ -18,16 +18,13 @@ void	ft_phase_one(t_stack **a, t_stack **b)
 	{
 		ft_calc_targets_one(*a, *b);
 		ft_calc_push_cost_one(*a, *b);
-		ft_stack_display(*a);
-		ft_stack_display(*b);
-		ft_targets_display(*a);
 		if ((*a)->target == (*b)->number)
 		{
 			ft_stack_push(b, a);
 			ft_printf("pb\n");
 			continue ;
 		}
-		ft_move_cheapest(a, b, 
+		ft_move_cheapest(a, b,
 			ft_lowest_cost(*a),
 			ft_stack_target(*a, ft_lowest_cost(*a)));
 		ft_stack_push(b, a);
@@ -37,7 +34,7 @@ void	ft_phase_one(t_stack **a, t_stack **b)
 
 void	ft_move_cheapest(t_stack **a, t_stack **b, int cheap, int target)
 {
-	while (ft_stack_pos(*a, cheap) != 0 
+	while (ft_stack_pos(*a, cheap) != 0
 		|| ft_stack_pos(*b, target) != 0)
 	{
 		ft_rot_phase_one(a, b, cheap, target);

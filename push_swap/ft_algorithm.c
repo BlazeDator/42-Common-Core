@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-287 228 316 148 850 139 281 566 997 427 972 709 828 776 734 899 532 791 91 935
-662 622 38 695
-*/
-
 static void	ft_order(t_stack **a);
 
 void	ft_algorithm(t_stack *a)
@@ -33,8 +28,6 @@ void	ft_algorithm(t_stack *a)
 	ft_phase_two(&a);
 	ft_phase_three(&a, &b);
 	ft_order(&a);
-	ft_stack_display(a);
-	ft_stack_display(b);
 	a = ft_stack_free(a);
 	b = ft_stack_free(b);
 }

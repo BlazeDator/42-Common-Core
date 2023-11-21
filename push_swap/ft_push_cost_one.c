@@ -27,7 +27,7 @@ void	ft_calc_push_cost_one(t_stack *a, t_stack *b)
 		a->push_cost = 0;
 		ft_push_cost_a(a_start, a);
 		ft_push_cost_b(b_start, a);
-		if (ft_behind_median(a_start, a->number) 
+		if (ft_behind_median(a_start, a->number)
 			&& ft_behind_median(b_start, a->target))
 			a->push_cost = a->push_cost
 				- ft_min(ft_stack_pos(a_start, a->number),
@@ -35,10 +35,10 @@ void	ft_calc_push_cost_one(t_stack *a, t_stack *b)
 		if (!ft_behind_median(a_start, a->number)
 			&& !ft_behind_median(b_start, a->target))
 			a->push_cost = a->push_cost
-				- ft_min(ft_stack_size(a_start) 
+				- ft_min(ft_stack_size(a_start)
 					- ft_stack_pos(a_start, a->number),
-					ft_stack_size(b_start) 
-					- ft_stack_pos(b_start, a->target)); 
+					ft_stack_size(b_start)
+					- ft_stack_pos(b_start, a->target));
 		a = a->next;
 	}
 }

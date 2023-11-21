@@ -12,9 +12,10 @@
 
 #include "push_swap.h"
 
+static void	ft_phase_two_sa(t_stack **a);
+
 void	ft_phase_two(t_stack **a)
 {
-	ft_stack_display(*a);
 	if (ft_stack_sorted(*a))
 		return ;
 	if (ft_stack_size(*a) == 2)
@@ -23,26 +24,41 @@ void	ft_phase_two(t_stack **a)
 		ft_printf("sa\n");
 		return ;
 	}
-	if ((*a)->number < (*a)->next->number 
-		|| ((*a)->number > (*a)->next->number 
-			&& (*a)->number < (*a)->next->next->number)
-		|| ((*a)->number > (*a)->next->number
-			&& (*a)->next->number > (*a)->next->next->number))
-	{
-		*a = ft_stack_swap(*a);
-		ft_printf("sa\n");
-	}
-	if ((*a)->number < (*a)->next->number)
+	ft_phase_two_sa(a);
+	if (ft_stack_sorted(*a))
+		return ;
+	if ((*a)->number < (*a)->next->number
+		&& (*a)->number > (*a)->next->next->number)
 	{
 		*a = ft_stack_reverse_rotate(*a);
 		ft_printf("rra\n");
 	}
-	else
+	if ((*a)->number > (*a)->next->number
+		&& (*a)->next->number < (*a)->next->next->number)
 	{
 		*a = ft_stack_rotate(*a);
 		ft_printf("ra\n");
 	}
-	ft_printf("\nphase two\n");
-	ft_stack_display(*a);
-	ft_printf("\n");
+}
+
+static void	ft_phase_two_sa(t_stack **a)
+{
+	if ((*a)->number > (*a)->next->number
+		&& (*a)->number > (*a)->next->next->number)
+	{
+		*a = ft_stack_swap(*a);
+		ft_printf("sa\n");
+	}
+	if ((*a)->number < (*a)->next->number
+		&& (*a)->next->number > (*a)->next->next->number)
+	{
+		*a = ft_stack_swap(*a);
+		ft_printf("sa\n");
+	}
+	if ((*a)->number > (*a)->next->number
+		&& (*a)->number < (*a)->next->next->number)
+	{
+		*a = ft_stack_swap(*a);
+		ft_printf("sa\n");
+	}
 }
