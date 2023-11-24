@@ -2,4 +2,4 @@ so_long/minilibx-linux
 so_long/libft/*.o
 so_long/libft/libft.a
 so_long/so_long
-so_long/objs
+so_long/objs/*
