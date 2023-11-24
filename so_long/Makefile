@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/24 09:45:43 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/24 09:54:48 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS_DIR = objs/
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS_DIR)$(OBJS)
+$(NAME): $(OBJS_DIR) $(LIBFT) $(OBJS_DIR)$(OBJS)
 	cc $(CFLAGS) -o $(NAME) $(OBJS_DIR)$(OBJS) $(LIBFT) 
 
 $(LIBFT):
@@ -31,6 +31,9 @@ $(LIBFT):
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJS_DIR):
+	mkdir objs
 
 clean:
 	$(RM) $(OBJS_DIR)$(OBJS)
