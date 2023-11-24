@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/24 10:21:06 by pabernar         ###   ########.fr        #
+#    Updated: 2023/11/24 10:41:38 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,30 @@ SRCS = main.c
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/
+MINILIBX = minilibx-linux/libmlx_Linux.a
+MINILIBX_DIR = minilibx-linux/
 
 all: $(NAME)
 
-$(NAME): $(OBJS_DIR) $(LIBFT) $(OBJS)
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) 
+$(NAME): $(OBJS_DIR) $(MINILIBX_DIR) $(LIBFT) $(MINILIBX) $(OBJS)
+	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) 
+	$(MAKE) -C $(LIBFT_DIR)
+
+$(MINILIBX):
+	$(MAKE) -C $(MINILIBX_DIR)
 
 $(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJS_DIR):
 	mkdir -p objs
+
+$(MINILIBX_DIR):
+	wget https://cdn.intra.42.fr/document/document/21300/minilibx-linux.tgz -O minilibx
+	tar -xzvf minilibx
+	rm minilibx
 
 clean:
 	$(RM) $(OBJS)
