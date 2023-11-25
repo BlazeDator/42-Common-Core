@@ -22,11 +22,12 @@ OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/
 MINILIBX = minilibx-linux/libmlx_Linux.a
 MINILIBX_DIR = minilibx-linux/
+MLXFLAGS = -lX11 -lXext
 
 all: $(NAME)
 
 $(NAME): $(OBJS_DIR) $(MINILIBX_DIR) $(LIBFT) $(MINILIBX) $(OBJS)
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
+	cc $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

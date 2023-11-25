@@ -19,4 +19,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 
+# define WINDOW_W 1280
+# define WINDOW_H 720
+
 #endif
