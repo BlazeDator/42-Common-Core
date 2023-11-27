@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 09:21:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/20 09:16:12 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:01:26 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	else
 		a = ft_stack_from_argv(argv, 1);
 	if (!a)
-		return (ft_printf("Error\n"));
+		return (write(2, "Error\n", 6));
 	if (ft_stack_sorted(a))
 	{
 		a = ft_stack_free(a);
