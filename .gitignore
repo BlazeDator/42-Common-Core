@@ -3,3 +3,6 @@ so_long/libft/*.o
 so_long/libft/libft.a
 so_long/so_long
 so_long/objs/*
+so_long/*.sh
+so_long/srcs/*.swp
+so_long/headers/*.swp
