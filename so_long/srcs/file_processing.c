@@ -12,24 +12,45 @@
 
 #include "../headers/so_long.h"
 
+static char	**ft_map_error(char *str);
 static int	ft_bad_extension(char *str);
+static int	ft_file_lines(char *str);
+static void	ft_read_to_array(int fd, char **map);
 
-char	**ft_process_map(char	*str)
+char	**ft_process_map(char *str)
 {
-	int	fd;
+	char	**map;
+	int		fd;
+	int		lines;
+	int		i;
 
+	i = 0;
 	if (ft_bad_extension(str))
 		return (0);
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("Error\nFile doesn't exist\n");
-		return (0);
-	}
+		return (ft_map_error("Error\nFile doesn't exist\n"));
+	lines = ft_file_lines(str);
+	if (lines < 3)
+		return (ft_map_error("Error\nNot enough lines for valid map\n"));
+	map = malloc(sizeof(char *) * (lines + 1));
+	if (!map)
+		return (ft_map_error("Error\nMalloc failed\n"));
+	ft_read_to_array(fd, map);
+	close(fd);
+	while (map[i])
+		free(map[i++]);
+	free(map);
 	return (0);
 }
 
-int	ft_bad_extension(char *str)
+static char	**ft_map_error(char *str)
+{
+	ft_printf(str);
+	return (0);
+}
+
+static int	ft_bad_extension(char *str)
 {
 	int	len;
 
@@ -41,4 +62,37 @@ int	ft_bad_extension(char *str)
 		|| str[len - 1] != 'e' || str[len] != 'r')
 		return (ft_printf("Error\n./so_long <nameofmap.ber>\n"));
 	return (0);
+}
+
+static int	ft_file_lines(char *str)
+{
+	char	*line;
+	int		lines;
+	int		fd;
+
+	lines = 0;
+	fd = open(str, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		lines++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (lines);
+}
+
+static void	ft_read_to_array(int fd, char **map)
+{
+	char	*temp;
+
+	temp = get_next_line(fd);
+	while (temp)
+	{
+		*map = temp;
+		map++;
+		temp = get_next_line(fd);
+	}
+	*map = 0;
 }
