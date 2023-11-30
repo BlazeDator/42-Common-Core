@@ -38,6 +38,7 @@ char	**ft_process_map(char *str)
 	close(fd);
 	if (ft_valid_map(map, lines))
 		return (map);
+	ft_free_map(map);
 	return (0);
 }
 
@@ -87,7 +88,11 @@ static void	ft_read_to_array(int fd, char **map)
 	temp = get_next_line(fd);
 	while (temp)
 	{
-		*map = temp;
+		*map = malloc(ft_strlen(temp));
+		if (!*map)
+			return ;
+		ft_strlcpy(*map, temp, ft_strlen(temp));
+		free(temp);
 		map++;
 		temp = get_next_line(fd);
 	}

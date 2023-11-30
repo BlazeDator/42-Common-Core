@@ -34,4 +34,9 @@ typedef struct s_window
 */
 char	**ft_process_map(char *str);
 int		ft_valid_map(char **map, int lines);
+int		ft_free_map(char **map);
+/*
+	debug.c
+*/
+void	ft_debug_show_map(char **map);
 #endif
