@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   file_procesing.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,9 +22,7 @@ char	**ft_process_map(char *str)
 	char	**map;
 	int		fd;
 	int		lines;
-	int		i;
 
-	i = 0;
 	if (ft_bad_extension(str))
 		return (0);
 	fd = open(str, O_RDONLY);
@@ -38,9 +36,8 @@ char	**ft_process_map(char *str)
 		return (ft_map_error("Error\nMalloc failed\n"));
 	ft_read_to_array(fd, map);
 	close(fd);
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	if (ft_valid_map(map, lines))
+		return (map);
 	return (0);
 }
 

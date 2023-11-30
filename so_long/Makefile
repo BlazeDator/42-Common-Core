@@ -16,7 +16,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-SRCS = main.c file_processing.c
+SRCS = main.c \
+file_processing.c file_processing_extra.c
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/

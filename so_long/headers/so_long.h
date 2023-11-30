@@ -29,6 +29,9 @@ typedef struct s_window
 	void	*mlx;
 	void	*win;
 }		t_window;
-
+/*
+	file_processing.c && file_processing_extras.c
+*/
 char	**ft_process_map(char *str);
+int		ft_valid_map(char **map, int lines);
 #endif
