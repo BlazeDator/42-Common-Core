@@ -12,11 +12,11 @@
 
 NAME = so_long 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g 
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
-SRCS = main.c
+SRCS = main.c file_processing.c
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/

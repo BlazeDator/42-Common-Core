@@ -23,10 +23,11 @@
 # define WINDOW_W 1280
 # define WINDOW_H 720
 
-typedef struct	s_window
+typedef struct s_window
 {
 	void	*mlx;
 	void	*win;
 }		t_window;
 
+char	**ft_process_map(char *str);
 #endif

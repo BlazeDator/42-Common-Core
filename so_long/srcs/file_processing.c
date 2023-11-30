@@ -12,48 +12,25 @@
 
 #include "../headers/so_long.h"
 
-int	handle_no_event(void *window)
+static int	ft_bad_extension(char *str);
+
+char	**ft_process_map(char	*str)
 {
-	if (window)
+	if (ft_bad_extension(str))
 		return (0);
 	return (0);
 }
 
-int	window_close(t_window *window)
+int	ft_bad_extension(char *str)
 {
-	mlx_destroy_window(window->mlx, window->win);
-	mlx_destroy_display(window->mlx);
-	free(window->mlx);
-	exit(0);
+	int	len;
+
+	len = ft_strlen(str);
+	if (len <= 4)
+		return (ft_printf("Error\n./so_long <nameofmap.ber>\n"));
+	len--;
+	if (str[len - 3] != '.' || str[len - 2] != 'b'
+		|| str[len - 1] != 'e' || str[len] != 'r')
+		return (ft_printf("Error\n./so_long <nameofmap.ber>\n"));
 	return (0);
 }
-
-int	handle_input(int keysym, t_window *window)
-{
-	if (keysym == XK_Escape)
-		window_close(window);
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	char	**map;
-
-	if (argc != 2)
-		return (ft_printf("./so_long <nameofmap.ber>\n"));
-	map = ft_process_map(argv[1]);
-	if (!map)
-		return (ft_printf("map = (null)\n"));
-	return (0);
-}
-/*
-	t_window	window;
-	
-	window.mlx = mlx_init();
-	window.win = mlx_new_window(window.mlx, WINDOW_W, WINDOW_H, "so_long");
-	
-	mlx_loop_hook(window.mlx, handle_no_event, &window);
-	mlx_key_hook(window.win, handle_input, &window);
-	mlx_hook(window.win, 17, 0, window_close, &window);
-	mlx_loop(window.mlx);
-*/
