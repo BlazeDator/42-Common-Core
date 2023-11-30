@@ -13,6 +13,13 @@
 #include "../headers/so_long.h"
 
 static int	ft_check_wall_line(char *str);
+/*
+TODO:
+	needs only 1 exit
+	needs only 1 player position
+	needs 1 collectible
+	needs a valid path, to collect and walk to the exit
+*/
 
 int	ft_valid_map(char **map, int lines)
 {
