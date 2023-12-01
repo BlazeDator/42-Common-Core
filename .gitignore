@@ -1,9 +1,9 @@
-so_long/minilibx-linux
-so_long/libft/*.o
-so_long/libft/libft.a
+**/minilibx-linux
+**/libft/*.o
+**/libft/libft.a
 so_long/so_long
-so_long/objs/*
-so_long/*.sh
-so_long/srcs/*.swp
-so_long/headers/*.swp
-so_long/*.swp
+**/objs/*
+**/*.sh
+**/srcs/*.swp
+**/headers/*.swp
+**/*.swp
