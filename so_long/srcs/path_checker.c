@@ -6,11 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:16:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 11:45:16 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:55:49 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
+
+static void	ft_traveler(char **map, int x, int y);
 
 int	ft_check_path(char **map, int lines, int len)
 {
@@ -19,6 +21,10 @@ int	ft_check_path(char **map, int lines, int len)
 	ft_player_pos(map, start);
 	ft_printf("lines: %i\nline-length:%i\n", lines, len);
 	ft_printf("p-posx: %i\np-posy: %i\n", start[0], start[1]);
+	ft_printf("\n\n");
+	ft_debug_show_map(map);
+	ft_traveler(map, start[0], start[1]);
+	ft_printf("\n\n");
 	ft_debug_show_map(map);
 	return (0);
 }
@@ -44,4 +50,22 @@ void	ft_player_pos(char **map, int *pos)
 		}
 		i++;
 	}
+}
+
+static void	ft_traveler(char **map, int x, int y)
+{
+	map[x][y] = 'X';
+	x--;
+	if (map[x][y] == '0' || map[x][y] == 'C' || map [x][y] == 'E')
+		ft_traveler(map, x, y);
+	x += 2;
+	if (map[x][y] == '0' || map[x][y] == 'C' || map [x][y] == 'E')
+		ft_traveler(map, x, y);
+	x--;
+	y--;
+	if (map[x][y] == '0' || map[x][y] == 'C' || map [x][y] == 'E')
+		ft_traveler(map, x, y);
+	y += 2;
+	if (map[x][y] == '0' || map[x][y] == 'C' || map [x][y] == 'E')
+		ft_traveler(map, x, y);
 }
