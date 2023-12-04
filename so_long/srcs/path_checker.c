@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:16:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 12:33:47 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:53:17 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	ft_traveler(char **map, int x, int y);
 static int	ft_traveler_check(char **map);
+static void	ft_cleaner(char **map, int x, int y);
 
 int	ft_check_path(char **map, int lines, int len)
 {
@@ -29,6 +30,9 @@ int	ft_check_path(char **map, int lines, int len)
 	ft_debug_show_map(map);
 	if (!ft_traveler_check(map))
 		return (0);
+	ft_cleaner(map, start[0], start[1]);
+	ft_printf("\n\n");
+	ft_debug_show_map(map);
 	return (1);
 }
 
@@ -57,7 +61,14 @@ void	ft_player_pos(char **map, int *pos)
 
 static void	ft_traveler(char **map, int x, int y)
 {
-	map[x][y] = 'X';
+	if (map[x][y] == 'P')
+		map[x][y] = 'J';
+	if (map[x][y] == '0')
+		map[x][y] = 'X';
+	if (map[x][y] == 'E')
+		map[x][y] = 'S';
+	if (map[x][y] == 'C')
+		map[x][y] = 'D';
 	x--;
 	if (map[x][y] == '0' || map[x][y] == 'C' || map [x][y] == 'E')
 		ft_traveler(map, x, y);
@@ -91,4 +102,29 @@ static int	ft_traveler_check(char **map)
 		i++;
 	}
 	return (1);
+}
+
+static void	ft_cleaner(char **map, int x, int y)
+{
+	if (map[x][y] == 'J')
+		map[x][y] = 'P';
+	if (map[x][y] == 'X')
+		map[x][y] = '0';
+	if (map[x][y] == 'S')
+		map[x][y] = 'E';
+	if (map[x][y] == 'D')
+		map[x][y] = 'C';
+	x--;
+	if (map[x][y] == 'X' || map[x][y] == 'D' || map [x][y] == 'S')
+		ft_cleaner(map, x, y);
+	x += 2;
+	if (map[x][y] == 'X' || map[x][y] == 'D' || map [x][y] == 'S')
+		ft_cleaner(map, x, y);
+	x--;
+	y--;
+	if (map[x][y] == 'X' || map[x][y] == 'D' || map [x][y] == 'S')
+		ft_cleaner(map, x, y);
+	y += 2;
+	if (map[x][y] == 'X' || map[x][y] == 'D' || map [x][y] == 'S')
+		ft_cleaner(map, x, y);
 }

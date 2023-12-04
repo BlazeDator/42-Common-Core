@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 10:23:33 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:40:36 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static int	ft_check_wall_line(char *str);
 static int	ft_check_symbols(char *str);
-/*
-TODO:
-	needs a valid path, to collect and walk to the exit
-*/
 
 int	ft_valid_map(char **map, int lines)
 {
