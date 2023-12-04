@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 11:44:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:18:18 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_free_map(char **map);
 /*
 	path_checker.c
 */
-int		ft_check_path(char **map, int lines, int len);
+int		ft_check_path(char **map);
 void	ft_player_pos(char **map, int *pos);
 /*
 	debug.c

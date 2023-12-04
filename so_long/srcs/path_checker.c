@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:16:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 12:53:17 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:18:08 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,15 @@ static void	ft_traveler(char **map, int x, int y);
 static int	ft_traveler_check(char **map);
 static void	ft_cleaner(char **map, int x, int y);
 
-int	ft_check_path(char **map, int lines, int len)
+int	ft_check_path(char **map)
 {
 	int	start[2];
 
 	ft_player_pos(map, start);
-	ft_printf("lines: %i\nline-length:%i\n", lines, len);
-	ft_printf("p-posx: %i\np-posy: %i\n", start[0], start[1]);
-	ft_printf("\n\n");
-	ft_debug_show_map(map);
 	ft_traveler(map, start[0], start[1]);
-	ft_printf("\n\n");
-	ft_debug_show_map(map);
 	if (!ft_traveler_check(map))
 		return (0);
 	ft_cleaner(map, start[0], start[1]);
-	ft_printf("\n\n");
-	ft_debug_show_map(map);
 	return (1);
 }
 
