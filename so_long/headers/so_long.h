@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/27 09:21:58 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:22:40 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ typedef struct s_window
 char	**ft_process_map(char *str);
 int		ft_valid_map(char **map, int lines);
 int		ft_free_map(char **map);
+/*
+	path_checker.c
+*/
+int		ft_check_path(char **map, int lines, int len);
 /*
 	debug.c
 */

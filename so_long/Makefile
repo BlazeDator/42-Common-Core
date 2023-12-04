@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/11/27 08:52:42 by pabernar         ###   ########.fr        #
+#    Updated: 2023/12/04 10:25:09 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SRCS = main.c \
 file_processing.c file_processing_extra.c \
+path_checker.c \
 debug.c
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
