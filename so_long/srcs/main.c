@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 10:17:54 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:56:17 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	main(int argc, char **argv)
 		return (ft_printf("./so_long <nameofmap.ber>\n"));
 	map = ft_process_map(argv[1]);
 	if (!map)
-		return (ft_printf("map = (null)\n"));
+		return (0);
+	ft_free_map(map);
 	return (0);
 }
 /*
