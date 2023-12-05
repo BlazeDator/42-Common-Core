@@ -2,6 +2,7 @@
 **/libft/*.o
 **/libft/libft.a
 so_long/so_long
+so_long/assets/pixel_poem/pixel
 **/objs/*
 **/*.sh
 **/srcs/*.swp
