@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
+/*   Created: 2023/12/05 11:10:45 by pabernar          #+#    #+#             */
 /*   Updated: 2023/12/05 11:20:22 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	main(int argc, char **argv)
+int	handle_input(int keysym, t_window *window)
 {
-	t_window	window;
-	char		**map;
-
-	if (argc != 2)
-		return (ft_printf("./so_long <nameofmap.ber>\n"));
-	map = ft_process_map(argv[1]);
-	if (!map)
-		return (0);
-	window.map = map;
-	window.mlx = mlx_init();
-	window.win = mlx_new_window(window.mlx, WINDOW_W, WINDOW_H, "so_long");
-	mlx_loop_hook(window.mlx, handle_no_event, &window);
-	mlx_key_hook(window.win, handle_input, &window);
-	mlx_hook(window.win, 17, 0, window_close, &window);
-	mlx_loop(window.mlx);
+	if (keysym == XK_Escape)
+		window_close(window);
 	return (0);
 }

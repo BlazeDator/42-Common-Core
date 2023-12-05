@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 15:53:43 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:20:22 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_window
 	void	*mlx;
 	void	*win;
 	char	**map;
-	void	*img;
 }		t_window;
 /*
 	file_processing.c && file_processing_extras.c
@@ -42,6 +41,18 @@ int		ft_free_map(char **map);
 */
 int		ft_check_path(char **map);
 void	ft_player_pos(char **map, int *pos);
+/*
+	inputs.c
+*/
+int		handle_input(int keysym, t_window *window);
+/*
+	events.c
+*/
+int		handle_no_event(t_window *window);
+/*
+	closing.c
+*/
+int		window_close(t_window *window);
 /*
 	debug.c
 */

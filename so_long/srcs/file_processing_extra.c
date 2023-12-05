@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 12:55:11 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:15:47 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_valid_map(char **map, int lines)
 		return (0);
 	if (len == (unsigned int)lines)
 		return (ft_printf("Error\nThat's a square\n"), 0);
-	if (!ft_check_path(map - lines, lines, len))
+	if (!ft_check_path(map - lines))
 		return (ft_printf("Error\nNo possible path\n"), 0);
 	return (1);
 }
