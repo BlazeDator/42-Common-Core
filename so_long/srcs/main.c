@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 16:05:37 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/05 09:21:20 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 
 	// image test
 	void	*img;
-	char	*relative_path = "./assets/Pixel_Poem/final/player-down.xpm";
+	char	*relative_path = "./assets/Pixel_Poem/player/player-down.xpm";
 	int		img_width;
 	int		img_height;
 
