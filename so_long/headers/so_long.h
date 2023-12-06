@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 11:59:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:02:44 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct s_window
 	void		*mlx;
 	void		*win;
 	char		**map;
-	int			player_x;
-	int			player_y;
 }		t_window;
 /*
 	file_processing.c && file_processing_extras.c
@@ -90,13 +88,14 @@ void	ft_load_assets_player_addr(t_assets *assets);
 /*
 	drawing.c
 */
-void	put_pixel(t_img *img, int x, int y, int color);
-int		color(unsigned char t, 
-			unsigned char r, 
-			unsigned char g, 
-			unsigned char b);
+void	ft_draw_map(t_assets *assets, t_window *window);
 /*
 	debug.c
 */
 void	ft_debug_show_map(char **map);
 #endif
+/*
+void	put_pixel(t_img *img, int x, int y, int color);
+int		color(unsigned char t, unsigned char r, 
+			unsigned char g, unsigned char b);
+*/

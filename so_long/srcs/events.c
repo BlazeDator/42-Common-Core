@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:12:54 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/05 11:13:24 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/06 16:02:20 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	handle_no_event(t_window *window)
 {
-	if (window)
-		return (0);
+	ft_draw_map(window->assets, window);
 	return (0);
 }
