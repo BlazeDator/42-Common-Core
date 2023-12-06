@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/12/06 11:29:20 by pabernar         ###   ########.fr        #
+#    Updated: 2023/12/06 15:18:18 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MLXFLAGS = -lX11 -lXext #-lm
 all: $(NAME)
 
 $(NAME): $(OBJS_DIR) $(MINILIBX_DIR) $(LIBFT) $(MINILIBX) $(OBJS)
-	cc $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINILIBX)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
