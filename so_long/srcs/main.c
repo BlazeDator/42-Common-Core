@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 09:36:48 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:42:23 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int argc, char **argv)
 	if (!map)
 		return (0);
 	window.map = map;
+	window.player_x = WINDOW_W / 2;
+	window.player_y = WINDOW_H / 2;
 	window.assets = &assets;
 	window.mlx = mlx_init();
 	window.win = mlx_new_window(window.mlx, WINDOW_W, WINDOW_H, "so_long");
