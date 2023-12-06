@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/12/06 09:16:27 by pabernar         ###   ########.fr        #
+#    Updated: 2023/12/06 11:29:20 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SRCS = main.c \
 file_processing.c file_processing_extra.c path_checker.c \
-input.c events.c assets.c\
+input.c events.c assets.c drawing.c \
 closing.c \
 debug.c 
 SRCS_DIR = srcs/

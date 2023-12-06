@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 10:41:14 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:59:45 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,16 @@ int		window_close(t_window *window);
 */
 int		ft_load_assets_map(t_assets *assets, t_window *window);
 int		ft_load_assets_player(t_assets *assets, t_window *window);
+void	ft_load_assets_map_addr(t_assets *assets);
+void	ft_load_assets_player_addr(t_assets *assets);
+/*
+	drawing.c
+*/
+void	put_pixel(t_img *img, int x, int y, int color);
+int		color(unsigned char t, 
+			unsigned char r, 
+			unsigned char g, 
+			unsigned char b);
 /*
 	debug.c
 */
