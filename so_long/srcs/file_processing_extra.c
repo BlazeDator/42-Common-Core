@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/05 11:15:47 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:36:13 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_check_symbols(char *str)
 	if (!str)
 	{
 		if (exit != 1 || player != 1)
-			return (ft_printf("Error\nOnly 1 player and 1 exit\n"), 0);
+			return (ft_printf("Error\nneeds only 1 player and 1 exit\n"), 0);
 		if (collectibles < 1)
 			return (ft_printf("Error\nneeds more collectibles\n"), 0);
 	}

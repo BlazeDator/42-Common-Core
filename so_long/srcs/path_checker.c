@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:16:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 14:18:08 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:40:58 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ static void	ft_traveler(char **map, int x, int y)
 	if (map[x][y] == '0')
 		map[x][y] = 'X';
 	if (map[x][y] == 'E')
+	{
 		map[x][y] = 'S';
+		return ;
+	}
 	if (map[x][y] == 'C')
 		map[x][y] = 'D';
 	x--;
