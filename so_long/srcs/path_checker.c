@@ -40,7 +40,7 @@ void	ft_player_pos(char **map, int *pos)
 	{
 		j = 0;
 		while (map[i][j])
-		{	
+		{
 			if (map[i][j] == 'P')
 			{
 				pos[0] = i;

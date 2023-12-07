@@ -39,7 +39,7 @@ int	handle_input(int keysym, t_window *window)
 		window->moves++;
 		ft_printf("Moves: %i\n", window->moves);
 	}
-	if (!ft_check_collectibles(window) && pos[0] == window->end[0] 
+	if (!ft_check_collectibles(window) && pos[0] == window->end[0]
 		&& pos[1] == window->end[1] && window->map[pos[0]][pos[1]] == '2')
 		ft_game_over(window);
 	ft_restore_exit(window);
@@ -114,5 +114,4 @@ static void	ft_restore_exit(t_window *window)
 {
 	if (window->map[window->end[0]][window->end[1]] == '0')
 		window->map[window->end[0]][window->end[1]] = 'E';
-		
 }

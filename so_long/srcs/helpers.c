@@ -35,7 +35,7 @@ void	ft_end_pos(char **map, int *end)
 	{
 		j = 0;
 		while (map[i][j])
-		{	
+		{
 			if (map[i][j] == 'E')
 			{
 				end[0] = i;

@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	ft_initialize_values(&window);
 	window.mlx = mlx_init();
 	window.win = mlx_new_window(window.mlx, WINDOW_W, WINDOW_H, "so_long");
-	if (!ft_load_assets_map(window.assets, &window) 
+	if (!ft_load_assets_map(window.assets, &window)
 		|| !ft_load_assets_player(window.assets, &window))
 		window_close(&window);
 	window.assets->player = window.assets->player_down;

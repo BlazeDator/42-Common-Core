@@ -79,7 +79,7 @@ int	ft_check_symbols(char *str)
 	}
 	while (str && *str)
 	{
-		if (*str != '1' && *str != '0' && *str != 'C' 
+		if (*str != '1' && *str != '0' && *str != 'C'
 			&& *str != 'E' && *str != 'P')
 			return (0);
 		if (*str == 'C')
