@@ -20,6 +20,8 @@ int	ft_check_path(char **map)
 {
 	int	start[2];
 
+	start[0] = 0;
+	start[1] = 0;
 	ft_player_pos(map, start);
 	ft_traveler(map, start[0], start[1]);
 	if (!ft_traveler_check(map))

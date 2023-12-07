@@ -27,17 +27,17 @@ void	ft_draw_map(t_assets *assets, t_window *window)
 		while (window->map[i][j])
 		{
 			if (window->map[i][j] == '1')
-				ft_draw_img(assets->wall->img, window, j + 1, i + 1);
+				ft_draw_img(assets->wall->img, window, j, i);
 			if (window->map[i][j] == '0')
-				ft_draw_img(assets->ground->img, window, j + 1, i + 1);
+				ft_draw_img(assets->ground->img, window, j, i);
 			if (window->map[i][j] == 'C')
-				ft_draw_img(assets->collectible->img, window, j + 1, i + 1);
+				ft_draw_img(assets->collectible->img, window, j, i);
 			if (window->map[i][j] == 'E')
-				ft_draw_img(assets->exit_off->img, window, j + 1, i + 1);
+				ft_draw_img(assets->exit_off->img, window, j, i);
 			if (window->map[i][j] == '2')
-				ft_draw_img(assets->exit_on->img, window, j + 1, i + 1);
+				ft_draw_img(assets->exit_on->img, window, j, i);
 			if (window->map[i][j] == 'P')
-				ft_draw_img(assets->player->img, window, j + 1, i + 1);
+				ft_draw_img(assets->player->img, window, j, i);
 			j++;
 		}
 		i++;
@@ -51,8 +51,6 @@ static void	ft_draw_img(void *img, t_window *window, int x, int y)
 	int	timesy;
 
 	ft_player_pos(window->map, pos);
-	pos[0]++;
-	pos[1]++;
 	x *= 24;
 	y *= 24;
 	timesx = (pos[1] * 24) / WINDOW_W;

@@ -19,7 +19,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 
-# define WINDOW_W 640
+# define WINDOW_W 624
 # define WINDOW_H 360
 
 typedef struct s_img
