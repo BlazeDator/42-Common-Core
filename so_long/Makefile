@@ -6,13 +6,13 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/12/06 15:18:18 by pabernar         ###   ########.fr        #
+#    Updated: 2023/12/07 12:42:43 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g 
+CFLAGS = -Wall -Wextra -Werror -g -O3
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
@@ -26,7 +26,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/
 MINILIBX = minilibx-linux/libmlx_Linux.a
 MINILIBX_DIR = minilibx-linux/
-MLXFLAGS = -lX11 -lXext #-lm
+MLXFLAGS = -lX11 -lXext
 
 all: $(NAME)
 

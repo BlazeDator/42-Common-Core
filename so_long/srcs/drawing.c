@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:29:32 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 12:17:30 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:39:01 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ static void	ft_draw_img(void *img, t_window *window, int x, int y)
 	pos[1]++;
 	x *= 24;
 	y *= 24;
-	timesx = (pos[1] * 24) / 1280;
-	timesy = (pos[0] * 24) / 720;
+	timesx = (pos[1] * 24) / WINDOW_W;
+	timesy = (pos[0] * 24) / WINDOW_H;
 	ft_update_zones(timesx, timesy, window);
 	if (timesx || timesy)
 	{
 		while (timesx--)
-			x -= 1280;
+			x -= WINDOW_W;
 		while (timesy--)
-			y -= 720;
+			y -= WINDOW_H;
 	}
-	if ((x >= 0 && x < 1280) && y >= 0 && y < 720)
+	if ((x >= 0 && x < WINDOW_W) && y >= 0 && y < WINDOW_H)
 		mlx_put_image_to_window(window->mlx, window->win, img, x, y);
 }
 

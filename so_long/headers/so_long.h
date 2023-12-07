@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 12:17:09 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:44:59 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <math.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 
-# define WINDOW_W 1280
-# define WINDOW_H 720
+# define WINDOW_W 640
+# define WINDOW_H 360
 
 typedef struct s_img
 {
