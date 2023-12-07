@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:16:51 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 13:40:58 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:32:00 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ void	ft_player_pos(char **map, int *pos)
 	{
 		j = 0;
 		while (map[i][j])
-		{
+		{	
 			if (map[i][j] == 'P')
 			{
 				pos[0] = i;
 				pos[1] = j;
-				return ;
 			}
 			j++;
 		}
@@ -58,10 +57,7 @@ static void	ft_traveler(char **map, int x, int y)
 	if (map[x][y] == '0')
 		map[x][y] = 'X';
 	if (map[x][y] == 'E')
-	{
 		map[x][y] = 'S';
-		return ;
-	}
 	if (map[x][y] == 'C')
 		map[x][y] = 'D';
 	x--;

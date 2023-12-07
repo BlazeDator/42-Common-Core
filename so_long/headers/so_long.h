@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 15:47:17 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:36:54 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ void	ft_load_assets_player_addr(t_assets *assets);
 */
 void	ft_draw_map(t_assets *assets, t_window *window);
 void	ft_clean_window(t_window *window);
+/*
+	helpers.c
+*/
+size_t	ft_strlen_no_nl(const char *s);
+void	ft_end_pos(char **map, int *end);
 /*
 	debug.c
 */

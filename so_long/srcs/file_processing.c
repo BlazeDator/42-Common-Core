@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/04 10:17:54 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:38:53 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ static void	ft_read_to_array(int fd, char **map)
 	temp = get_next_line(fd);
 	while (temp)
 	{
-		*map = malloc(ft_strlen(temp));
+		*map = malloc(ft_strlen_no_nl(temp) + 1);
 		if (!*map)
 			return ;
-		ft_strlcpy(*map, temp, ft_strlen(temp));
+		ft_strlcpy(*map, temp, ft_strlen_no_nl(temp) + 1);
 		free(temp);
 		map++;
 		temp = get_next_line(fd);

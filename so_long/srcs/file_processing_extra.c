@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 13:36:13 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:31:37 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	ft_valid_map(char **map, int lines)
 {
 	unsigned int	len;
 
-	len = ft_strlen(*map);
+	len = ft_strlen_no_nl(*map);
 	if (!ft_check_wall_line(map[0])
 		|| !ft_check_wall_line(map[(lines - 1)]))
 		return (ft_printf("Error\nTop or bottom wall isn't closed\n"), 0);
 	while (*map)
 	{
-		if (ft_strlen(*map) != len)
+		if (ft_strlen_no_nl(*map) != len)
 			return (ft_printf("Error\nDifferent length lines\n"), 0);
-		if ((*map)[0] != '1' || (*map)[ft_strlen(*map) - 1] != '1')
+		if ((*map)[0] != '1' || (*map)[ft_strlen_no_nl(*map) - 1] != '1')
 			return (ft_printf("Error\nLine not walled up\n"), 0);
 		if (!ft_check_symbols(*map))
 			return (ft_printf("Error\nCheck the symbols\n"), 0);

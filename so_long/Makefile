@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2023/12/07 12:42:43 by pabernar         ###   ########.fr        #
+#    Updated: 2023/12/07 16:01:41 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS = main.c \
 file_processing.c file_processing_extra.c path_checker.c \
 input.c events.c assets.c drawing.c \
 closing.c \
-debug.c 
+helpers.c debug.c 
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/

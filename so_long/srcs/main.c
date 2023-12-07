@@ -6,11 +6,19 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 12:19:43 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 16:36:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
+
+static void	ft_initialize_values(t_window *window)
+{
+	window->moves = 0;
+	window->zonex = 0;
+	window->zoney = 0;
+	ft_end_pos(window->map, window->end);
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,11 +31,9 @@ int	main(int argc, char **argv)
 	map = ft_process_map(argv[1]);
 	if (!map)
 		return (0);
-	window.moves = 0;
 	window.map = map;
 	window.assets = &assets;
-	window.zonex = 0;
-	window.zoney = 0;
+	ft_initialize_values(&window);
 	window.mlx = mlx_init();
 	window.win = mlx_new_window(window.mlx, WINDOW_W, WINDOW_H, "so_long");
 	if (!ft_load_assets_map(window.assets, &window) 
