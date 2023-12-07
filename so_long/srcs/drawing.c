@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:29:32 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 15:56:56 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:21:20 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_draw_map(t_assets *assets, t_window *window)
 				ft_draw_img(assets->collectible->img, window, j + 1, i + 1);
 			if (window->map[i][j] == 'E')
 				ft_draw_img(assets->exit_off->img, window, j + 1, i + 1);
+			if (window->map[i][j] == '2')
+				ft_draw_img(assets->exit_on->img, window, j + 1, i + 1);
 			if (window->map[i][j] == 'P')
 				ft_draw_img(assets->player_down->img, window, j + 1, i + 1);
 			j++;

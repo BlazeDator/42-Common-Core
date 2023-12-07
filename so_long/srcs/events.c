@@ -6,13 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:12:54 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 16:02:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:36:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
-int	handle_no_event(t_window *window)
+int	handle_frames(t_window *window)
 {
 	ft_draw_map(window->assets, window);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 09:00:34 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:38:30 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_window
 	void		*win;
 	char		**map;
 	int			moves;
+	int			end[2];
 }		t_window;
 /*
 	file_processing.c && file_processing_extras.c
@@ -74,10 +75,11 @@ int		handle_input(int keysym, t_window *window);
 /*
 	events.c
 */
-int		handle_no_event(t_window *window);
+int		handle_frames(t_window *window);
 /*
 	closing.c
 */
+void	ft_game_over(t_window *window);
 int		window_close(t_window *window);
 /*
 	assets.c

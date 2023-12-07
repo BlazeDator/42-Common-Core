@@ -6,13 +6,19 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:08:26 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 10:11:17 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:40:08 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
 static void	ft_destroy_assets(t_assets *assets, t_window *window);
+
+void	ft_game_over(t_window *window)
+{
+	ft_printf("Game Over! in %i moves.\n", window->moves);
+	window_close(window);
+}
 
 int	window_close(t_window *window)
 {
