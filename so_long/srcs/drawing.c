@@ -6,13 +6,14 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 11:29:32 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 10:21:20 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:17:30 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/so_long.h"
 
 static void	ft_draw_img(void *img, t_window *window, int x, int y);
+static void	ft_update_zones(int timesx, int timesy, t_window *window);
 
 void	ft_draw_map(t_assets *assets, t_window *window)
 {
@@ -36,7 +37,7 @@ void	ft_draw_map(t_assets *assets, t_window *window)
 			if (window->map[i][j] == '2')
 				ft_draw_img(assets->exit_on->img, window, j + 1, i + 1);
 			if (window->map[i][j] == 'P')
-				ft_draw_img(assets->player_down->img, window, j + 1, i + 1);
+				ft_draw_img(assets->player->img, window, j + 1, i + 1);
 			j++;
 		}
 		i++;
@@ -45,20 +46,44 @@ void	ft_draw_map(t_assets *assets, t_window *window)
 
 static void	ft_draw_img(void *img, t_window *window, int x, int y)
 {
-	mlx_put_image_to_window(window->mlx, window->win, 
-		img, x * 24, y * 24);
-}
-/*
-void	put_pixel(t_img *img, int x, int y, int color)
-{
-	char	*pixel;
+	int	pos[2];
+	int	timesx;
+	int	timesy;
 
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(int *)pixel = color;
+	ft_player_pos(window->map, pos);
+	pos[0]++;
+	pos[1]++;
+	x *= 24;
+	y *= 24;
+	timesx = (pos[1] * 24) / 1280;
+	timesy = (pos[0] * 24) / 720;
+	ft_update_zones(timesx, timesy, window);
+	if (timesx || timesy)
+	{
+		while (timesx--)
+			x -= 1280;
+		while (timesy--)
+			y -= 720;
+	}
+	if ((x >= 0 && x < 1280) && y >= 0 && y < 720)
+		mlx_put_image_to_window(window->mlx, window->win, img, x, y);
 }
 
-int	color(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
+void	ft_clean_window(t_window *window)
 {
-	return (*(int *)(unsigned char [4]){b, g, r, t});
+	void	*clean;
+
+	clean = mlx_new_image(window->mlx, WINDOW_W, WINDOW_H);
+	mlx_put_image_to_window(window->mlx, window->win, clean, 0, 0);
+	mlx_destroy_image(window->mlx, clean);
 }
-*/
+
+static void	ft_update_zones(int timesx, int timesy, t_window *window)
+{
+	if (timesx != window->zonex || timesy != window->zoney)
+	{
+		window->zonex = timesx;
+		window->zoney = timesy;
+		ft_clean_window(window);
+	}
+}

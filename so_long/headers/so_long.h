@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 10:38:30 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:17:09 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_assets
 	t_img	*player_down;
 	t_img	*player_left;
 	t_img	*player_right;
+	t_img	*player;
 }		t_assets;
 
 typedef struct s_window
@@ -56,6 +57,8 @@ typedef struct s_window
 	char		**map;
 	int			moves;
 	int			end[2];
+	int			zonex;
+	int			zoney;
 }		t_window;
 /*
 	file_processing.c && file_processing_extras.c
@@ -92,13 +95,9 @@ void	ft_load_assets_player_addr(t_assets *assets);
 	drawing.c
 */
 void	ft_draw_map(t_assets *assets, t_window *window);
+void	ft_clean_window(t_window *window);
 /*
 	debug.c
 */
 void	ft_debug_show_map(char **map);
 #endif
-/*
-void	put_pixel(t_img *img, int x, int y, int color);
-int		color(unsigned char t, unsigned char r, 
-			unsigned char g, unsigned char b);
-*/
