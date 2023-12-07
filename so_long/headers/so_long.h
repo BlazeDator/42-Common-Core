@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 12:57:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:47:17 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <X11/keysym.h>
 # include <fcntl.h>
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
