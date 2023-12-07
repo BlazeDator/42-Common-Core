@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:21:52 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 15:57:39 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:19:53 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 	map = ft_process_map(argv[1]);
 	if (!map)
 		return (0);
+	window.moves = 0;
 	window.map = map;
 	window.assets = &assets;
 	window.mlx = mlx_init();
@@ -31,7 +32,7 @@ int	main(int argc, char **argv)
 		|| !ft_load_assets_player(window.assets, &window))
 		window_close(&window);
 	mlx_loop_hook(window.mlx, handle_no_event, &window);
-	mlx_key_hook(window.win, handle_input, &window);
+	mlx_hook(window.win, 2, (1L << 0), handle_input, &window);
 	mlx_hook(window.win, 17, 0, window_close, &window);
 	mlx_loop(window.mlx);
 	return (0);

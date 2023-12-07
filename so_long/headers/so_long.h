@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 16:02:44 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:00:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_window
 	void		*mlx;
 	void		*win;
 	char		**map;
+	int			moves;
 }		t_window;
 /*
 	file_processing.c && file_processing_extras.c
