@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:10:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 12:23:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:54:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int	handle_input(int keysym, t_window *window)
 	ft_player_pos(window->map, pos);
 	if (keysym == XK_Escape)
 		window_close(window);
-	if (keysym == XK_w)
+	else if (keysym == XK_w)
 		ft_player_move(window, pos, 'w', &move);
-	if (keysym == XK_s)
+	else if (keysym == XK_s)
 		ft_player_move(window, pos, 's', &move);
-	if (keysym == XK_a)
+	else if (keysym == XK_a)
 		ft_player_move(window, pos, 'a', &move);
-	if (keysym == XK_d)
+	else if (keysym == XK_d)
 		ft_player_move(window, pos, 'd', &move);
 	if (move)
 	{
