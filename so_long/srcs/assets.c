@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 09:06:03 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/06 11:41:45 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:03:27 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	ft_load_assets_map(t_assets *assets, t_window *window)
 	assets->exit_on->img = mlx_xpm_file_to_image(window->mlx,
 			"./assets/pixel_poem/objects/exit-active.xpm",
 			&assets->exit_on->width, &assets->exit_on->height);
-	ft_load_assets_map_addr(assets);
 	return (1);
 }
 
@@ -62,41 +61,5 @@ int	ft_load_assets_player(t_assets *assets, t_window *window)
 	assets->player_right->img = mlx_xpm_file_to_image(window->mlx,
 			"./assets/pixel_poem/player/player-right.xpm",
 			&assets->player_right->width, &assets->player_right->height);
-	ft_load_assets_player_addr(assets);
 	return (1);
-}
-
-void	ft_load_assets_map_addr(t_assets *assets)
-{
-	assets->wall->addr = mlx_get_data_addr(assets->wall->img,
-			&assets->wall->bpp, &assets->wall->line_len,
-			&assets->wall->endian);
-	assets->ground->addr = mlx_get_data_addr(assets->ground->img,
-			&assets->ground->bpp, &assets->ground->line_len,
-			&assets->ground->endian);
-	assets->collectible->addr = mlx_get_data_addr(assets->collectible->img,
-			&assets->collectible->bpp, &assets->collectible->line_len,
-			&assets->collectible->endian);
-	assets->exit_off->addr = mlx_get_data_addr(assets->exit_off->img,
-			&assets->exit_off->bpp, &assets->exit_off->line_len,
-			&assets->exit_off->endian);
-	assets->exit_on->addr = mlx_get_data_addr(assets->exit_on->img,
-			&assets->exit_on->bpp, &assets->exit_on->line_len,
-			&assets->exit_on->endian);
-}
-
-void	ft_load_assets_player_addr(t_assets *assets)
-{
-	assets->player_up->addr = mlx_get_data_addr(assets->player_up->img,
-			&assets->player_up->bpp, &assets->player_up->line_len,
-			&assets->player_up->endian);
-	assets->player_down->addr = mlx_get_data_addr(assets->player_down->img,
-			&assets->player_down->bpp, &assets->player_down->line_len,
-			&assets->player_down->endian);
-	assets->player_left->addr = mlx_get_data_addr(assets->player_left->img,
-			&assets->player_left->bpp, &assets->player_left->line_len,
-			&assets->player_left->endian);
-	assets->player_right->addr = mlx_get_data_addr(assets->player_right->img,
-			&assets->player_right->bpp, &assets->player_right->line_len,
-			&assets->player_right->endian);
 }
