@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:20:45 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/07 16:36:54 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:04:10 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@
 typedef struct s_img
 {
 	void	*img;
-	char	*addr;
 	int		width;
 	int		height;
-	int		bpp;
-	int		line_len;
-	int		endian;
 }		t_img;
 
 typedef struct s_assets
