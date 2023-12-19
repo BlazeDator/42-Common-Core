@@ -17,7 +17,7 @@ number of times each philosopher must eat:
 If not specified, the simulation stops when a philosopher dies. 
 */
 
-void	ft_cleanup(int *numbers, pthread_t *philos, 
+void	ft_cleanup(int *numbers, pthread_t *philos,
 			pthread_mutex_t *forks, t_info *info);
 void	ft_showtime(void);
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	ft_cleanup(int *numbers, pthread_t *philos, 
+void	ft_cleanup(int *numbers, pthread_t *philos,
 			pthread_mutex_t *forks, t_info *info)
 {
 	ft_destroy_philos(philos, info);
