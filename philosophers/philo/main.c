@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/19 15:15:46 by pabernar         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:13:57 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ If not specified, the simulation stops when a philosopher dies.
 
 void	ft_cleanup(int *numbers, pthread_t *philos, 
 			pthread_mutex_t *forks, t_info *info);
+void	ft_showtime(void);
 
 int	main(int argc, char **argv)
 {
@@ -44,6 +45,7 @@ int	main(int argc, char **argv)
 	ft_initialize_philos(philos, &info, numbers);
 	printf("All threads created\n");
 	ft_cleanup(numbers, philos, forks, &info);
+	ft_showtime();
 	return (0);
 }
 
@@ -56,4 +58,12 @@ void	ft_cleanup(int *numbers, pthread_t *philos,
 	free(numbers);
 	free(philos);
 	free(forks);
+}
+
+void	ft_showtime(void)
+{
+	struct timeval	teste;
+
+	gettimeofday(&teste, 0);
+	printf("Seconds: %li, Microseconds: %li\n", teste.tv_sec, teste.tv_usec);
 }
