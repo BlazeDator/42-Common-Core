@@ -9,3 +9,4 @@ so_long/assets/pixel_poem/pixel
 **/headers/*.swp
 **/*.swp
 **/.nfs
+*.o
