@@ -26,10 +26,8 @@ int	main(int argc, char **argv)
 	t_info			info;
 	pthread_t		*philos;
 	pthread_mutex_t	*forks;
-	int				i;
 	int				*numbers;
 
-	i = 0;
 	if (argc < 5 || argc > 6)
 		return (printf("./philo <number_of_philosophers>\
  <time_to_die> <time_to_eat> <time_to_sleep>\
