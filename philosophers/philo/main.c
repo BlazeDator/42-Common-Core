@@ -28,12 +28,13 @@ int	main(int argc, char **argv)
 	pthread_mutex_t	*forks;
 	int				*numbers;
 
+	ft_showtime();
 	if (argc < 5 || argc > 6)
 		return (printf("./philo <number_of_philosophers>\
  <time_to_die> <time_to_eat> <time_to_sleep>\
  <number_of_times_each_philosopher_must_eat>\n"));
 	if (!ft_check_arguments(argc, argv, &info))
-		return (printf("Error: Invalid Arguments (integers >= 0)\n"));
+		return (printf("Error: Invalid Arguments\n"));
 	ft_display_info(&info);
 	philos = malloc(sizeof(pthread_t) * info.total_philos);
 	forks = malloc(sizeof(pthread_mutex_t) * info.total_philos);

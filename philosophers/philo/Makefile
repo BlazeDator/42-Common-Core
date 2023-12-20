@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread #-fsanitize=thread
 RM = rm -rf
 SRCS = main.c \
 philos.c forks.c \
-arguments.c helpers.c \
+arguments.c helpers.c helpers_extra.c \
 debug.c
 OBJS = $(SRCS:.c=.o)
 

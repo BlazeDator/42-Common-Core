@@ -36,7 +36,7 @@ int	ft_check_arguments(int argc, char **argv, t_info *info)
 		|| !ft_check_atoi(info->time_die, argv[2])
 		|| !ft_check_atoi(info->time_eat, argv[3])
 		|| !ft_check_atoi(info->time_sleep, argv[4])
-		|| info->total_philos < 0
+		|| info->total_philos < 1
 		|| info->time_die < 0
 		|| info->time_eat < 0
 		|| info->time_sleep < 0)
