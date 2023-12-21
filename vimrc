@@ -19,3 +19,5 @@ set tabpagemax=14
 " Change the direction of new splits "
 set splitbelow
 set splitright
+
+runtime! ftplugin/man.vim
