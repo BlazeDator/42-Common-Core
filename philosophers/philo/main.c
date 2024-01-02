@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/19 16:13:57 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:59:46 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 	pthread_mutex_t	*forks;
 	int				*numbers;
 
-	ft_showtime();
 	if (argc < 5 || argc > 6)
 		return (printf("./philo <number_of_philosophers>\
  <time_to_die> <time_to_eat> <time_to_sleep>\
@@ -44,7 +43,6 @@ int	main(int argc, char **argv)
 	ft_initialize_philos(philos, &info, numbers);
 	printf("All threads created\n");
 	ft_cleanup(numbers, philos, forks, &info);
-	ft_showtime();
 	return (0);
 }
 
