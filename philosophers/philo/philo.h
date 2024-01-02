@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/02 14:44:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:54:19 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ typedef struct s_philo
 /* ************************************************************************** */
 /*				philos.c				      */
 /* ************************************************************************** */
-void	ft_initialize_philos(pthread_t *philos, t_info *info, t_philo *philos);
-void	ft_destroy_philos(pthread_t *philos, t_info *info);
+void	ft_initialize_philos(t_philo *philos, t_info *info);
+void	ft_destroy_philos(t_philo *philos, t_info *info);
 /* ************************************************************************** */
 /*				philos_extra.c				      */
 /* ************************************************************************** */

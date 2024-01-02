@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/02 14:44:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/02 15:55:30 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_set_stage(t_philo *philo, int stage)
 	pthread_mutex_unlock(&philo->stage_mutex);
 }
 
-void	ft_initialize_philos(pthread_t *philos, t_info *info, t_philo *philo)
+void	ft_initialize_philos(t_philo *philos, t_info *info)
 {
 	int	i;
 
@@ -59,19 +59,19 @@ void	ft_initialize_philos(pthread_t *philos, t_info *info, t_philo *philo)
 	{
 		numbers[i] = i;
 		printf("Starting Thread %i\n", i);
-		pthread_create(&philos[i], 0, ft_philo_logic, philos[i]);
+		pthread_create(philos[i]->thread, 0, ft_philo_logic, philos[i]);
 		i++;
 	}
 }
 
-void	ft_destroy_philos(pthread_t *philos, t_info *info)
+void	ft_destroy_philos(t_philo *philos, t_info *info)
 {
 	int	i;
 
 	i = 0;
 	while (i < info->total_philos)
 	{
-		pthread_join(philos[i], 0);
+		pthread_join(philos[i]->thread, 0);
 		printf("Deleting Thread %i\n", i);
 		i++;
 	}
