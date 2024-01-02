@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/02 09:38:31 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:13:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ void	ft_philo_logic(t_philo *philo)
 		pthread_mutex_lock(philo->right_fork);
 		printf("timestamp %i has taken a fork\n", philo->id);
 		printf("timestamp %i is eating\n", philo->id);
+		gettimeofday(&philo->last_meal, 0);
+		philo->meals++;
 		while (philo->stage == 1) // Calculate time for eating ??
 			continue ;
 		pthread_mutex_unlock(philo->left_fork);
 		pthread_mutex_unlock(philo->right_fork);
 		printf("timestamp %i is sleeping\n", philo->id);
+		gettimeofday(&philo->last_sleep, 0);
 		while (philo->stage == 2) // Calculate time for sleeping ?
 			continue ;
 		printf("timestamp %i is thinking\n", philo->id);

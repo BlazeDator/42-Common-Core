@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/19 15:05:15 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/02 10:13:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_philo
 	int				stage;
 	int				meals;
 	t_timeval		last_meal;
+	t_timeval		last_sleep;
 }		t_philo;
 
 /* ************************************************************************** */
