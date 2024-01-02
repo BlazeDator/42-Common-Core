@@ -6,14 +6,17 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/02 11:00:18 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/02 14:44:28 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_philo_logic(t_philo *philo)
+void	ft_philo_logic(void *data)
 {
+	t_philo	*philo;
+
+	philo = (t_philo *) data;
 	while (philo->stage != 0)
 	{
 		pthread_mutex_lock(&philo->left_fork);
@@ -23,13 +26,13 @@ void	ft_philo_logic(t_philo *philo)
 		printf("timestamp %i is eating\n", philo->id);
 		gettimeofday(&philo->last_meal, 0);
 		philo->meals++;
-		while (philo->stage == 1)
+		while (philo->stage == 1 && ft_philo_eat(philo))
 			continue ;
 		pthread_mutex_unlock(&philo->left_fork);
 		pthread_mutex_unlock(philo->right_fork);
 		printf("timestamp %i is sleeping\n", philo->id);
 		gettimeofday(&philo->last_sleep, 0);
-		while (philo->stage == 2)
+		while (philo->stage == 2 && ft_philo_sleep(philo))
 			continue ;
 		printf("timestamp %i is thinking\n", philo->id);
 	}
@@ -47,16 +50,7 @@ void	ft_set_stage(t_philo *philo, int stage)
 	pthread_mutex_unlock(&philo->stage_mutex);
 }
 
-void	*say_hi(void *i)
-{
-	int	*x;
-
-	x = (int *)i;
-	printf("Thread %i: hi!\n", *x);
-	return (0);
-}
-
-void	ft_initialize_philos(pthread_t *philos, t_info *info, int *numbers)
+void	ft_initialize_philos(pthread_t *philos, t_info *info, t_philo *philo)
 {
 	int	i;
 
@@ -65,7 +59,7 @@ void	ft_initialize_philos(pthread_t *philos, t_info *info, int *numbers)
 	{
 		numbers[i] = i;
 		printf("Starting Thread %i\n", i);
-		pthread_create(&philos[i], 0, say_hi, &numbers[i]);
+		pthread_create(&philos[i], 0, ft_philo_logic, philos[i]);
 		i++;
 	}
 }
