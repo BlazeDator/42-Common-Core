@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:38:36 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/02 14:39:29 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 10:36:35 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ int	ft_philo_eat(t_philo *philo)
 	gettimeofday(&current, 0);
 	if (philo->stage)
 	{
-		if (ft_diff_ms(current, philo->last_meal) 
+		if (ft_diff_ms(&current, &philo->last_meal) 
 			>= philo->info->time_eat)
 		{
 			ft_set_stage(philo, 2);
 			return (0);
 		}
 	}
+	else
+		return (0);
 	return (1);
 }
 
@@ -36,12 +38,14 @@ int	ft_philo_sleep(t_philo *philo)
 	gettimeofday(&current, 0);
 	if (philo->stage)
 	{
-		if (ft_diff_ms(current, philo->last_sleep) 
+		if (ft_diff_ms(&current, &philo->last_sleep) 
 			>= philo->info->time_sleep)
 		{
 			ft_set_stage(philo, 1);
 			return (0);
 		}
 	}
+	else
+		return (0);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/02 15:54:19 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:14:22 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct timeval	t_timeval;
 
 typedef struct s_info
 {
+	pthread_mutex_t	time_mutex;
 	int			total_philos;
 	int			time_die;
 	int			time_eat;
@@ -53,6 +54,7 @@ typedef struct s_philo
 /* ************************************************************************** */
 /*				philos.c				      */
 /* ************************************************************************** */
+void	ft_set_stage(t_philo *philo, int stage);
 void	ft_initialize_philos(t_philo *philos, t_info *info);
 void	ft_destroy_philos(t_philo *philos, t_info *info);
 /* ************************************************************************** */
@@ -63,8 +65,8 @@ int		ft_philo_sleep(t_philo *philo);
 /* ************************************************************************** */
 /*				forks.c					      */
 /* ************************************************************************** */
-int		ft_initialize_forks(pthread_mutex_t *forks, t_info *info);
-void	ft_destroy_forks(pthread_mutex_t *forks, t_info *info);
+int		ft_initialize_forks(t_philo *philos, t_info *info);
+void	ft_destroy_forks(t_philo *philos, t_info *info);
 /* ************************************************************************** */
 /*				arguments.c				      */
 /* ************************************************************************** */
@@ -74,6 +76,7 @@ int		ft_check_arguments(int argc, char **argv, t_info *info);
 /*				time.c					      */
 /* ************************************************************************** */
 int		ft_diff_ms(t_timeval *first, t_timeval *second);
+void	ft_current_time(t_info *info);
 /* ************************************************************************** */
 /*				helpers.c				      */
 /* ************************************************************************** */
