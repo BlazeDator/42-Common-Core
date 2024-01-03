@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/03 11:14:22 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:01:49 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct timeval	t_timeval;
 
 typedef struct s_info
 {
-	pthread_mutex_t	time_mutex;
 	int			total_philos;
 	int			time_die;
 	int			time_eat;
