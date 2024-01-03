@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/03 13:05:42 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:08:34 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 /*  
 number of times each philosopher must eat:
-If not specified, the simulation stops when a philosopher dies. 
+If not specified, the simulation stops when a philosopher dies.
+
+
+	TODO: Only 1 philo crashes, needs fix 
 */
 
 void	ft_cleanup(t_philo *philos, t_info *info);
