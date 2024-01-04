@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 13:52:19 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:38:22 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	ft_check_philos(t_philo *philos, t_info *info)
 				ft_set_stage(&philos[i++], 0);
 			return (0);
 		}
-		if (philos[i].meals >= info->times_to_eat && ++count)
+		if (info->times_to_eat 
+			&& philos[i].meals >= info->times_to_eat && ++count)
 			ft_set_stage(&philos[i], 0);
 		i++;
 	}
