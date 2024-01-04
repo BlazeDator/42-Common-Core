@@ -6,22 +6,14 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 11:15:51 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:52:19 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/*  
-number of times each philosopher must eat:
-If not specified, the simulation stops when a philosopher dies.
-
-
-	TODO: Only 1 philo crashes, needs fix 
-*/
-
 void	ft_cleanup(t_philo *philos, t_info *info);
-void	ft_showtime(void);
+int		ft_check_philos(t_philo *philos, t_info *info);
 
 int	main(int argc, char **argv)
 {
@@ -38,25 +30,45 @@ int	main(int argc, char **argv)
 	ft_initialize_forks(philos, &info);
 	ft_initialize_philos(philos, &info);
 	while (1)
+	{
 		ft_current_time(&info);
-	ft_destroy_philos(philos, &info);
-	ft_destroy_forks(philos, &info);
-	free(philos);
+		if (!ft_check_philos(philos, &info))
+			break ;
+	}
+	ft_cleanup(philos, &info);
 	return (0);
 }
 
 void	ft_cleanup(t_philo *philos, t_info *info)
 {
 	ft_destroy_philos(philos, info);
-	printf("All threads are deleted\n");
 	ft_destroy_forks(philos, info);
 	free(philos);
 }
 
-void	ft_showtime(void)
+int	ft_check_philos(t_philo *philos, t_info *info)
 {
-	struct timeval	teste;
+	int	i;
+	int	count;
 
-	gettimeofday(&teste, 0);
-	printf("Seconds: %li, Microseconds: %li\n", teste.tv_sec, teste.tv_usec);
+	i = 0;
+	count = 0;
+	while (i < info->total_philos)
+	{
+		if (ft_diff_ms(&philos[i].last_meal, &info->current) 
+			> info->time_die)
+		{
+			ft_print_status(&philos[i], "died");
+			i = 0;
+			while (i < info->total_philos)
+				ft_set_stage(&philos[i++], 0);
+			return (0);
+		}
+		if (philos[i].meals >= info->times_to_eat && ++count)
+			ft_set_stage(&philos[i], 0);
+		i++;
+	}
+	if (count == info->total_philos)
+		return (0);
+	return (1);
 }

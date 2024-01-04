@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 11:23:02 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:26:59 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo
 	int				id;
 	int				stage;
 	int				meals;
+	int				r_fork;
 	t_timeval		last_meal;
 	t_timeval		last_sleep;
 }		t_philo;
@@ -63,6 +64,7 @@ int		ft_philo_eat(t_philo *philo);
 int		ft_philo_sleep(t_philo *philo);
 void	ft_print_status(t_philo *philo, char *str);
 void	ft_update_date(t_timeval *dest, t_timeval *src);
+int		ft_one_fork(t_philo *philo);
 /* ************************************************************************** */
 /*				forks.c					      */
 /* ************************************************************************** */
