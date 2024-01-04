@@ -6,11 +6,19 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 14:38:22 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:45:57 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/*
+	TODO: Make sure everytime gettimeofday is called, 
+	check for errors and maybe dont update the date
+	RETURN VALUE
+       gettimeofday() and settimeofday() return 0 for success.  On
+       error, -1 is returned and errno is set to indicate the error.
+*/
 
 void	ft_cleanup(t_philo *philos, t_info *info);
 int		ft_check_philos(t_philo *philos, t_info *info);
