@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/03 13:26:06 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/04 15:29:19 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,3 +37,6 @@ fclean: clean
 
 re: fclean	
 	$(MAKE)
+
+valgrind:
+	valgrind --fair-sched=yes ./philo 3 1200 200 200 4
