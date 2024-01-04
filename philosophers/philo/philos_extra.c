@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:38:36 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/03 14:50:15 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:22:51 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,18 @@ int	ft_philo_sleep(t_philo *philo)
 	else
 		return (0);
 	return (1);
+}
+
+void	ft_print_status(t_philo *philo, char *str)
+{
+	printf("%i %i %s\n", 
+		ft_diff_ms(&philo->info->current, &philo->info->start), 
+		philo->id,
+		str); 
+}
+
+void	ft_update_date(t_timeval *dest, t_timeval *src)
+{
+	dest->tv_sec = src->tv_sec;
+	dest->tv_usec = src->tv_usec;
 }

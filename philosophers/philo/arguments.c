@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:35:16 by pabernar          #+#    #+#             */
-/*   Updated: 2023/12/19 11:38:34 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 09:53:23 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ int	ft_check_arguments(int argc, char **argv, t_info *info)
 		|| !ft_check_atoi(info->time_eat, argv[3])
 		|| !ft_check_atoi(info->time_sleep, argv[4])
 		|| info->total_philos < 1
-		|| info->time_die < 0
-		|| info->time_eat < 0
-		|| info->time_sleep < 0)
+		|| info->time_die < 1
+		|| info->time_eat < 1
+		|| info->time_sleep < 1)
 		return (0);
 	if (argc == 6)
 	{
 		info->times_to_eat = ft_atoi(argv[5]);
 		if (!ft_check_atoi(info->times_to_eat, argv[5])
-			|| info->times_to_eat < 0)
+			|| info->times_to_eat < 1)
 			return (0);
 	}
 	else

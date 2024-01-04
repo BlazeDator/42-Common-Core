@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/03 15:08:34 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:15:51 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int	main(int argc, char **argv)
 	t_philo			*philos;
 
 	if (argc < 5 || argc > 6)
-		return (printf("./philo <number_of_philosophers>\
- <time_to_die> <time_to_eat> <time_to_sleep>\
- <number_of_times_each_philosopher_must_eat>\n"));
+		return (ft_print_format());
 	if (!ft_check_arguments(argc, argv, &info))
 		return (printf("Error: Invalid Arguments\n"));
 	gettimeofday(&info.start, 0);

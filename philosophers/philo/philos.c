@@ -6,13 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/03 15:04:21 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:22:14 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_forks_choice(t_philo *philo);
+void	ft_forks_choice(t_philo *philo, int lock);
 
 void	*ft_philo_logic(void *data)
 {
@@ -21,31 +21,30 @@ void	*ft_philo_logic(void *data)
 	philo = (t_philo *) data;
 	while (philo->stage != 0)
 	{
-		ft_forks_choice(philo);
-		philo->last_meal.tv_sec = philo->info->current.tv_sec;
-		philo->last_meal.tv_usec = philo->info->current.tv_usec;
-		printf("%i %i is eating\n", 
-			ft_diff_ms(&philo->info->current, &philo->info->start), philo->id); 
+		ft_forks_choice(philo, 1);
+		ft_update_date(&philo->last_meal, &philo->info->current);
+		ft_print_status(philo, "is eating");
 		philo->meals++;
 		while (philo->stage == 1 && ft_philo_eat(philo))
 			continue ;
-		pthread_mutex_unlock(&philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
-		philo->last_sleep.tv_sec = philo->info->current.tv_sec;
-		philo->last_sleep.tv_usec = philo->info->current.tv_usec;
-		printf("%i %i is sleeping\n", 
-			ft_diff_ms(&philo->info->current, &philo->info->start), philo->id); 
+		if (!philo->stage)
+			return (0);
+		ft_forks_choice(philo, 0);
+		ft_update_date(&philo->last_sleep, &philo->info->current);
+		ft_print_status(philo, "is sleeping");
 		while (philo->stage == 2 && ft_philo_sleep(philo))
 			continue ;
-		printf("%i %i is thinking\n", 
-			ft_diff_ms(&philo->info->current, &philo->info->start), philo->id); 
+		if (!philo->stage)
+			return (0);
+		ft_print_status(philo, "is thinking");
+		usleep(100);
 	}
 	return (0);
 }
 
-void	ft_forks_choice(t_philo *philo)
+void	ft_forks_choice(t_philo *philo, int lock)
 {
-	if (philo->id % 2 == 0)
+	if (philo->id % 2 == 0 && lock)
 	{
 		pthread_mutex_lock(&philo->left_fork);
 		printf("%i %i has taken a fork\n", 
@@ -54,7 +53,7 @@ void	ft_forks_choice(t_philo *philo)
 		printf("%i %i has taken a fork\n", 
 			ft_diff_ms(&philo->info->current, &philo->info->start), philo->id); 
 	}
-	else if (philo->id % 2 == 1)
+	else if (philo->id % 2 == 1 && lock)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		printf("%i %i has taken a fork\n", 
@@ -62,6 +61,11 @@ void	ft_forks_choice(t_philo *philo)
 		pthread_mutex_lock(&philo->left_fork);
 		printf("%i %i has taken a fork\n", 
 			ft_diff_ms(&philo->info->current, &philo->info->start), philo->id); 
+	}
+	else if (!lock)
+	{
+		pthread_mutex_unlock(&philo->left_fork);
+		pthread_mutex_unlock(philo->right_fork);
 	}
 }
 
@@ -84,7 +88,6 @@ void	ft_initialize_philos(t_philo *philos, t_info *info)
 	i = 0;
 	while (i < info->total_philos)
 	{
-		printf("Starting Philo %i\n", i + 1);
 		philos[i].id = i + 1;
 		philos[i].stage = 1;
 		philos[i].meals = 0;
