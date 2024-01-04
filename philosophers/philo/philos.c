@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 13:52:36 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:11:07 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	*ft_philo_logic(void *data)
 	philo = (t_philo *) data;
 	while (philo->stage)
 	{
+		ft_print_status(philo, "is thinking");
 		if (!ft_forks_choice(philo, 1))
 			return (0);
 		ft_update_date(&philo->last_meal, &philo->info->current);
@@ -37,7 +38,6 @@ void	*ft_philo_logic(void *data)
 			continue ;
 		if (!philo->stage)
 			return (0);
-		ft_print_status(philo, "is thinking");
 		usleep(100);
 	}
 	return (0);
