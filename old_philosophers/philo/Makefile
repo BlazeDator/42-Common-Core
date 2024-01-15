@@ -6,13 +6,13 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/15 10:22:21 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/15 14:10:50 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread #-fsanitize=thread
 RM = rm -rf
 SRCS = main.c \
 philos.c philos_extra.c\

@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/15 13:29:00 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:06:05 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct timeval	t_timeval;
 
 typedef struct s_info
 {
-	pthread_mutex_t	start_mutex;
+	pthread_mutex_t	threads_mutex;
 	pthread_mutex_t	time_mutex;
 	int				total_philos;
 	int				time_die;
@@ -52,10 +52,10 @@ typedef struct s_philo
 	t_timeval		last_meal;
 	t_timeval		last_sleep;
 }		t_philo;
-
 /* ************************************************************************** */
-/*				main.c					      */
+/*				mutexes.c					      */
 /* ************************************************************************** */
+void	ft_init_mutexes(t_philo *philos, t_info *info)
 /* ************************************************************************** */
 /*				time.c					      */
 /* ************************************************************************** */
