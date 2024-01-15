@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 10:47:31 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/03 14:44:48 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:03:25 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	ft_diff_ms(t_timeval *first, t_timeval *second)
 
 void	ft_current_time(t_info *info)
 {
-	gettimeofday(&info->current, 0);
+	while (gettimeofday(&info->current, 0))
+		usleep(10);
 }

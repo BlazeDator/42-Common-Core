@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 14:38:36 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 13:40:58 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:08:32 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_one_fork(t_philo *philo)
 	pthread_mutex_lock(&philo->left_fork);
 	ft_print_status(philo, "has taken a fork");
 	while (philo->stage && !philo->r_fork)
-		continue ;
+		usleep(500);
 	pthread_mutex_unlock(&philo->left_fork);
 	return (0);
 }

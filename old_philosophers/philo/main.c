@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:12 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 14:45:57 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:26:49 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	main(int argc, char **argv)
 		return (ft_print_format());
 	if (!ft_check_arguments(argc, argv, &info))
 		return (printf("Error: Invalid Arguments\n"));
-	gettimeofday(&info.start, 0);
-	gettimeofday(&info.current, 0);
+	while (gettimeofday(&info.start, 0) 
+		|| gettimeofday(&info.current, 0))
+		usleep(500);
 	philos = malloc(sizeof(t_philo) * info.total_philos);
 	ft_initialize_forks(philos, &info);
 	ft_initialize_philos(philos, &info);
@@ -72,12 +73,12 @@ int	ft_check_philos(t_philo *philos, t_info *info)
 				ft_set_stage(&philos[i++], 0);
 			return (0);
 		}
-		if (info->times_to_eat 
-			&& philos[i].meals >= info->times_to_eat && ++count)
-			ft_set_stage(&philos[i], 0);
+		if (info->times_to_eat && philos[i].meals >= info->times_to_eat)
+			count++;
 		i++;
 	}
-	if (count == info->total_philos)
-		return (0);
-	return (1);
+	i = 0;
+	while (count == info->total_philos && i < info->total_philos)
+		ft_set_stage(&philos[i++], 0);
+	return (count != info->total_philos);
 }

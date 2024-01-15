@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 15:42:50 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:18:26 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*ft_philo_logic(void *data)
 		ft_update_date(&philo->last_meal, &philo->info->current);
 		ft_print_status(philo, "is eating");
 		while (philo->stage == 1 && ft_philo_eat(philo))
-			continue ;
+			usleep(500);
 		ft_forks_choice(philo, 0);
 		philo->meals++;
 		if (!philo->stage)
@@ -36,7 +36,7 @@ void	*ft_philo_logic(void *data)
 		ft_update_date(&philo->last_sleep, &philo->info->current);
 		ft_print_status(philo, "is sleeping");
 		while (philo->stage == 2 && ft_philo_sleep(philo))
-			continue ;
+			usleep(500);
 		if (!philo->stage)
 			return (0);
 	}
@@ -45,14 +45,9 @@ void	*ft_philo_logic(void *data)
 
 int	ft_forks_choice(t_philo *philo, int lock)
 {
-	if (philo->id % 2 == 0 && lock && philo->r_fork)
-	{
-		pthread_mutex_lock(&philo->left_fork);
-		ft_print_status(philo, "has taken a fork");
-		pthread_mutex_lock(philo->right_fork);
-		ft_print_status(philo, "has taken a fork");
-	}
-	else if (philo->id % 2 == 1 && lock && philo->r_fork)
+	if (philo->id % 2 == 0 && !philo->meals)
+		usleep(150);
+	if (lock && philo->r_fork)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		ft_print_status(philo, "has taken a fork");
