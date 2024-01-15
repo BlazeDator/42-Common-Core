@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/15 12:41:23 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:29:00 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,31 @@ typedef struct timeval	t_timeval;
 
 typedef struct s_info
 {
-	int			total_philos;
-	int			time_die;
-	int			time_eat;
-	int			time_sleep;
-	int			times_to_eat;
-	t_timeval	start;
-	t_timeval	current;	
+	pthread_mutex_t	start_mutex;
+	pthread_mutex_t	time_mutex;
+	int				total_philos;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				times_to_eat;
+	t_timeval		start;
+	t_timeval		current;
 }		t_info;
+
+typedef struct s_philo
+{
+	pthread_t		thread;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	stage_mutex;
+	t_info			*info;
+	int				id;
+	int				stage;
+	int				meals;
+	int				r_fork;
+	t_timeval		last_meal;
+	t_timeval		last_sleep;
+}		t_philo;
 
 /* ************************************************************************** */
 /*				main.c					      */
