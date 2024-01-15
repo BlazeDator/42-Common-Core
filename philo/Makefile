@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/15 10:38:39 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/15 11:55:42 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread -fsanitize=thread
 RM = rm -rf
-SRCS = main.c 
+SRCS = main.c \
+time.c \
+arguments.c helpers.c debug.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
