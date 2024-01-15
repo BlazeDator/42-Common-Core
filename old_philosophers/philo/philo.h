@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/04 13:26:59 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:36:08 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_philo
 void	ft_set_stage(t_philo *philo, int stage);
 void	ft_initialize_philos(t_philo *philos, t_info *info);
 void	ft_destroy_philos(t_philo *philos, t_info *info);
+int		ft_read_stage(t_philo *philo);
 /* ************************************************************************** */
 /*				philos_extra.c				      */
 /* ************************************************************************** */

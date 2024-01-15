@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 14:57:40 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/15 09:18:26 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:36:10 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_philo_logic(void *data)
 	t_philo	*philo;
 
 	philo = (t_philo *) data;
-	while (philo->stage)
+	while (ft_read_stage(philo))
 	{
 		ft_print_status(philo, "is thinking");
 		usleep(100);
@@ -27,17 +27,17 @@ void	*ft_philo_logic(void *data)
 			return (0);
 		ft_update_date(&philo->last_meal, &philo->info->current);
 		ft_print_status(philo, "is eating");
-		while (philo->stage == 1 && ft_philo_eat(philo))
+		while (ft_read_stage(philo) == 1 && ft_philo_eat(philo))
 			usleep(500);
 		ft_forks_choice(philo, 0);
 		philo->meals++;
-		if (!philo->stage)
+		if (!ft_read_stage(philo))
 			return (0);
 		ft_update_date(&philo->last_sleep, &philo->info->current);
 		ft_print_status(philo, "is sleeping");
-		while (philo->stage == 2 && ft_philo_sleep(philo))
+		while (ft_read_stage(philo) == 2 && ft_philo_sleep(philo))
 			usleep(500);
-		if (!philo->stage)
+		if (!ft_read_stage(philo))
 			return (0);
 	}
 	return (0);
@@ -111,4 +111,14 @@ void	ft_destroy_philos(t_philo *philos, t_info *info)
 		pthread_join(philos[i].thread, 0);
 		i++;
 	}
+}
+
+int	ft_read_stage(t_philo *philo)
+{
+	int	i;
+
+	pthread_mutex_lock(&philo->stage_mutex);
+	i = philo->stage;	
+	pthread_mutex_unlock(&philo->stage_mutex);
+	return (i);
 }

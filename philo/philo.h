@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/15 11:54:03 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:41:23 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_info
 	int			time_eat;
 	int			time_sleep;
 	int			times_to_eat;
+	t_timeval	start;
+	t_timeval	current;	
 }		t_info;
 
 /* ************************************************************************** */
