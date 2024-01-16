@@ -59,6 +59,7 @@ static int	ft_philo_eat(t_philo *philo)
 		}
 		usleep(500);
 	}
+	pthread_mutex_unlock(&philo->info->time_mutex);
 	pthread_mutex_unlock(&philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	return (1);
@@ -77,6 +78,7 @@ static int	ft_philo_sleep(t_philo *philo)
 			return (0);
 		usleep(500);
 	}
+	pthread_mutex_unlock(&philo->info->time_mutex);
 	return (1);
 }
 

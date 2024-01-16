@@ -113,6 +113,8 @@ static int	ft_check_death(t_info *info, t_philo *philos)
 			ft_set_stage(info);
 			return (1);
 		}
+		else
+			pthread_mutex_unlock(&philos[i].info->time_mutex);
 		i++;
 	}
 	return (0);
