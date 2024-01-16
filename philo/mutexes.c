@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 15:16:50 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 11:38:52 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:35:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_init_mutexes(t_philo *philos, t_info *info)
 		return (0);
 	while (i < info->total_philos)
 	{
-		if (pthread_mutex_init(&philos[i].left_fork, 0))
+		if (pthread_mutex_init(&philos[i].left_fork, 0)
+			|| pthread_mutex_init(&philos[i].eating, 0))
 			return (0);
 		i++;
 	}
@@ -41,6 +42,7 @@ void	ft_destroy_mutexes(t_philo *philos, t_info *info)
 	while (i < info->total_philos)
 	{
 		pthread_mutex_destroy(&philos[i].left_fork);
+		pthread_mutex_destroy(&philos[i].eating);
 		i++;
 	}
 }

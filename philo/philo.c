@@ -6,13 +6,12 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:14:16 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 11:51:23 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:42:35 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	ft_read_stage(t_info *info);
 static void	ft_print_status(t_philo *philo, char *str);
 
 void	*ft_philo(void *data)
@@ -21,26 +20,19 @@ void	*ft_philo(void *data)
 
 	philo = (t_philo *) data;
 	pthread_mutex_lock(&philo->info->threads_mutex);
-	ft_start_dates(philo, philo->info);
-	ft_print_status(philo, "Updated dates");
 	pthread_mutex_unlock(&philo->info->threads_mutex);
+	ft_start_dates(philo, philo->info);
 	while (ft_read_stage(philo->info))
 	{
 		ft_print_status(philo, "hii");
+		pthread_mutex_lock(&philo->eating);
+		philo->meals++;
+		pthread_mutex_unlock(&philo->eating);
 		usleep(1000000);
 	}
 	return (0);
 }
 
-static int	ft_read_stage(t_info *info)
-{
-	int	i;
-
-	pthread_mutex_lock(&info->stage_mutex);
-	i = info->stage;
-	pthread_mutex_unlock(&info->stage_mutex);
-	return (i);
-}
 
 static void	ft_print_status(t_philo *philo, char *str)
 {

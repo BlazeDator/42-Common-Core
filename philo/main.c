@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:38:44 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 11:58:29 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:41:13 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 		Implement all the functions on main
 */
 static int	ft_print_format(void);
-static void	ft_time_keeper(t_philo *philos, t_info *info);
-static void	ft_set_stage(t_info *info);
+static void	ft_time_keeper(t_info *info, t_philo *philos);
+static int	ft_check_meals(t_info *info, t_philo *philos);
 
 int	main(int argc, char **argv)
 {
@@ -35,9 +35,8 @@ int	main(int argc, char **argv)
 		return (0);
 	if (ft_init_mutexes(philos, &info))
 		pthread_mutex_lock(&info.threads_mutex);
-	printf("Created mutexes \n");
 	if (ft_init_philos(philos, &info))
-		ft_time_keeper(philos, &info);
+		ft_time_keeper(&info, philos);
 	ft_destroy_philos(philos, &info);
 	ft_destroy_mutexes(philos, &info);
 	free(philos);
@@ -51,22 +50,44 @@ static int	ft_print_format(void)
  <number_of_times_each_philosopher_must_eat>\n"));
 }
 
-static void	ft_time_keeper(t_philo *philos, t_info *info)
+static void	ft_time_keeper(t_info *info, t_philo *philos)
 {	
-	if (philos)
-		printf("Created philos \n");
 	while (gettimeofday(&info->start, 0)
 		|| gettimeofday(&info->current, 0))
 		continue ;
 	pthread_mutex_unlock(&info->threads_mutex);
-	sleep(5);
-	ft_set_stage(info);
+	while (ft_read_stage(info))
+	{
+		pthread_mutex_lock(&info->time_mutex);
+		while (gettimeofday(&info->current, 0))
+			continue ;
+		pthread_mutex_unlock(&info->time_mutex);
+		if (ft_check_meals(info, philos))
+			break ;
+		usleep(500);
+	}
 }
 
-static void	ft_set_stage(t_info *info)
+static int	ft_check_meals(t_info *info, t_philo *philos)
 {
-	pthread_mutex_lock(&info->stage_mutex);
-	info->stage = 0;
-	pthread_mutex_unlock(&info->stage_mutex);
-}
+	int	i;
+	int	count;
 
+	i = 0;
+	count = 0;
+	while (i < info->total_philos)
+	{
+		pthread_mutex_lock(&philos[i].eating);
+		if (info->times_to_eat && philos[i].meals >= info->times_to_eat)
+			count++;
+		pthread_mutex_unlock(&philos[i].eating);
+		i++;
+	}
+	i = 0;
+	if (count == info->total_philos)
+	{
+		ft_set_stage(info);
+		return (1);
+	}
+	return (0);
+}

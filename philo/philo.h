@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 11:58:44 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:34:09 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	eating;
 	t_info			*info;
 	int				id;
 	int				meals;
@@ -66,6 +67,11 @@ void	ft_destroy_philos(t_philo *philos, t_info *info);
 /*				philo.c					      */
 /* ************************************************************************** */
 void	*ft_philo(void *data);
+/* ************************************************************************** */
+/*				stage.c					      */
+/* ************************************************************************** */
+int		ft_read_stage(t_info *info);
+void	ft_set_stage(t_info *info);
 /* ************************************************************************** */
 /*				dates.c					      */
 /* ************************************************************************** */
