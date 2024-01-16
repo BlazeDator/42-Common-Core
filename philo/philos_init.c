@@ -6,17 +6,17 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:40:38 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 10:09:39 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 11:57:55 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_init_philos(t_philo *philos, t_info *info, int x)
+int	ft_init_philos(t_philo *philos, t_info *info)
 {
 	int	i;
 
-	i = x;
+	i = 0;
 	while (i < info->total_philos)
 	{
 		philos[i].id = i + 1;
@@ -31,10 +31,8 @@ int	ft_init_philos(t_philo *philos, t_info *info, int x)
 			philos[i].r_fork = 0;
 		if (pthread_create(&philos[i].thread, 0, ft_philo, &philos[i]))
 			return (0);
-		i += 2;
+		i++;
 	}
-	if (!x && !ft_init_philos(philos, info, 1))
-		return (0);
 	return (1);
 }
 
