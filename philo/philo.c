@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:14:16 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 12:42:35 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:56:42 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	*ft_philo(void *data)
 	}
 	return (0);
 }
-
 
 static void	ft_print_status(t_philo *philo, char *str)
 {

@@ -6,16 +6,12 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:38:44 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 12:41:13 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:00:13 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/*
-	TODO:
-		Implement all the functions on main
-*/
 static int	ft_print_format(void);
 static void	ft_time_keeper(t_info *info, t_philo *philos);
 static int	ft_check_meals(t_info *info, t_philo *philos);
@@ -51,7 +47,7 @@ static int	ft_print_format(void)
 }
 
 static void	ft_time_keeper(t_info *info, t_philo *philos)
-{	
+{
 	while (gettimeofday(&info->start, 0)
 		|| gettimeofday(&info->current, 0))
 		continue ;
@@ -62,7 +58,7 @@ static void	ft_time_keeper(t_info *info, t_philo *philos)
 		while (gettimeofday(&info->current, 0))
 			continue ;
 		pthread_mutex_unlock(&info->time_mutex);
-		if (ft_check_meals(info, philos))
+		if (info->times_to_eat && ft_check_meals(info, philos))
 			break ;
 		usleep(500);
 	}
@@ -78,7 +74,7 @@ static int	ft_check_meals(t_info *info, t_philo *philos)
 	while (i < info->total_philos)
 	{
 		pthread_mutex_lock(&philos[i].eating);
-		if (info->times_to_eat && philos[i].meals >= info->times_to_eat)
+		if (philos[i].meals >= info->times_to_eat)
 			count++;
 		pthread_mutex_unlock(&philos[i].eating);
 		i++;
