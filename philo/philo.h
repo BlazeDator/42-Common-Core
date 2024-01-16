@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/15 16:06:05 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:31:29 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ typedef struct s_info
 {
 	pthread_mutex_t	threads_mutex;
 	pthread_mutex_t	time_mutex;
+	pthread_mutex_t	stage_mutex;
 	int				total_philos;
 	int				time_die;
 	int				time_eat;
 	int				time_sleep;
 	int				times_to_eat;
+	int				stage;
 	t_timeval		start;
 	t_timeval		current;
 }		t_info;
@@ -43,19 +45,26 @@ typedef struct s_philo
 	pthread_t		thread;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	stage_mutex;
 	t_info			*info;
 	int				id;
-	int				stage;
 	int				meals;
 	int				r_fork;
 	t_timeval		last_meal;
 	t_timeval		last_sleep;
 }		t_philo;
 /* ************************************************************************** */
-/*				mutexes.c					      */
+/*				mutexes.c				      */
 /* ************************************************************************** */
-void	ft_init_mutexes(t_philo *philos, t_info *info)
+int		ft_init_mutexes(t_philo *philos, t_info *info);
+void	ft_destroy_mutexes(t_philo *philos, t_info *info);
+/* ************************************************************************** */
+/*				philos_init.c				      */
+/* ************************************************************************** */
+int		ft_init_philos(t_philo *philos, t_info *info, int x);
+void	ft_destroy_philos(t_philo *philos, t_info *info);
+/* ************************************************************************** */
+/*				dates.c					      */
+/* ************************************************************************** */
 /* ************************************************************************** */
 /*				time.c					      */
 /* ************************************************************************** */

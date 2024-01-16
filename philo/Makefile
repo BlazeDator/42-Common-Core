@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/15 15:25:15 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/16 10:34:16 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread -fsanitize=thread
 RM = rm -rf
 SRCS = main.c \
 mutexes.c \
-time.c \
+philos_init.c philo.c \
+dates.c time.c \
 arguments.c helpers.c debug.c
 OBJS = $(SRCS:.c=.o)
 
