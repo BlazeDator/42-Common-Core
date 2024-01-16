@@ -48,7 +48,7 @@ static int	ft_philo_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->eating);
 	while (!pthread_mutex_lock(&philo->info->time_mutex)
 		&& !(ft_diff_ms(&philo->info->current, &philo->last_meal) 
-			>= philo->info->time_eat))
+			> philo->info->time_eat))
 	{
 		pthread_mutex_unlock(&philo->info->time_mutex);
 		if (!ft_read_stage(philo->info))
@@ -71,7 +71,7 @@ static int	ft_philo_sleep(t_philo *philo)
 	ft_sleep_date(philo, philo->info);
 	while (!pthread_mutex_lock(&philo->info->time_mutex)
 		&& !(ft_diff_ms(&philo->info->current, &philo->last_sleep) 
-			>= philo->info->time_sleep))
+			> philo->info->time_sleep))
 	{
 		pthread_mutex_unlock(&philo->info->time_mutex);
 		if (!ft_read_stage(philo->info))

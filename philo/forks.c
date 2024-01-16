@@ -22,11 +22,13 @@ int	ft_take_forks(t_philo *philo)
 		pthread_mutex_unlock(&philo->eating);
 		usleep(150);
 	}
+	else
+		pthread_mutex_unlock(&philo->eating);
 	if (philo->r_fork)
 	{
-		pthread_mutex_lock(philo->right_fork);
-		ft_print_status(philo, "has taken a fork");
 		pthread_mutex_lock(&philo->left_fork);
+		ft_print_status(philo, "has taken a fork");
+		pthread_mutex_lock(philo->right_fork);
 		ft_print_status(philo, "has taken a fork");
 	}
 	else

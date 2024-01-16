@@ -106,7 +106,7 @@ static int	ft_check_death(t_info *info, t_philo *philos)
 	{
 		if (!pthread_mutex_lock(&philos[i].info->time_mutex)
 			&& ft_diff_ms(&philos[i].last_meal, &info->current) 
-			>= info->time_die)
+			> info->time_die)
 		{
 			pthread_mutex_unlock(&philos[i].info->time_mutex);
 			ft_print_status(&philos[i], "died");
