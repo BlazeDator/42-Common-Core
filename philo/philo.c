@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:14:16 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/17 12:33:08 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:10:29 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	*ft_philo(void *data)
 	while (ft_read_stage(philo->info))
 	{
 		ft_print_status(philo, "is thinking");
-		usleep(1000);
+		if (philo->id % 2 == 0)
+			usleep(1000);
+		else
+			usleep(750);
 		if (!philo->r_fork && !ft_one_fork(philo))
 			return (0);
 		if (!ft_read_stage(philo->info) || !ft_philo_eat(philo))
@@ -38,8 +41,7 @@ void	*ft_philo(void *data)
 
 static int	ft_philo_eat(t_philo *philo)
 {
-	if (!ft_take_forks(philo))
-		return (0);
+	ft_take_forks(philo);
 	ft_meal_date(philo, philo->info);
 	ft_print_status(philo, "is eating");
 	while (!pthread_mutex_lock(&philo->info->time_mutex)

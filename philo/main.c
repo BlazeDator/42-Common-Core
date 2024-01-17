@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 10:38:44 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/17 11:55:29 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:21:59 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	if (ft_init_mutexes(philos, &info))
 	{
 		pthread_mutex_lock(&info.threads_mutex);
-		if (ft_update_dates(&info) && ft_init_philos(philos, &info))
+		if (ft_init_philos(philos, &info))
 		{
 			ft_time_keeper(&info, philos);
 			ft_destroy_philos(philos, &info);
@@ -55,6 +55,7 @@ static int	ft_print_format(void)
 
 static void	ft_time_keeper(t_info *info, t_philo *philos)
 {
+	ft_update_dates(info, philos);
 	pthread_mutex_unlock(&info->threads_mutex);
 	while (ft_read_stage(info))
 	{

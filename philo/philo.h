@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 09:44:53 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/17 11:55:15 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:19:02 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	ft_print_status(t_philo *philo, char *str);
 /* ************************************************************************** */
 /*				forks.c					      */
 /* ************************************************************************** */
-int		ft_take_forks(t_philo *philo);
-int		ft_free_forks(t_philo *philo);
+void	ft_take_forks(t_philo *philo);
+void	ft_free_forks(t_philo *philo);
 int		ft_one_fork(t_philo *philo);
 /* ************************************************************************** */
 /*				stage.c					      */
@@ -85,7 +85,7 @@ void	ft_set_stage(t_info *info);
 void	ft_start_dates(t_philo *philo, t_info *info);
 void	ft_meal_date(t_philo *philo, t_info *info);
 void	ft_sleep_date(t_philo *philo, t_info *info);
-int		ft_update_dates(t_info *info);
+void	ft_update_dates(t_info *info, t_philo *philos);
 /* ************************************************************************** */
 /*				time.c					      */
 /* ************************************************************************** */

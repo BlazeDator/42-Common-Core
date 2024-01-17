@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:40:38 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/17 11:56:10 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 14:17:09 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_init_philos(t_philo *philos, t_info *info)
 		philos[i].meals = 0;
 		philos[i].info = info;
 		philos[i].r_fork = 1;
-		ft_start_dates(&philos[i], info);
 		if ((i + 1) < info->total_philos)
 			philos[i].right_fork = &philos[i + 1].left_fork;
 		else if (info->total_philos > 1)
