@@ -6,13 +6,13 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/16 14:05:35 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/17 12:04:14 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread #-fsanitize=thread
 RM = rm -rf
 SRCS = main.c \
 mutexes.c \

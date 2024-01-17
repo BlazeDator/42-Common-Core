@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:31:01 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/16 14:25:37 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/17 11:56:25 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,12 @@ static void	ft_copy_date(t_timeval *dest, t_timeval *src)
 {
 	dest->tv_sec = src->tv_sec;
 	dest->tv_usec = src->tv_usec;
+}
+
+int	ft_update_dates(t_info *info)
+{
+	while (gettimeofday(&info->start, 0)
+		|| gettimeofday(&info->current, 0))
+		continue ;
+	return (1);
 }
