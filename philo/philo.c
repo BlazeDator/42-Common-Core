@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:14:16 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/18 08:55:42 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/18 09:16:24 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	*ft_philo(void *data)
 	pthread_mutex_unlock(&philo->info->threads_mutex);
 	while (ft_read_stage(philo->info))
 	{
-		ft_philo_think(philo, 0);
+		ft_philo_think(philo, 1);
 		if (!philo->r_fork && !ft_one_fork(philo))
 			return (0);
 		if (!ft_read_stage(philo->info) || !ft_philo_eat(philo))
 			return (0);
 		if (!ft_read_stage(philo->info) || !ft_philo_sleep(philo))
 			return (0);
-		if (!ft_read_stage(philo->info) || !ft_philo_think(philo, 1))
+		if (!ft_read_stage(philo->info) || !ft_philo_think(philo, 0))
 			return (0);
 	}
 	return (0);

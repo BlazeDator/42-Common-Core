@@ -6,14 +6,13 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/17 14:40:25 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/18 09:11:27 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -O3 -pthread 
-#-fsanitize=thread
 RM = rm -rf
 SRCS = main.c \
 mutexes.c \
@@ -38,3 +37,6 @@ fclean: clean
 
 re: fclean	
 	$(MAKE)
+
+threads: fclean $(OBJS)
+	$(CC) $(CFLAGS) -fsanitize=thread -o $(NAME) $(OBJS) 
