@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:14:16 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/17 14:10:29 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/18 08:55:42 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_philo_eat(t_philo *philo);
 static int	ft_philo_sleep(t_philo *philo);
+static int	ft_philo_think(t_philo *philo, int parity);
 
 void	*ft_philo(void *data)
 {
@@ -24,16 +25,14 @@ void	*ft_philo(void *data)
 	pthread_mutex_unlock(&philo->info->threads_mutex);
 	while (ft_read_stage(philo->info))
 	{
-		ft_print_status(philo, "is thinking");
-		if (philo->id % 2 == 0)
-			usleep(1000);
-		else
-			usleep(750);
+		ft_philo_think(philo, 0);
 		if (!philo->r_fork && !ft_one_fork(philo))
 			return (0);
 		if (!ft_read_stage(philo->info) || !ft_philo_eat(philo))
 			return (0);
 		if (!ft_read_stage(philo->info) || !ft_philo_sleep(philo))
+			return (0);
+		if (!ft_read_stage(philo->info) || !ft_philo_think(philo, 1))
 			return (0);
 	}
 	return (0);
@@ -73,6 +72,16 @@ static int	ft_philo_sleep(t_philo *philo)
 		usleep(500);
 	}
 	pthread_mutex_unlock(&philo->info->time_mutex);
+	return (1);
+}
+
+static int	ft_philo_think(t_philo *philo, int parity)
+{
+	if (philo->id % 2 == parity)
+	{
+		ft_print_status(philo, "is thinking");
+		usleep(1000);
+	}
 	return (1);
 }
 
