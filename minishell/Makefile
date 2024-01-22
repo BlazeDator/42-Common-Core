@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/22 12:04:59 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/22 12:26:12 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ SRCS = main.c
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/
+MINISH = -lreadline
 
 all: $(NAME)
 
 $(NAME): $(OBJS_DIR) $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MINISH)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
