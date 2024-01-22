@@ -6,29 +6,34 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/22 11:48:09 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/22 12:04:59 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell
+NAME = minishell 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -O3
 RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SRCS = main.c 
-OBJS = $(SRCS:.c=.o)
+SRCS_DIR = srcs/
+OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+OBJS_DIR = objs/
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJS)
-	cc $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) 
+$(NAME): $(OBJS_DIR) $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR) 
+	$(MAKE) -C $(LIBFT_DIR)
 
-%.o : %.c
+$(OBJS_DIR)%.o : $(SRCS_DIR)%.c
 	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJS_DIR):
+	mkdir -p objs
 
 clean:
 	$(RM) $(OBJS)
@@ -38,3 +43,6 @@ fclean: clean
 
 re: fclean	
 	$(MAKE)
+
+norm:
+	norminette -R CheckForbiddenSourceHeader headers/*.h srcs/*.c

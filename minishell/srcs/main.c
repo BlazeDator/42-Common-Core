@@ -6,11 +6,11 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:48:43 by pabernar          #+#    #+#             */
-/*   Updated: 2024/01/22 11:49:24 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:09:06 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../headers/minishell.h"
 
 int	main(void)
 {
