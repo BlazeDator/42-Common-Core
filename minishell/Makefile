@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/25 09:42:52 by pabernar         ###   ########.fr        #
+#    Updated: 2024/01/31 11:28:24 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,11 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean	
-	$(MAKE)
+re: fclean all
 
 norm:
 	norminette -R CheckForbiddenSourceHeader headers/*.h srcs/*.c
+
+leak: all
+	valgrind --leak-check=full --show-leak-kinds=all \
+		--suppressions=readline_leaks.txt ./$(NAME)
