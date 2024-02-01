@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/02/01 10:12:33 by pabernar         ###   ########.fr        #
+#    Updated: 2024/02/01 11:16:47 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,4 +52,4 @@ norm:
 
 leak: all
 	valgrind --leak-check=full --show-leak-kinds=all \
-		--suppressions=readline_leaks.txt ./$(NAME)
+		--suppressions=readline_leaks ./$(NAME)
