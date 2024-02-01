@@ -6,7 +6,7 @@
 #    By: pabernar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:29:26 by pabernar          #+#    #+#              #
-#    Updated: 2024/01/31 11:28:24 by pabernar         ###   ########.fr        #
+#    Updated: 2024/02/01 10:12:33 by pabernar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ RM = rm -rf
 LIBFT = libft/libft.a
 LIBFT_DIR = libft/
 SRCS = main.c minishell.c \
-parser.c 
+parser.c \
+signal.c \
+exit.c
 SRCS_DIR = srcs/
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_DIR = objs/
