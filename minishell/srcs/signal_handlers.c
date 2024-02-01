@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:54:36 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 14:24:16 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:29:24 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ void	ft_handle_sigint(int sig)
 void	ft_handle_sigint_ign(int sig)
 {
 	if (sig == SIGINT)
-		g_signal = SIGINT;
+		g_signal = sig;
 }
 
 void	ft_handle_sigquit(int sig)
 {
 	if (sig == SIGQUIT)
+	{
+		g_signal = sig;
 		printf("Quit (core dumped)");
+	}
 }

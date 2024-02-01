@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:00:28 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 14:27:56 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:29:37 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_executer(char *path)
 	}
 	ft_ignore_signals();
 	wait(0);
-	if (g_signal == SIGINT)
+	if (g_signal == SIGINT || g_signal == SIGQUIT)
 		printf("\n");
 	rl_on_new_line();
 	ft_init_signals();
