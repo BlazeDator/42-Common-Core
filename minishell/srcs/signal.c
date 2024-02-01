@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:42:17 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 10:25:13 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 10:28:09 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_init_signals(void)
 
 void	ft_handle_eof(void)
 {
-	rl_replace_line("exit", 4);
+	rl_replace_line("exit", 0);
 	rl_redisplay();
 	printf("\n");
 	ft_exit();
