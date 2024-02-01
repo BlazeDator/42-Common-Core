@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:16:25 by pabernar          #+#    #+#             */
-/*   Updated: 2023/11/13 10:13:37 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 16:09:17 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		ft_itoalen(int n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(char *s1, char *s2);
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
