@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 09:42:17 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 10:28:09 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 11:22:15 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_handle_sigint(int sig)
 {
 	if (sig == SIGINT)
 	{
+		rl_replace_line("", 0);
 		printf("\n");
 		rl_on_new_line();
 		rl_redisplay();
