@@ -6,7 +6,7 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 09:37:04 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 10:03:58 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:07:32 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_parser(char *line)
 		return ;
 	if (!strncmp(line, "exit", 4))
 		exit(0);
+	if (!strncmp(line, "cat", 2))
+		ft_executer("/bin/cat");
 }
 
 int	ft_check_open_quotes(char *line)

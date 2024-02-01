@@ -6,11 +6,13 @@
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 11:48:43 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 10:13:28 by pabernar         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:25:53 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
+
+int	g_signal;
 
 int	main(int argc, char **argv)
 {

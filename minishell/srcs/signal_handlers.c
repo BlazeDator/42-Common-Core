@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   signal_handlers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 09:42:17 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 14:23:47 by pabernar         ###   ########.fr       */
+/*   Created: 2024/02/01 13:54:36 by pabernar          #+#    #+#             */
+/*   Updated: 2024/02/01 14:24:16 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_init_signals(void)
+void	ft_handle_eof(void)
 {
-	g_signal = 0;
-	signal(SIGINT, ft_handle_sigint);
-	signal(SIGQUIT, SIG_IGN);
+	rl_replace_line("exit", 0);
+	rl_redisplay();
+	printf("\n");
+	ft_exit();
 }
 
-void	ft_ignore_signals(void)
+void	ft_handle_sigint(int sig)
 {
-	signal(SIGINT, ft_handle_sigint_ign);
-	signal(SIGQUIT, ft_handle_sigquit);
+	if (sig == SIGINT)
+	{
+		rl_replace_line("", 0);
+		printf("\n");
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }
 
-void	ft_restore_signals(void)
+void	ft_handle_sigint_ign(int sig)
 {
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	if (sig == SIGINT)
+		g_signal = SIGINT;
+}
+
+void	ft_handle_sigquit(int sig)
+{
+	if (sig == SIGQUIT)
+		printf("Quit (core dumped)");
 }

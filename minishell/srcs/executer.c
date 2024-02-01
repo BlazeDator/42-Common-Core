@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal.c                                           :+:      :+:    :+:   */
+/*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabernar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 09:42:17 by pabernar          #+#    #+#             */
-/*   Updated: 2024/02/01 14:23:47 by pabernar         ###   ########.fr       */
+/*   Created: 2024/02/01 14:00:28 by pabernar          #+#    #+#             */
+/*   Updated: 2024/02/01 14:27:56 by pabernar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_init_signals(void)
+void	ft_executer(char *path)
 {
-	g_signal = 0;
-	signal(SIGINT, ft_handle_sigint);
-	signal(SIGQUIT, SIG_IGN);
-}
+	char	**test;
 
-void	ft_ignore_signals(void)
-{
-	signal(SIGINT, ft_handle_sigint_ign);
-	signal(SIGQUIT, ft_handle_sigquit);
-}
-
-void	ft_restore_signals(void)
-{
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	test = 0;
+	if (fork() == 0)
+	{
+		ft_restore_signals();
+		execve(path, test, test);
+		exit(0);
+	}
+	ft_ignore_signals();
+	wait(0);
+	if (g_signal == SIGINT)
+		printf("\n");
+	rl_on_new_line();
+	ft_init_signals();
 }
